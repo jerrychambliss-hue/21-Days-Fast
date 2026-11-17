@@ -199,12 +199,12 @@ var T = {
     acctOff: "Sign in", acctOn: "Account", acctTitle: "Your account", acctOnP: "Your progress and notes are saved to your account and follow you to any phone where you sign in.",
     acctOffP: "The app works without an account. An account only saves your progress to the cloud so it follows you to other phones.",
     signIn: "Sign in", createAcct: "Create account", signOut: "Sign out", syncNow: "Sync now", email: "Email", password: "Password (8+ characters)",
-    consent: "I understand that my progress and the notes I write are stored on a server run by our hosting provider, Supabase. Only I can read them, and I can delete them here at any time.",
+    consent: "I understand that my progress and the notes I write are stored on a server run by our hosting provider, Supabase. Only I can read my notes. Pastors and leaders at SOS Church can see my name and which day I am on. I can turn that off, or delete everything, here at any time.",
     working: "One moment…", checkEmail: "Check your email to confirm your address, then sign in.", syncing: "Saving…", syncErr: "Could not save", syncedNow: "Saved to your account.", syncedAt: "Saved to your account at {time}.",
     deleteHead: "Delete my account", deleteP: "Deletes your account and everything saved in the cloud. The notes on this phone stay.", deleteBtn: "Delete my account and cloud data", deleteConfirm: "Tap again to delete for good",
     errBad: "Wrong email or password.", errExists: "There is already an account with that email. Try signing in.", errRate: "Too many tries. Please wait a minute.", errWeak: "Choose a longer password (8 or more characters).",
     errEmail: "Please enter a valid email.", errConsent: "Please tick the box to continue.", errNet: "Could not reach the server. Check your connection.",
-    haveAcct: "Already have an account? Sign in", countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
+    hello: "Welcome, {name}", yourName: "Your name", nameReq: "Please enter your name (up to 60 characters).", visibleLabel: "Let the pastors and leaders at SOS Church see my name and which day I am on.", saveProfile: "Save", profSaved: "Saved.", pastorOpen: "Open pastor view", pastorTitle: "Pastor view", pastorNote: "Only people who chose to be visible are listed by name. Prayers and notes are never shown here.", pAccounts: "Accounts", pActive: "Active today", pFinished: "Finished all 21", pPerDay: "People who finished each day", pMembers: "Members", pDay: "Day {n}", pLast: "Last active", pNone: "No members yet.", refresh: "Refresh", pLoading: "Loading…", pDenied: "This account does not have pastor access.", haveAcct: "Already have an account? Sign in", countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
   },
   sv: {
     summit: "Sinai", climbed: "{n} av 21 dagar avklarade", toGo: "{n} kvar till bergets topp", atSummit: "Du nådde bergets topp.", start: "Bas",
@@ -235,17 +235,17 @@ var T = {
     acctOff: "Logga in", acctOn: "Konto", acctTitle: "Ditt konto", acctOnP: "Din framgång och dina anteckningar sparas i ditt konto och följer med till varje telefon där du loggar in.",
     acctOffP: "Appen fungerar utan konto. Ett konto sparar bara din framgång i molnet så att den följer med till andra telefoner.",
     signIn: "Logga in", createAcct: "Skapa konto", signOut: "Logga ut", syncNow: "Synka nu", email: "E-post", password: "Lösenord (minst 8 tecken)",
-    consent: "Jag förstår att min framgång och mina anteckningar lagras på en server hos vår leverantör Supabase. Bara jag kan läsa dem, och jag kan radera dem här när som helst.",
+    consent: "Jag förstår att min framgång och mina anteckningar lagras på en server hos vår leverantör Supabase. Bara jag kan läsa mina anteckningar. Pastorer och ledare i SOS Church kan se mitt namn och vilken dag jag är på. Jag kan stänga av det, eller radera allt, här när som helst.",
     working: "Ett ögonblick…", checkEmail: "Kolla din e-post för att bekräfta adressen och logga sedan in.", syncing: "Sparar…", syncErr: "Kunde inte spara", syncedNow: "Sparat i ditt konto.", syncedAt: "Sparat i ditt konto kl. {time}.",
     deleteHead: "Radera mitt konto", deleteP: "Raderar ditt konto och allt som sparats i molnet. Anteckningarna på den här telefonen finns kvar.", deleteBtn: "Radera mitt konto och molndata", deleteConfirm: "Tryck igen för att radera för gott",
     errBad: "Fel e-post eller lösenord.", errExists: "Det finns redan ett konto med den e-posten. Försök logga in.", errRate: "För många försök. Vänta en minut.", errWeak: "Välj ett längre lösenord (minst 8 tecken).",
     errEmail: "Skriv in en giltig e-postadress.", errConsent: "Kryssa i rutan för att fortsätta.", errNet: "Kunde inte nå servern. Kontrollera din anslutning.",
-    haveAcct: "Har du redan ett konto? Logga in", countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
+    hello: "Välkommen, {name}", yourName: "Ditt namn", nameReq: "Skriv ditt namn (högst 60 tecken).", visibleLabel: "Låt pastorer och ledare i SOS Church se mitt namn och vilken dag jag är på.", saveProfile: "Spara", profSaved: "Sparat.", pastorOpen: "Öppna pastorsvyn", pastorTitle: "Pastorsvy", pastorNote: "Bara personer som valt att vara synliga listas med namn. Böner och anteckningar visas aldrig här.", pAccounts: "Konton", pActive: "Aktiva idag", pFinished: "Klarat alla 21", pPerDay: "Personer som klarat varje dag", pMembers: "Medlemmar", pDay: "Dag {n}", pLast: "Senast aktiv", pNone: "Inga medlemmar ännu.", refresh: "Uppdatera", pLoading: "Laddar…", pDenied: "Det här kontot har inte pastorsåtkomst.", haveAcct: "Har du redan ett konto? Logga in", countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
   }
 };
 function t(k, o) {
   var s = (T[S.lang] && T[S.lang][k]) || T.en[k] || k;
-  if (o) for (var p in o) s = s.replace("{" + p + "}", o[p]);
+  if (o) for (var p in o) s = s.replace("{" + p + "}", (function (v) { return function () { return v; }; })(o[p]));
   return s;
 }
 function L(obj) { return obj ? (obj[S.lang] || obj.en) : ""; }
@@ -296,6 +296,7 @@ function render() {
   if (!C || !S) return;
   var h;
   if (UI.screen && UI.screen.type === "account") { h = accountHtml(); }
+  else if (UI.screen && UI.screen.type === "pastor") { h = pastorHtml(); }
   else if (!S.onboarded) h = onboardHtml();
   else if (UI.screen && UI.screen.type === "reader") { h = readerShell(); }
   else {
@@ -443,7 +444,7 @@ function doListen(what) {
 }
 
 function topHtml() {
-  return '<div class="top"><div class="brand">' + esc(t("appSub")) + "<small>" + esc(t("title")) + '</small></div><div class="hdr">' + (SB ? '<button class="pill" data-act="account">' + esc(CLOUD.user ? t("acctOn") : t("acctOff")) + "</button>" : "") + '<button class="pill" data-act="lang">' + esc(t("langBtn")) + "</button></div></div>";
+  return '<div class="top"><div class="brand">' + esc(t("appSub")) + "<small>" + esc(t("title")) + '</small></div><div class="hdr">' + (SB ? '<button class="pill" data-act="account">' + esc(CLOUD.user ? (CLOUD.profile && CLOUD.profile.name ? CLOUD.profile.name.split(" ")[0] : t("acctOn")) : t("acctOff")) + "</button>" : "") + '<button class="pill" data-act="lang">' + esc(t("langBtn")) + "</button></div></div>";
 }
 function tabsHtml() {
   var tabs = ["today", "journey", "bible", "fast", "journal"], h = '<nav class="tabs" aria-label="Main"><div class="in">';
@@ -486,6 +487,7 @@ function onboardHtml() {
 function todayHtml() {
   var n = UI.view || currentDay(), d = dayData(n), tk = tick(n), nt = note(n), done = S.done.indexOf(n) >= 0, h = "";
   var pct = Math.round(S.done.length / TOTAL * 100);
+  if (CLOUD.profile && CLOUD.profile.name) h += '<p class="small" style="margin:0 0 2px">' + esc(t("hello", { name: CLOUD.profile.name })) + "</p>";
   h += '<div class="hero"><div class="numeral" aria-hidden="true">' + n + '</div><div><p class="eyebrow">' + esc(t("dayOf", { n: n })) + "</p><h1>" + esc(L(d.title)) + "</h1></div></div>";
   h += mountainHtml() + '<p class="small" id="cnt" style="margin:2px 0 8px">' + esc(countText()) + "</p>";
   if (allDone() && !UI.view) h += '<div class="card celebrate"><h2>' + esc(t("done21")) + "</h2><p>" + esc(t("done21p")) + '</p><div style="margin-top:10px"><button class="btn alt" style="background:#fff;color:#151A33" data-act="tab" data-tab="journal">' + esc(t("journal")) + "</button></div></div>";
@@ -639,6 +641,9 @@ document.addEventListener("click", function (e) {
   else if (a === "acctsync") { pushNow().then(function () { render(); }); }
   else if (a === "acctout") { acctSignOut(); }
   else if (a === "acctdelete") { acctDelete(); }
+  else if (a === "profsave") { profSave(); }
+  else if (a === "openpastor") { UI.screen = { type: "pastor" }; loadPastor(); }
+  else if (a === "closepastor") { UI.screen = { type: "account" }; render(); }
 });
 document.addEventListener("keydown", function (e) {
   if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("v")) { e.preventDefault(); toggleHl(e.target); }
@@ -673,7 +678,7 @@ function toggleHl(el) {
 /* ---------- Cloud: Supabase accounts and sync ---------- */
 var SB_URL = "https://qlewbortlinmyhmseozz.supabase.co";
 var SB_KEY = "sb_publishable_qt7K61FfFgoNNISr3nZYbg_PTGbwiy0";
-var SB = null, CLOUD = { user: null, status: "", msg: "", lastSync: null };
+var SB = null, CLOUD = { user: null, status: "", msg: "", lastSync: null, profile: null, staff: false };
 function initCloud() {
   try {
     if (!window.supabase || !window.supabase.createClient) return;
@@ -681,7 +686,7 @@ function initCloud() {
     SB.auth.onAuthStateChange(function (ev, session) { CLOUD.user = session ? session.user : null; });
     SB.auth.getSession().then(function (r) {
       var sess = r && r.data && r.data.session;
-      if (sess) { CLOUD.user = sess.user; return pullAndMerge(); }
+      if (sess) { CLOUD.user = sess.user; return pullAndMerge().then(loadProfile); }
     }).then(function () { fetchCount(); var ae = document.activeElement; if (!(ae && (ae.tagName === "TEXTAREA" || ae.tagName === "INPUT"))) render(); }).catch(function () {});
   } catch (e) { SB = null; }
 }
@@ -737,6 +742,58 @@ function fetchCount() {
     if (r && !r.error && typeof r.data === "number") { UI.count = r.data; var el = document.getElementById("cnt"); if (el) el.textContent = countText(); }
   }, function () {});
 }
+function loadProfile() {
+  if (!SB || !CLOUD.user) return Promise.resolve();
+  var uid = CLOUD.user.id;
+  return SB.from("profiles").select("name,visible").eq("user_id", uid).maybeSingle().then(function (r) {
+    CLOUD.profile = (r && r.data) ? r.data : null;
+    return SB.rpc("is_staff");
+  }).then(function (r) { CLOUD.staff = !!(r && r.data === true); }).catch(function () {});
+}
+function saveProfile(name, visible) {
+  return SB.from("profiles").upsert({ user_id: CLOUD.user.id, name: name, visible: visible, updated_at: new Date().toISOString() }).then(function (r) {
+    if (r.error) throw r.error;
+    CLOUD.profile = { name: name, visible: visible };
+  });
+}
+function profSave() {
+  var name = (document.getElementById("an").value || "").trim(), vis = document.getElementById("av").checked, m = document.getElementById("pmsg");
+  if (!name || name.length > 60) { if (m) m.textContent = t("nameReq"); return; }
+  saveProfile(name, vis).then(function () { if (m) m.textContent = t("profSaved"); }).catch(function (e) { if (m) m.textContent = friendly(e); });
+}
+function loadPastor() {
+  UI.pastor = { loading: true };
+  render();
+  Promise.all([SB.rpc("pastor_totals"), SB.rpc("pastor_overview")]).then(function (r) {
+    if (r[0].error || r[1].error) { UI.pastor = { err: (r[0].error || r[1].error).message || "" }; }
+    else UI.pastor = { totals: r[0].data, rows: r[1].data || [] };
+    render();
+  }).catch(function (e) { UI.pastor = { err: (e && e.message) || "" }; render(); });
+}
+function pastorHtml() {
+  var P = UI.pastor || {}, h = '<div class="top"><button class="pill" data-act="closepastor">&larr; ' + esc(t("closeReader")) + '</button><button class="pill" data-act="openpastor">' + esc(t("refresh")) + "</button></div>";
+  h += '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("pastorTitle")) + "</h1>";
+  if (P.loading) return h + '<p class="small">' + esc(t("pLoading")) + "</p>";
+  if (P.err) return h + '<div class="card"><p>' + esc(/not allowed/i.test(P.err) ? t("pDenied") : P.err) + "</p></div>";
+  var T = P.totals || {}, per = T.per_day || [], max = 1, i;
+  for (i = 0; i < per.length; i++) if (per[i] > max) max = per[i];
+  h += '<div class="card"><div class="row" style="justify-content:space-between;text-align:center">';
+  [["pAccounts", T.accounts], ["pActive", T.active_today], ["pFinished", T.finished]].forEach(function (x) {
+    h += '<div style="flex:1"><div class="numeral" style="font-size:40px">' + esc(x[1] == null ? 0 : x[1]) + '</div><div class="small">' + esc(t(x[0])) + "</div></div>";
+  });
+  h += "</div></div>";
+  h += '<div class="card"><h3>' + esc(t("pPerDay")) + "</h3>";
+  for (i = 0; i < per.length; i++) h += '<div class="row" style="gap:8px;margin:3px 0"><span class="small" style="width:44px">' + esc(t("pDay", { n: i + 1 })) + '</span><div class="bar" style="flex:1;margin:0"><i style="width:' + Math.round(per[i] / max * 100) + '%"></i></div><span class="small" style="width:28px;text-align:right">' + esc(per[i]) + "</span></div>";
+  h += "</div>";
+  h += '<div class="card"><h3>' + esc(t("pMembers")) + '</h3><p class="small">' + esc(t("pastorNote")) + "</p>";
+  var rows = P.rows || [];
+  if (!rows.length) h += '<p class="small" style="margin-top:8px">' + esc(t("pNone")) + "</p>";
+  rows.forEach(function (r) {
+    var when = r.last_active ? String(r.last_active).slice(0, 10) : "";
+    h += '<div class="row" style="justify-content:space-between;border-top:1px solid var(--line);padding:8px 0"><span><b>' + esc(r.name || "") + '</b><br><span class="small">' + esc(t("pDay", { n: r.current_day })) + " &middot; " + esc(r.days_done) + "/21</span></span><span class=\"small\">" + esc(when) + "</span></div>";
+  });
+  return h + "</div>";
+}
 function refreshAccount() { if (UI.screen && UI.screen.type === "account" && CLOUD.user) render(); }
 function syncText() {
   if (CLOUD.status === "syncing") return t("syncing");
@@ -757,7 +814,8 @@ function setAmsg(txt) { var el = document.getElementById("amsg"); if (el) el.tex
 function acctSubmit() {
   if (!SB) { setAmsg(t("errNet")); return; }
   var em = (document.getElementById("ae").value || "").trim(), pw = document.getElementById("ap").value || "", up = UI.acctMode === "up";
-  UI.acctEmail = em; var wasOn = S.onboarded;
+  UI.acctEmail = em; var wasOn = S.onboarded, nm = up ? (document.getElementById("an").value || "").trim() : "";
+  if (up && (!nm || nm.length > 60)) { setAmsg(t("nameReq")); return; }
   if (!/^\S+@\S+\.\S+$/.test(em)) { setAmsg(t("errEmail")); return; }
   if (pw.length < 8) { setAmsg(t("errWeak")); return; }
   if (up && !document.getElementById("ac").checked) { setAmsg(t("errConsent")); return; }
@@ -768,7 +826,7 @@ function acctSubmit() {
     var sess = r.data && r.data.session;
     if (!sess) { setAmsg(t("checkEmail")); return; }
     CLOUD.user = sess.user;
-    return pullAndMerge().then(function () { fetchCount(); if (!wasOn) { UI.screen = null; UI.tab = "today"; } render(); });
+    return (up ? saveProfile(nm, true) : Promise.resolve()).then(pullAndMerge).then(loadProfile).then(function () { fetchCount(); if (!wasOn) { UI.screen = null; UI.tab = "today"; } render(); });
   }).catch(function (e) { setAmsg(friendly(e)); });
 }
 function acctSignOut() {
@@ -776,7 +834,7 @@ function acctSignOut() {
   pushNow().then(function () {
     if (CLOUD.status === "error") return;
     return SB.auth.signOut().then(function () {
-      CLOUD.user = null; CLOUD.status = "";
+      CLOUD.user = null; CLOUD.status = ""; CLOUD.profile = null; CLOUD.staff = false;
       if (S.cloudUser) { resetLocalData(); S.cloudUser = null; }
       saveLocal(); UI.screen = null; UI.tab = "today"; render();
     });
@@ -789,7 +847,7 @@ function acctDelete() {
     if (r.error) throw r.error;
     return SB.auth.signOut();
   }).then(function () {
-    CLOUD.user = null; CLOUD.status = ""; S.cloudUser = null; S.dirty = true; saveLocal(); UI.confirmDelete = false; UI.screen = null; render(); fetchCount();
+    CLOUD.user = null; CLOUD.status = ""; CLOUD.profile = null; CLOUD.staff = false; S.cloudUser = null; S.dirty = true; saveLocal(); UI.confirmDelete = false; UI.screen = null; render(); fetchCount();
   }).catch(function (e) { UI.confirmDelete = false; cloudFail(e); });
 }
 function accountHtml() {
@@ -798,10 +856,14 @@ function accountHtml() {
   if (CLOUD.user) {
     h += '<div class="card"><p><b>' + esc(CLOUD.user.email || "") + '</b></p><p class="small" id="syncst">' + esc(syncText()) + '</p><p class="small" style="margin-top:8px">' + esc(t("acctOnP")) + "</p>";
     h += '<div class="row" style="margin-top:12px"><button class="btn" data-act="acctsync">' + esc(t("syncNow")) + '</button><button class="btn alt" data-act="acctout">' + esc(t("signOut")) + "</button></div></div>";
+    var pr = CLOUD.profile || { name: "", visible: true };
+    h += '<div class="card"><h3>' + esc(t("yourName")) + '</h3><input class="inp" id="an" type="text" maxlength="60" autocomplete="name" value="' + esc(pr.name) + '"><label class="check"><input type="checkbox" id="av"' + (pr.visible !== false ? " checked" : "") + '><span class="small">' + esc(t("visibleLabel")) + '</span></label><button class="btn alt" data-act="profsave">' + esc(t("saveProfile")) + '</button><p class="small" id="pmsg" role="status" style="margin-top:6px"></p></div>';
+    if (CLOUD.staff) h += '<div class="card"><h3>' + esc(t("pastorTitle")) + '</h3><button class="btn" data-act="openpastor">' + esc(t("pastorOpen")) + "</button></div>";
     h += '<div class="card"><h3>' + esc(t("deleteHead")) + '</h3><p class="small">' + esc(t("deleteP")) + '</p><div style="margin-top:10px"><button class="btn alt" data-act="acctdelete">' + esc(UI.confirmDelete ? t("deleteConfirm") : t("deleteBtn")) + "</button></div></div>";
   } else {
     var up = UI.acctMode === "up";
     h += '<div class="card"><div class="lang" style="margin-top:0"><button class="btn ' + (up ? "alt" : "") + '" data-act="acctmode" data-m="in">' + esc(t("signIn")) + '</button><button class="btn ' + (up ? "" : "alt") + '" data-act="acctmode" data-m="up">' + esc(t("createAcct")) + "</button></div>";
+    if (up) h += '<label class="small" for="an">' + esc(t("yourName")) + '</label><input class="inp" id="an" type="text" maxlength="60" autocomplete="name">';
     h += '<label class="small" for="ae">' + esc(t("email")) + '</label><input class="inp" id="ae" type="email" autocomplete="email" inputmode="email" autocapitalize="off" value="' + esc(UI.acctEmail || "") + '">';
     h += '<label class="small" for="ap">' + esc(t("password")) + '</label><input class="inp" id="ap" type="password" autocomplete="' + (up ? "new-password" : "current-password") + '">';
     if (up) h += '<label class="check"><input type="checkbox" id="ac"><span class="small">' + esc(t("consent")) + "</span></label>";

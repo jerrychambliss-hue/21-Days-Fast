@@ -10,9 +10,9 @@
 <style>
 /* Layout idea: one narrow column, bottom tab bar, big flame-colored day numeral as the anchor. */
 :root{
-  --bg:#F3F4F9; --surface:#FFFFFF; --ink:#151A33; --muted:#555B7A; --line:#DADDEC;
-  --sky:#F3E2C8; --rock-far:#E2C79F; --rock:#B98756; --rock-dark:#8E6038; --cloud:#FFFFFF;
-  --flame:#C4401A; --on-flame:#FFFFFF; --gold:#F0B429; --hl:rgba(240,180,41,.38); --ok:#1F7A4D;
+  --bg:#F5F8F5; --surface:#FFFFFF; --ink:#18271F; --muted:#56685E; --line:#D9E4DC;
+  --sky:#E3EEE7; --rock-far:#C9D9CE; --rock:#8DA997; --rock-dark:#5E7C6A; --cloud:#FFFFFF;
+  --flame:#3C7A5B; --on-flame:#FFFFFF; --gold:#E8B84A; --hl:rgba(143,200,168,.40); --ok:#2F7A52;
   --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
   --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
@@ -20,16 +20,16 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0E1226; --surface:#171C38; --ink:#EEF0FA; --muted:#A5ABC9; --line:#2A3058;
-    --sky:#181D40; --rock-far:#2B3160; --rock:#7A5442; --rock-dark:#4F3329; --cloud:#C9CEEB;
-  --flame:#FF7F55; --on-flame:#1B0A03; --gold:#F5C04A; --hl:rgba(245,192,74,.30); --ok:#5FD39B;
+    --bg:#0E1A15; --surface:#16251F; --ink:#EAF2EE; --muted:#A2B8AD; --line:#29403A;
+    --sky:#14261E; --rock-far:#25402F; --rock:#4C6F5A; --rock-dark:#304B3C; --cloud:#CFE0D6;
+  --flame:#7FCBA2; --on-flame:#07140E; --gold:#EBC25A; --hl:rgba(127,203,162,.28); --ok:#5FD39B;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0E1226; --surface:#171C38; --ink:#EEF0FA; --muted:#A5ABC9; --line:#2A3058;
-  --sky:#181D40; --rock-far:#2B3160; --rock:#7A5442; --rock-dark:#4F3329; --cloud:#C9CEEB;
-  --flame:#FF7F55; --on-flame:#1B0A03; --gold:#F5C04A; --hl:rgba(245,192,74,.30); --ok:#5FD39B;
+  --bg:#0E1A15; --surface:#16251F; --ink:#EAF2EE; --muted:#A2B8AD; --line:#29403A;
+  --sky:#14261E; --rock-far:#25402F; --rock:#4C6F5A; --rock-dark:#304B3C; --cloud:#CFE0D6;
+  --flame:#7FCBA2; --on-flame:#07140E; --gold:#EBC25A; --hl:rgba(127,203,162,.28); --ok:#5FD39B;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
@@ -107,8 +107,8 @@ summary{font-weight:700;cursor:pointer;min-height:32px}
 .books button,.chs button{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:left;cursor:pointer;min-height:44px}
 .chs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
 .chs button{text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
-.celebrate{background:linear-gradient(135deg,var(--flame),#8B2A10);color:#fff;border:0}
-:root[data-theme="dark"] .celebrate{color:#1B0A03;background:linear-gradient(135deg,var(--flame),var(--gold))}
+.celebrate{background:linear-gradient(135deg,var(--flame),#25513B);color:#fff;border:0}
+:root[data-theme="dark"] .celebrate{color:#07140E;background:linear-gradient(135deg,var(--flame),var(--gold))}
 .note{font-size:13px;color:var(--muted);margin-top:8px}
 .lang{display:flex;gap:10px;margin:14px 0}
 .lang .btn{flex:1}
@@ -117,7 +117,7 @@ summary{font-weight:700;cursor:pointer;min-height:32px}
 details.com summary{font-family:var(--display);font-size:18px;font-weight:800}
 .com p{margin-top:10px}
 .v.speaking{outline:2px solid var(--gold);background:var(--hl)}
-.cele{position:fixed;inset:0;z-index:30;background:radial-gradient(ellipse at 50% 28%,#2E2552 0%,#0E1226 72%);color:#EEF0FA;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;overflow:auto}
+.cele{position:fixed;inset:0;z-index:30;background:radial-gradient(ellipse at 50% 28%,#245240 0%,#0E1A15 72%);color:#EAF2EE;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;overflow:auto}
 .cele h2{font-size:30px;color:#F5C04A;margin:6px 0 4px}
 .cele .eyebrow{color:#F5C04A}
 .cele .small{color:#A5ABC9}
@@ -319,7 +319,7 @@ function hexRgb(h) { h = h.replace("#", ""); return [parseInt(h.substr(0, 2), 16
 function mix(a, b, t) { var A = hexRgb(a), B = hexRgb(b); return "rgb(" + [0, 1, 2].map(function (i) { return Math.round(A[i] + (B[i] - A[i]) * t); }).join(",") + ")"; }
 function isDark() { var th = document.documentElement.getAttribute("data-theme"); if (th) return th === "dark"; return !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches); }
 function reducedMotion() { return !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches); }
-function skyAt(p) { var st = isDark() ? ["#0B0F26", "#2B2350", "#6B4560"] : ["#8E96C9", "#E9B98E", "#F7E7C1"]; return p < 0.5 ? mix(st[0], st[1], p * 2) : mix(st[1], st[2], (p - 0.5) * 2); }
+function skyAt(p) { var st = isDark() ? ["#08130F", "#1B3A30", "#4D6E5C"] : ["#A9CDC0", "#DCEADB", "#F6F3DF"]; return p < 0.5 ? mix(st[0], st[1], p * 2) : mix(st[1], st[2], (p - 0.5) * 2); }
 function sunY(p) { return 114 - p * 84; }
 function animAttr(attr, from, to, begin) { return '<animate attributeName="' + attr + '" from="' + from + '" to="' + to + '" dur="1.4s" begin="' + (begin || "0.3s") + '" fill="freeze"/>'; }
 function mountainHtml() {

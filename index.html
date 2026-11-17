@@ -135,7 +135,10 @@ details.com summary{font-family:var(--display);font-size:18px;font-weight:800}
 @keyframes flick{from{transform:scale(1,1) rotate(-2deg)}to{transform:scale(.94,1.07) rotate(2deg)}}
 @keyframes ignite{from{transform:scale(0)}60%{transform:scale(1.6)}to{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.flame,.flame.new{animation:none}}
+.inp{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;margin:4px 0 10px}
+.hdr{display:flex;gap:8px;align-items:center}
 </style>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <div id="app" aria-live="polite"><p class="small">Loading…</p></div>
@@ -149,19 +152,21 @@ var BOOKS = {};        // cache of loaded books
 var S = null;          // saved state
 var UI = { tab: "today", view: null, screen: null, search: "" };
 var memOnly = false;
+var CHG = 0, syncT = null;
 
 function def() {
   return { lang: (navigator.language || "en").toLowerCase().indexOf("sv") === 0 ? "sv" : "en",
-    onboarded: false, fasts: [], done: [], ticks: {}, notes: {}, testimony: "", hl: {} };
+    onboarded: false, fasts: [], done: [], ticks: {}, notes: {}, testimony: "", hl: {}, cloudUser: null, dirty: false };
 }
 function load() {
   try { var r = localStorage.getItem(KEY); if (r) return Object.assign(def(), JSON.parse(r)); } catch (e) { memOnly = true; }
   return def();
 }
 var saveTimer = null;
-function save() {
+function saveLocal() {
   try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { memOnly = true; }
 }
+function save() { CHG++; S.dirty = true; saveLocal(); scheduleSync(); }
 function saveSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 400); }
 
 var T = {
@@ -190,7 +195,16 @@ var T = {
     prayerWord: "Prayer", notesFor: "Day {n}: {t}", langBtn: "Svenska", search: "Search books",
     celeDone: "Day {n} complete", cont: "Continue", listen: "Listen", listenRead: "Listen to today's reading", stop: "Stop",
     commentary: "Commentary", where: "Where", quoteHead: "Words on prayer and fasting", translated: "translated",
-    candles: "21 candles", candlesP: "One flame for each day you finish.", litCount: "{n} of 21 lit"
+    candles: "21 candles", candlesP: "One flame for each day you finish.", litCount: "{n} of 21 lit",
+    acctOff: "Sign in", acctOn: "Account", acctTitle: "Your account", acctOnP: "Your progress and notes are saved to your account and follow you to any phone where you sign in.",
+    acctOffP: "The app works without an account. An account only saves your progress to the cloud so it follows you to other phones.",
+    signIn: "Sign in", createAcct: "Create account", signOut: "Sign out", syncNow: "Sync now", email: "Email", password: "Password (8+ characters)",
+    consent: "I understand that my progress and the notes I write are stored on a server run by our hosting provider, Supabase. Only I can read them, and I can delete them here at any time.",
+    working: "One moment…", checkEmail: "Check your email to confirm your address, then sign in.", syncing: "Saving…", syncErr: "Could not save", syncedNow: "Saved to your account.", syncedAt: "Saved to your account at {time}.",
+    deleteHead: "Delete my account", deleteP: "Deletes your account and everything saved in the cloud. The notes on this phone stay.", deleteBtn: "Delete my account and cloud data", deleteConfirm: "Tap again to delete for good",
+    errBad: "Wrong email or password.", errExists: "There is already an account with that email. Try signing in.", errRate: "Too many tries. Please wait a minute.", errWeak: "Choose a longer password (8 or more characters).",
+    errEmail: "Please enter a valid email.", errConsent: "Please tick the box to continue.", errNet: "Could not reach the server. Check your connection.",
+    countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
   },
   sv: {
     summit: "Sinai", climbed: "{n} av 21 dagar avklarade", toGo: "{n} kvar till bergets topp", atSummit: "Du nådde bergets topp.", start: "Bas",
@@ -217,7 +231,16 @@ var T = {
     prayerWord: "Bön", notesFor: "Dag {n}: {t}", langBtn: "English", search: "Sök böcker",
     celeDone: "Dag {n} klar", cont: "Fortsätt", listen: "Lyssna", listenRead: "Lyssna på dagens text", stop: "Stoppa",
     commentary: "Kommentar", where: "Plats", quoteHead: "Ord om bön och fasta", translated: "översatt",
-    candles: "21 ljus", candlesP: "En låga för varje dag du slutför.", litCount: "{n} av 21 tända"
+    candles: "21 ljus", candlesP: "En låga för varje dag du slutför.", litCount: "{n} av 21 tända",
+    acctOff: "Logga in", acctOn: "Konto", acctTitle: "Ditt konto", acctOnP: "Din framgång och dina anteckningar sparas i ditt konto och följer med till varje telefon där du loggar in.",
+    acctOffP: "Appen fungerar utan konto. Ett konto sparar bara din framgång i molnet så att den följer med till andra telefoner.",
+    signIn: "Logga in", createAcct: "Skapa konto", signOut: "Logga ut", syncNow: "Synka nu", email: "E-post", password: "Lösenord (minst 8 tecken)",
+    consent: "Jag förstår att min framgång och mina anteckningar lagras på en server hos vår leverantör Supabase. Bara jag kan läsa dem, och jag kan radera dem här när som helst.",
+    working: "Ett ögonblick…", checkEmail: "Kolla din e-post för att bekräfta adressen och logga sedan in.", syncing: "Sparar…", syncErr: "Kunde inte spara", syncedNow: "Sparat i ditt konto.", syncedAt: "Sparat i ditt konto kl. {time}.",
+    deleteHead: "Radera mitt konto", deleteP: "Raderar ditt konto och allt som sparats i molnet. Anteckningarna på den här telefonen finns kvar.", deleteBtn: "Radera mitt konto och molndata", deleteConfirm: "Tryck igen för att radera för gott",
+    errBad: "Fel e-post eller lösenord.", errExists: "Det finns redan ett konto med den e-posten. Försök logga in.", errRate: "För många försök. Vänta en minut.", errWeak: "Välj ett längre lösenord (minst 8 tecken).",
+    errEmail: "Skriv in en giltig e-postadress.", errConsent: "Kryssa i rutan för att fortsätta.", errNet: "Kunde inte nå servern. Kontrollera din anslutning.",
+    countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
   }
 };
 function t(k, o) {
@@ -274,6 +297,7 @@ function render() {
   var h;
   if (!S.onboarded) h = onboardHtml();
   else if (UI.screen && UI.screen.type === "reader") { h = readerShell(); }
+  else if (UI.screen && UI.screen.type === "account") { h = accountHtml(); }
   else {
     h = topHtml() + (memOnly ? '<div class="card"><p class="small">' + esc(t("memOnly")) + "</p></div>" : "");
     if (UI.tab === "today") h += todayHtml();
@@ -419,7 +443,7 @@ function doListen(what) {
 }
 
 function topHtml() {
-  return '<div class="top"><div class="brand">' + esc(t("appSub")) + "<small>" + esc(t("title")) + '</small></div><button class="pill" data-act="lang">' + esc(t("langBtn")) + "</button></div>";
+  return '<div class="top"><div class="brand">' + esc(t("appSub")) + "<small>" + esc(t("title")) + '</small></div><div class="hdr">' + (SB ? '<button class="pill" data-act="account">' + esc(CLOUD.user ? t("acctOn") : t("acctOff")) + "</button>" : "") + '<button class="pill" data-act="lang">' + esc(t("langBtn")) + "</button></div></div>";
 }
 function tabsHtml() {
   var tabs = ["today", "journey", "bible", "fast", "journal"], h = '<nav class="tabs" aria-label="Main"><div class="in">';
@@ -462,7 +486,7 @@ function todayHtml() {
   var n = UI.view || currentDay(), d = dayData(n), tk = tick(n), nt = note(n), done = S.done.indexOf(n) >= 0, h = "";
   var pct = Math.round(S.done.length / TOTAL * 100);
   h += '<div class="hero"><div class="numeral" aria-hidden="true">' + n + '</div><div><p class="eyebrow">' + esc(t("dayOf", { n: n })) + "</p><h1>" + esc(L(d.title)) + "</h1></div></div>";
-  h += mountainHtml();
+  h += mountainHtml() + '<p class="small" id="cnt" style="margin:2px 0 8px">' + esc(countText()) + "</p>";
   if (allDone() && !UI.view) h += '<div class="card celebrate"><h2>' + esc(t("done21")) + "</h2><p>" + esc(t("done21p")) + '</p><div style="margin-top:10px"><button class="btn alt" style="background:#fff;color:#151A33" data-act="tab" data-tab="journal">' + esc(t("journal")) + "</button></div></div>";
   h += '<div class="card"><h2>' + esc(t("read")) + " &middot; " + esc(refText(d)) + '</h2><div class="verse" id="kv">…<cite>' + esc(t("keyVerse")) + " &middot; " + esc(keyRef(d)) + '</cite></div>';
   h += '<button class="btn full" data-act="openday" data-n="' + n + '">' + esc(t("openReading")) + '</button>' + listenBtn("today", t("listenRead")) + '<label class="check"><input type="checkbox" data-act="tick" data-k="read"' + (tk.read ? " checked" : "") + "><span>" + esc(t("readTick")) + "</span></label></div>";
@@ -598,15 +622,22 @@ document.addEventListener("click", function (e) {
   else if (a === "step") { UI.step = parseInt(el.getAttribute("data-s"), 10); render(); }
   else if (a === "finish") { S.onboarded = true; save(); UI.tab = "today"; render(); }
   else if (a === "gotoday") { UI.view = n === currentDay() && !allDone() ? null : n; UI.tab = "today"; render(); }
-  else if (a === "complete") { if (S.done.indexOf(n) < 0) S.done.push(n); save(); UI.view = null; UI.celebrate = n; UI.lastN = n; try { if (navigator.vibrate) navigator.vibrate([40, 60, 90]); } catch (x) {} render(); }
+  else if (a === "complete") { if (S.done.indexOf(n) < 0) S.done.push(n); save(); cloudComplete(n, true); UI.view = null; UI.celebrate = n; UI.lastN = n; try { if (navigator.vibrate) navigator.vibrate([40, 60, 90]); } catch (x) {} render(); }
   else if (a === "celebdone") { var dn = S.done.length; UI.celebrate = null; UI.climb = { from: Math.min(UI.lastN || 1, TOTAL), to: Math.min((UI.lastN || 1) + 1, TOTAL), p0: Math.max(0, (dn - 1) / TOTAL), p1: dn / TOTAL }; if (allDone()) { UI.climb = null; UI.tab = "journal"; } render(); }
-  else if (a === "undo") { S.done = S.done.filter(function (x) { return x !== n; }); save(); UI.view = null; render(); }
+  else if (a === "undo") { S.done = S.done.filter(function (x) { return x !== n; }); save(); cloudComplete(n, false); UI.view = null; render(); }
   else if (a === "openday") { var d = dayData(n); UI.keepTab = UI.tab; UI.screen = { type: "reader", book: "acts", chapters: d.ch, title: refText(d) }; render(); }
   else if (a === "closereader") { UI.screen = null; render(); }
   else if (a === "book") { UI.book = el.getAttribute("data-id"); render(); }
   else if (a === "closebook") { UI.book = null; render(); }
   else if (a === "openref") { UI.screen = { type: "reader", free: true, book: el.getAttribute("data-b"), chapters: [parseInt(el.getAttribute("data-c"), 10)], scrollV: el.getAttribute("data-v"), title: bookName(el.getAttribute("data-b")) }; render(); }
   else if (a === "copy") { copyText(journalText()); }
+  else if (a === "account") { UI.screen = { type: "account" }; UI.acctMode = "in"; render(); }
+  else if (a === "closeaccount") { UI.screen = null; UI.confirmDelete = false; render(); }
+  else if (a === "acctmode") { var ee = document.getElementById("ae"); if (ee) UI.acctEmail = ee.value; UI.acctMode = el.getAttribute("data-m"); render(); }
+  else if (a === "acctsubmit") { acctSubmit(); }
+  else if (a === "acctsync") { pushNow().then(function () { render(); }); }
+  else if (a === "acctout") { acctSignOut(); }
+  else if (a === "acctdelete") { acctDelete(); }
 });
 document.addEventListener("keydown", function (e) {
   if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("v")) { e.preventDefault(); toggleHl(e.target); }
@@ -638,8 +669,150 @@ function toggleHl(el) {
   save();
 }
 
+/* ---------- Cloud: Supabase accounts and sync ---------- */
+var SB_URL = "https://qlewbortlinmyhmseozz.supabase.co";
+var SB_KEY = "sb_publishable_qt7K61FfFgoNNISr3nZYbg_PTGbwiy0";
+var SB = null, CLOUD = { user: null, status: "", msg: "", lastSync: null };
+function initCloud() {
+  try {
+    if (!window.supabase || !window.supabase.createClient) return;
+    SB = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } });
+    SB.auth.onAuthStateChange(function (ev, session) { CLOUD.user = session ? session.user : null; });
+    SB.auth.getSession().then(function (r) {
+      var sess = r && r.data && r.data.session;
+      if (sess) { CLOUD.user = sess.user; return pullAndMerge(); }
+    }).then(function () { fetchCount(); var ae = document.activeElement; if (!(ae && (ae.tagName === "TEXTAREA" || ae.tagName === "INPUT"))) render(); }).catch(function () {});
+  } catch (e) { SB = null; }
+}
+function dataOf() { return { done: S.done, fasts: S.fasts, ticks: S.ticks, notes: S.notes, testimony: S.testimony, hl: S.hl }; }
+function longer(a, b) { a = a || ""; b = b || ""; return b.length > a.length ? b : a; }
+function resetLocalData() { S.done = []; S.fasts = []; S.ticks = {}; S.notes = {}; S.testimony = ""; S.hl = {}; S.dirty = false; }
+function replaceFromRemote(rm) { S.done = rm.done || []; S.fasts = rm.fasts || []; S.ticks = rm.ticks || {}; S.notes = rm.notes || {}; S.testimony = rm.testimony || ""; S.hl = rm.hl || {}; }
+function mergeRemote(rm) {
+  (rm.done || []).forEach(function (n) { if (S.done.indexOf(n) < 0) S.done.push(n); });
+  S.done.sort(function (a, b) { return a - b; });
+  (rm.fasts || []).forEach(function (f) { if (S.fasts.indexOf(f) < 0) S.fasts.push(f); });
+  var rt = rm.ticks || {}; for (var d in rt) { S.ticks[d] = S.ticks[d] || {}; for (var k in rt[d]) if (rt[d][k]) S.ticks[d][k] = true; }
+  var rn = rm.notes || {}; for (var d2 in rn) { var l = S.notes[d2] || { prayer: "", journal: "" }; S.notes[d2] = { prayer: longer(l.prayer, rn[d2].prayer), journal: longer(l.journal, rn[d2].journal) }; }
+  S.testimony = longer(S.testimony, rm.testimony);
+  var rh = rm.hl || {}; for (var h2 in rh) if (!S.hl[h2]) S.hl[h2] = rh[h2];
+}
+function cloudFail(e) { CLOUD.status = "error"; CLOUD.msg = (e && e.message) || ""; refreshAccount(); }
+function pullAndMerge() {
+  if (!SB || !CLOUD.user) return Promise.resolve();
+  var uid = CLOUD.user.id; CLOUD.status = "syncing";
+  return SB.from("progress").select("data").eq("user_id", uid).maybeSingle().then(function (r) {
+    if (r.error) throw r.error;
+    var rm = r.data && r.data.data, needPush = true;
+    if (S.cloudUser && S.cloudUser !== uid) { resetLocalData(); }
+    if (rm) {
+      S.onboarded = true;
+      if (S.cloudUser === uid && !S.dirty) { replaceFromRemote(rm); needPush = false; } else mergeRemote(rm);
+    }
+    S.cloudUser = uid; saveLocal();
+    return needPush ? pushNow() : (CLOUD.status = "ok", CLOUD.lastSync = new Date());
+  }).catch(cloudFail);
+}
+function scheduleSync() { if (!SB || !CLOUD.user) return; clearTimeout(syncT); syncT = setTimeout(pushNow, 1500); }
+function pushNow() {
+  if (!SB || !CLOUD.user) return Promise.resolve();
+  var seq = CHG; CLOUD.status = "syncing";
+  return SB.from("progress").upsert({ user_id: CLOUD.user.id, data: dataOf(), updated_at: new Date().toISOString() }).then(function (r) {
+    if (r.error) throw r.error;
+    if (CHG === seq) S.dirty = false;
+    S.cloudUser = CLOUD.user.id; saveLocal(); CLOUD.status = "ok"; CLOUD.lastSync = new Date(); refreshAccount();
+  }).catch(cloudFail);
+}
+function cloudComplete(n, add) {
+  if (!SB || !CLOUD.user) return;
+  var q = add ? SB.from("completions").upsert({ user_id: CLOUD.user.id, day: n }, { onConflict: "user_id,day", ignoreDuplicates: true })
+              : SB.from("completions").delete().eq("user_id", CLOUD.user.id).eq("day", n);
+  q.then(function () { fetchCount(); }, function () {});
+}
+function countText() { var n = UI.count; if (!n) return ""; return t(n === 1 ? "countOne" : "countMany", { n: n }); }
+function fetchCount() {
+  if (!SB) return;
+  SB.rpc("today_count").then(function (r) {
+    if (r && !r.error && typeof r.data === "number") { UI.count = r.data; var el = document.getElementById("cnt"); if (el) el.textContent = countText(); }
+  }, function () {});
+}
+function refreshAccount() { if (UI.screen && UI.screen.type === "account" && CLOUD.user) render(); }
+function syncText() {
+  if (CLOUD.status === "syncing") return t("syncing");
+  if (CLOUD.status === "error") return t("syncErr") + (CLOUD.msg ? ": " + CLOUD.msg : "");
+  if (CLOUD.lastSync) { var d = CLOUD.lastSync; return t("syncedAt", { time: ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) }); }
+  return t("syncedNow");
+}
+function friendly(e) {
+  var m = (e && e.message) || "";
+  if (/invalid login/i.test(m)) return t("errBad");
+  if (/already registered|already been registered/i.test(m)) return t("errExists");
+  if (/rate limit|too many/i.test(m)) return t("errRate");
+  if (/password/i.test(m) && /character|least|weak|short/i.test(m)) return t("errWeak");
+  if (/fetch|network|failed to/i.test(m)) return t("errNet");
+  return m || t("errNet");
+}
+function setAmsg(txt) { var el = document.getElementById("amsg"); if (el) el.textContent = txt; }
+function acctSubmit() {
+  if (!SB) { setAmsg(t("errNet")); return; }
+  var em = (document.getElementById("ae").value || "").trim(), pw = document.getElementById("ap").value || "", up = UI.acctMode === "up";
+  UI.acctEmail = em;
+  if (!/^\S+@\S+\.\S+$/.test(em)) { setAmsg(t("errEmail")); return; }
+  if (pw.length < 8) { setAmsg(t("errWeak")); return; }
+  if (up && !document.getElementById("ac").checked) { setAmsg(t("errConsent")); return; }
+  setAmsg(t("working"));
+  var req = up ? SB.auth.signUp({ email: em, password: pw }) : SB.auth.signInWithPassword({ email: em, password: pw });
+  req.then(function (r) {
+    if (r.error) throw r.error;
+    var sess = r.data && r.data.session;
+    if (!sess) { setAmsg(t("checkEmail")); return; }
+    CLOUD.user = sess.user;
+    return pullAndMerge().then(function () { fetchCount(); render(); });
+  }).catch(function (e) { setAmsg(friendly(e)); });
+}
+function acctSignOut() {
+  if (!SB) return;
+  pushNow().then(function () {
+    if (CLOUD.status === "error") return;
+    return SB.auth.signOut().then(function () {
+      CLOUD.user = null; CLOUD.status = "";
+      if (S.cloudUser) { resetLocalData(); S.cloudUser = null; }
+      saveLocal(); UI.screen = null; UI.tab = "today"; render();
+    });
+  }).catch(cloudFail);
+}
+function acctDelete() {
+  if (!SB || !CLOUD.user) return;
+  if (!UI.confirmDelete) { UI.confirmDelete = true; render(); return; }
+  SB.rpc("delete_my_account").then(function (r) {
+    if (r.error) throw r.error;
+    return SB.auth.signOut();
+  }).then(function () {
+    CLOUD.user = null; CLOUD.status = ""; S.cloudUser = null; S.dirty = true; saveLocal(); UI.confirmDelete = false; UI.screen = null; render(); fetchCount();
+  }).catch(function (e) { UI.confirmDelete = false; cloudFail(e); });
+}
+function accountHtml() {
+  var h = '<div class="top"><button class="pill" data-act="closeaccount">&larr; ' + esc(t("closeReader")) + "</button></div>";
+  h += '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("acctTitle")) + "</h1>";
+  if (CLOUD.user) {
+    h += '<div class="card"><p><b>' + esc(CLOUD.user.email || "") + '</b></p><p class="small" id="syncst">' + esc(syncText()) + '</p><p class="small" style="margin-top:8px">' + esc(t("acctOnP")) + "</p>";
+    h += '<div class="row" style="margin-top:12px"><button class="btn" data-act="acctsync">' + esc(t("syncNow")) + '</button><button class="btn alt" data-act="acctout">' + esc(t("signOut")) + "</button></div></div>";
+    h += '<div class="card"><h3>' + esc(t("deleteHead")) + '</h3><p class="small">' + esc(t("deleteP")) + '</p><div style="margin-top:10px"><button class="btn alt" data-act="acctdelete">' + esc(UI.confirmDelete ? t("deleteConfirm") : t("deleteBtn")) + "</button></div></div>";
+  } else {
+    var up = UI.acctMode === "up";
+    h += '<div class="card"><div class="lang" style="margin-top:0"><button class="btn ' + (up ? "alt" : "") + '" data-act="acctmode" data-m="in">' + esc(t("signIn")) + '</button><button class="btn ' + (up ? "" : "alt") + '" data-act="acctmode" data-m="up">' + esc(t("createAcct")) + "</button></div>";
+    h += '<label class="small" for="ae">' + esc(t("email")) + '</label><input class="inp" id="ae" type="email" autocomplete="email" inputmode="email" autocapitalize="off" value="' + esc(UI.acctEmail || "") + '">';
+    h += '<label class="small" for="ap">' + esc(t("password")) + '</label><input class="inp" id="ap" type="password" autocomplete="' + (up ? "new-password" : "current-password") + '">';
+    if (up) h += '<label class="check"><input type="checkbox" id="ac"><span class="small">' + esc(t("consent")) + "</span></label>";
+    h += '<p class="small" id="amsg" role="alert" style="margin:8px 0"></p><button class="btn full" data-act="acctsubmit">' + esc(up ? t("createAcct") : t("signIn")) + "</button></div>";
+    h += '<p class="note">' + esc(t("acctOffP")) + "</p>";
+  }
+  return h;
+}
+
 /* ---------- Start ---------- */
 S = load();
+window.addEventListener("load", initCloud);
 Promise.all([
   fetch("content.json").then(function (r) { return r.json(); }),
   fetch("bible/index.json").then(function (r) { return r.json(); })

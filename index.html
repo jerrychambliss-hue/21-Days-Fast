@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>21 Days Fast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one narrow column, bottom tab bar, big flame-colored day numeral as the anchor. */
+:root{
+  --bg:#F3F4F9; --surface:#FFFFFF; --ink:#151A33; --muted:#555B7A; --line:#DADDEC;
+  --sky:#F3E2C8; --rock-far:#E2C79F; --rock:#B98756; --rock-dark:#8E6038; --cloud:#FFFFFF;
+  --flame:#C4401A; --on-flame:#FFFFFF; --gold:#F0B429; --hl:rgba(240,180,41,.38); --ok:#1F7A4D;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1226; --surface:#171C38; --ink:#EEF0FA; --muted:#A5ABC9; --line:#2A3058;
+    --sky:#181D40; --rock-far:#2B3160; --rock:#7A5442; --rock-dark:#4F3329; --cloud:#C9CEEB;
+  --flame:#FF7F55; --on-flame:#1B0A03; --gold:#F5C04A; --hl:rgba(245,192,74,.30); --ok:#5FD39B;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1226; --surface:#171C38; --ink:#EEF0FA; --muted:#A5ABC9; --line:#2A3058;
+  --sky:#181D40; --rock-far:#2B3160; --rock:#7A5442; --rock-dark:#4F3329; --cloud:#C9CEEB;
+  --flame:#FF7F55; --on-flame:#1B0A03; --gold:#F5C04A; --hl:rgba(245,192,74,.30); --ok:#5FD39B;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
+p{margin:0}
+#app{max-width:600px;margin:0 auto;padding:16px 16px 96px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.brand{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.02em}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:12px;color:var(--muted);letter-spacing:0}
+.pill{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--flame)}
+.hero{display:flex;gap:14px;align-items:flex-end;margin:6px 0 14px}
+.numeral{font-family:var(--display);font-weight:800;font-size:76px;line-height:.85;color:var(--flame);font-variant-numeric:tabular-nums}
+.hero h1{font-size:26px}
+.mtn{margin:6px 0 4px}
+.mtn svg{width:100%;height:auto;display:block}
+.m-sky{fill:var(--sky)}
+.m-far{fill:var(--rock-far)}
+.m-bg{fill:var(--rock)}
+.m-shade{fill:var(--rock-dark)}
+.m-cloud{fill:var(--cloud);opacity:.85}
+.m-trail{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:3 4;opacity:.55}
+.m-dot{fill:var(--surface);stroke:var(--ink);stroke-width:1.5}
+.m-dot.done{fill:var(--ok);stroke:var(--surface);stroke-width:1.5}
+.m-dot.now{fill:var(--flame);stroke:var(--gold);stroke-width:3}
+.m-tab{fill:var(--muted);stroke:var(--surface);stroke-width:1}
+.m-tab.on{fill:var(--gold)}
+.m-glow{fill:var(--gold);opacity:.35}
+.m-fire{fill:var(--flame)}
+.m-fire2{fill:var(--gold)}
+.m-txt{font:700 10px var(--body);fill:var(--ink)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:6px 0 4px}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--flame),var(--gold));border-radius:99px}
+.small{font-size:13px;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+.card h2{font-size:18px;margin-bottom:8px}
+.card h3{font-size:16px;margin-bottom:6px}
+.verse{font-family:var(--serif);font-size:19px;line-height:1.55;border-left:4px solid var(--gold);padding-left:14px;margin:10px 0}
+.verse cite{display:block;font-family:var(--body);font-style:normal;font-size:13px;color:var(--muted);margin-top:6px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--flame);color:var(--on-flame);border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer;min-height:44px}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.full{width:100%}
+.btn[disabled]{opacity:.5;cursor:default}
+button:focus-visible,textarea:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.check{display:flex;gap:12px;align-items:center;padding:10px 0;cursor:pointer;min-height:44px}
+.check input{width:24px;height:24px;accent-color:var(--flame);flex:none}
+textarea{width:100%;min-height:96px;resize:vertical;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:10px;padding:10px 12px;font:inherit;margin-top:8px}
+ol.q{padding-left:20px;margin:8px 0}
+ol.q li{margin:6px 0}
+.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:5}
+.tabs .in{display:flex;width:100%;max-width:600px}
+.tabs button{flex:1;background:none;border:0;padding:12px 2px 14px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;border-top:3px solid transparent;min-height:52px}
+.tabs button[aria-current="page"]{color:var(--flame);border-top-color:var(--flame)}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:10px 0}
+.dot{aspect-ratio:1;border-radius:12px;border:1px solid var(--line);background:var(--surface);display:flex;align-items:center;justify-content:center;font-weight:700;font-variant-numeric:tabular-nums;cursor:pointer}
+.dot.done{background:var(--ok);color:#fff;border-color:var(--ok)}
+.dot.now{border:2px solid var(--flame);color:var(--flame)}
+.dot.sel{outline:3px solid var(--gold)}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--line);border-radius:12px;margin:8px 0;cursor:pointer;background:var(--surface)}
+.opt input{width:22px;height:22px;margin-top:2px;accent-color:var(--flame);flex:none}
+.opt b{display:block}
+.opt.on{border-color:var(--flame)}
+details{border-top:1px solid var(--line);padding:10px 0}
+details:first-of-type{border-top:0}
+summary{font-weight:700;cursor:pointer;min-height:32px}
+.reader{font-family:var(--serif);font-size:19px;line-height:1.7}
+.reader h2{font-size:22px;margin:22px 0 8px}
+.v{cursor:pointer;border-radius:4px;padding:1px 2px}
+.v sup{font-family:var(--body);font-size:11px;font-weight:700;color:var(--flame);margin-right:3px}
+.v.hl{background:var(--hl)}
+.books{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.books button,.chs button{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px;text-align:left;cursor:pointer;min-height:44px}
+.chs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px}
+.chs button{text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.celebrate{background:linear-gradient(135deg,var(--flame),#8B2A10);color:#fff;border:0}
+:root[data-theme="dark"] .celebrate{color:#1B0A03;background:linear-gradient(135deg,var(--flame),var(--gold))}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.lang{display:flex;gap:10px;margin:14px 0}
+.lang .btn{flex:1}
+@media (prefers-reduced-motion:no-preference){.bar>i{transition:width .4s ease}}
+.verse.qt{font-size:18px;border-left-color:var(--flame)}
+details.com summary{font-family:var(--display);font-size:18px;font-weight:800}
+.com p{margin-top:10px}
+.v.speaking{outline:2px solid var(--gold);background:var(--hl)}
+.cele{position:fixed;inset:0;z-index:30;background:radial-gradient(ellipse at 50% 28%,#2E2552 0%,#0E1226 72%);color:#EEF0FA;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;overflow:auto}
+.cele h2{font-size:30px;color:#F5C04A;margin:6px 0 4px}
+.cele .eyebrow{color:#F5C04A}
+.cele .small{color:#A5ABC9}
+.cele .verse{border-left:0;padding:0;text-align:center;max-width:460px;color:#EEF0FA;margin:14px auto 20px}
+.cele .verse cite{color:#A5ABC9}
+.cele .wax{fill:#EEF0FA;stroke:none}
+.cele .wick{stroke:#A5ABC9}
+.cdl{width:100%;max-width:340px;margin:14px auto 6px;display:block}
+.wax{fill:var(--line);stroke:var(--muted);stroke-width:1}
+.wick{stroke:var(--muted);stroke-width:1.5}
+.fl1{fill:var(--flame)}
+.fl2{fill:var(--gold)}
+.flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.7s ease-in-out infinite alternate}
+.flame.new{animation:ignite .9s ease-out both,flick 1.7s .9s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scale(1,1) rotate(-2deg)}to{transform:scale(.94,1.07) rotate(2deg)}}
+@keyframes ignite{from{transform:scale(0)}60%{transform:scale(1.6)}to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.flame,.flame.new{animation:none}}
+</style>
+</head>
+<body>
+<div id="app" aria-live="polite"><p class="small">Loading…</p></div>
+<script>
+"use strict";
+var KEY = "sos21.v1";
+var TOTAL = 21;
+var C = null;          // content.json
+var BIBLE_INDEX = null;
+var BOOKS = {};        // cache of loaded books
+var S = null;          // saved state
+var UI = { tab: "today", view: null, screen: null, search: "" };
+var memOnly = false;
+
+function def() {
+  return { lang: (navigator.language || "en").toLowerCase().indexOf("sv") === 0 ? "sv" : "en",
+    onboarded: false, fasts: [], done: [], ticks: {}, notes: {}, testimony: "", hl: {} };
+}
+function load() {
+  try { var r = localStorage.getItem(KEY); if (r) return Object.assign(def(), JSON.parse(r)); } catch (e) { memOnly = true; }
+  return def();
+}
+var saveTimer = null;
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { memOnly = true; }
+}
+function saveSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(save, 400); }
+
+var T = {
+  en: {
+    summit: "Sinai", climbed: "{n} of 21 days climbed", toGo: "{n} to the mountain top", atSummit: "You reached the mountain top.", start: "Base",
+    appSub: "SOS Church Stockholm", title: "21 Days of Fasting and Prayer",
+    welcome: "Begin the year with God", welcomeP: "Twenty-one days through the book of Acts: scripture, prayer, fasting and a daily check-in. Start whenever you like. If you miss a day, you pick up where you left off.",
+    chooseLang: "Choose your language", chooseFast: "Choose how you will fast", chooseFastP: "You can choose more than one, and change this at any time in the Fast tab.",
+    begin: "Begin day 1", next: "Next", back: "Back",
+    today: "Today", journey: "Journey", bible: "Bible", fast: "Fast", journal: "Journal",
+    dayOf: "Day {n} of 21", read: "Read", pray: "Pray", reflect: "Reflect", devotional: "Devotional",
+    openReading: "Open today's reading", keyVerse: "Key verse", readTick: "I read today's passage", prayTick: "I prayed today", fastTick: "I kept my fast today",
+    prayerSpace: "Your prayer, just for you", prayerPh: "Write what you are praying about…",
+    journalPh: "Write what God is showing you…", completeDay: "Complete day {n}", completed: "Day {n} completed", undo: "Undo",
+    noFast: "You have not chosen a fast yet.", chooseFastBtn: "Choose your fast",
+    tuesday: "Tuesday night prayer", dayDone: "Day complete. Well done.",
+    weeks: "Your journey", tapDay: "Tap any day to open it.", legendDone: "Completed", legendNow: "Next",
+    done21: "You finished all 21 days", done21p: "Write your testimony in the Journal tab: what did God do in these 21 days?",
+    healthTitle: "Before you fast", expectTitle: "What to expect", yourFast: "Your fast",
+    ot: "Old Testament", nt: "New Testament", highlights: "My highlights", noHl: "Tap a verse while reading to highlight it. Your highlights will appear here.",
+    chapter: "Chapter", prevCh: "Previous", nextCh: "Next", closeReader: "Close", tapVerse: "Tap a verse to highlight it.",
+    bibleNote: "Scripture is the World English Bible, which is in the public domain.",
+    myJournal: "Your journal", testimony: "My 21-day testimony", testimonyP: "What did God do in these 21 days? This stays private on your phone for now.",
+    noNotes: "Your daily notes will appear here.", copy: "Copy my journal", copied: "Copied. Paste it somewhere safe.", copyFail: "Copy was not allowed here. Select the text and copy it by hand.",
+    saved: "Saved on this device only.", memOnly: "Your phone is not allowing saving here, so your progress will be lost when you close this page.",
+    prayerWord: "Prayer", notesFor: "Day {n}: {t}", langBtn: "Svenska", search: "Search books",
+    celeDone: "Day {n} complete", cont: "Continue", listen: "Listen", listenRead: "Listen to today's reading", stop: "Stop",
+    commentary: "Commentary", where: "Where", quoteHead: "Words on prayer and fasting", translated: "translated",
+    candles: "21 candles", candlesP: "One flame for each day you finish.", litCount: "{n} of 21 lit"
+  },
+  sv: {
+    summit: "Sinai", climbed: "{n} av 21 dagar avklarade", toGo: "{n} kvar till bergets topp", atSummit: "Du nådde bergets topp.", start: "Bas",
+    appSub: "SOS Church Stockholm", title: "21 dagar av fasta och bön",
+    welcome: "Börja året med Gud", welcomeP: "Tjugoen dagar genom Apostlagärningarna: bibelläsning, bön, fasta och en daglig avprickning. Börja när du vill. Missar du en dag fortsätter du där du slutade.",
+    chooseLang: "Välj språk", chooseFast: "Välj hur du ska fasta", chooseFastP: "Du kan välja fler än en och ändra det när som helst i fliken Fasta.",
+    begin: "Börja dag 1", next: "Nästa", back: "Tillbaka",
+    today: "Idag", journey: "Resan", bible: "Bibel", fast: "Fasta", journal: "Dagbok",
+    dayOf: "Dag {n} av 21", read: "Läs", pray: "Be", reflect: "Begrunda", devotional: "Andakt",
+    openReading: "Öppna dagens läsning", keyVerse: "Nyckelvers", readTick: "Jag läste dagens text", prayTick: "Jag bad idag", fastTick: "Jag höll min fasta idag",
+    prayerSpace: "Din bön, bara för dig", prayerPh: "Skriv vad du ber om…",
+    journalPh: "Skriv vad Gud visar dig…", completeDay: "Slutför dag {n}", completed: "Dag {n} klar", undo: "Ångra",
+    noFast: "Du har inte valt någon fasta ännu.", chooseFastBtn: "Välj din fasta",
+    tuesday: "Bön på tisdagskvällen", dayDone: "Dagen är klar. Bra jobbat.",
+    weeks: "Din resa", tapDay: "Tryck på en dag för att öppna den.", legendDone: "Klar", legendNow: "Nästa",
+    done21: "Du har gjort alla 21 dagar", done21p: "Skriv ditt vittnesbörd i fliken Dagbok: vad gjorde Gud under de här 21 dagarna?",
+    healthTitle: "Innan du fastar", expectTitle: "Vad du kan förvänta dig", yourFast: "Din fasta",
+    ot: "Gamla testamentet", nt: "Nya testamentet", highlights: "Mina markeringar", noHl: "Tryck på en vers medan du läser för att markera den. Dina markeringar visas här.",
+    chapter: "Kapitel", prevCh: "Föregående", nextCh: "Nästa", closeReader: "Stäng", tapVerse: "Tryck på en vers för att markera den.",
+    bibleNote: "Bibeltexten är World English Bible (engelska), som är fri att använda. Svensk bibeltext kräver licens och kan läggas till senare.",
+    myJournal: "Din dagbok", testimony: "Mitt vittnesbörd från de 21 dagarna", testimonyP: "Vad gjorde Gud under de här 21 dagarna? Det är privat och sparas för tillfället bara på din telefon.",
+    noNotes: "Dina dagliga anteckningar visas här.", copy: "Kopiera min dagbok", copied: "Kopierat. Klistra in det på ett säkert ställe.", copyFail: "Kopiering tilläts inte här. Markera texten och kopiera för hand.",
+    saved: "Sparas bara på den här enheten.", memOnly: "Din telefon tillåter inte sparande här, så din framgång går förlorad när du stänger sidan.",
+    prayerWord: "Bön", notesFor: "Dag {n}: {t}", langBtn: "English", search: "Sök böcker",
+    celeDone: "Dag {n} klar", cont: "Fortsätt", listen: "Lyssna", listenRead: "Lyssna på dagens text", stop: "Stoppa",
+    commentary: "Kommentar", where: "Plats", quoteHead: "Ord om bön och fasta", translated: "översatt",
+    candles: "21 ljus", candlesP: "En låga för varje dag du slutför.", litCount: "{n} av 21 tända"
+  }
+};
+function t(k, o) {
+  var s = (T[S.lang] && T[S.lang][k]) || T.en[k] || k;
+  if (o) for (var p in o) s = s.replace("{" + p + "}", o[p]);
+  return s;
+}
+function L(obj) { return obj ? (obj[S.lang] || obj.en) : ""; }
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+
+function currentDay() {
+  for (var n = 1; n <= TOTAL; n++) if (S.done.indexOf(n) < 0) return n;
+  return TOTAL;
+}
+function allDone() { return S.done.length >= TOTAL; }
+function dayData(n) { return C.days[n - 1]; }
+function tick(n) { return S.ticks[n] || (S.ticks[n] = {}); }
+function note(n) { return S.notes[n] || (S.notes[n] = { prayer: "", journal: "" }); }
+function refText(d) {
+  var ch = d.ch; var s = ch.length === 1 ? ch[0] : ch[0] + "–" + ch[ch.length - 1];
+  return "Acts " + s;
+}
+function keyRef(d) {
+  var k = d.key; return "Acts " + k[0] + ":" + k[1] + (k[2] ? "–" + k[2] : "");
+}
+
+/* ---------- Bible data ---------- */
+function loadBook(id) {
+  if (BOOKS[id]) return Promise.resolve(BOOKS[id]);
+  return fetch("bible/" + id + ".json").then(function (r) { if (!r.ok) throw new Error("x"); return r.json(); }).then(function (j) { BOOKS[id] = j; return j; });
+}
+function bookName(id) { for (var i = 0; i < BIBLE_INDEX.length; i++) if (BIBLE_INDEX[i].id === id) return BIBLE_INDEX[i].name; return id; }
+function hlKey(b, c, v) { return b + "." + c + "." + v; }
+function verseHtml(b, c, vi, text) {
+  var v = vi + 1, k = hlKey(b, c, v);
+  return '<span class="v' + (S.hl[k] ? " hl" : "") + '" role="button" tabindex="0" data-act="hl" data-b="' + b + '" data-c="' + c + '" data-v="' + v + '"><sup>' + v + "</sup>" + esc(text) + "</span> ";
+}
+function chapterHtml(b, c, book) {
+  var verses = book[c - 1] || [];
+  var h = "<h2>" + esc(bookName(b)) + " " + c + "</h2><div>";
+  for (var i = 0; i < verses.length; i++) h += verseHtml(b, c, i, verses[i]);
+  return h + "</div>";
+}
+function keyVerseText(d, book) {
+  var k = d.key, ch = book[k[0] - 1] || [], out = [], to = k[2] || k[1];
+  for (var v = k[1]; v <= to; v++) if (ch[v - 1]) out.push(ch[v - 1]);
+  return out.join(" ");
+}
+
+/* ---------- Views ---------- */
+var app = document.getElementById("app");
+function render() {
+  if (!C || !S) return;
+  var h;
+  if (!S.onboarded) h = onboardHtml();
+  else if (UI.screen && UI.screen.type === "reader") { h = readerShell(); }
+  else {
+    h = topHtml() + (memOnly ? '<div class="card"><p class="small">' + esc(t("memOnly")) + "</p></div>" : "");
+    if (UI.tab === "today") h += todayHtml();
+    else if (UI.tab === "journey") h += journeyHtml();
+    else if (UI.tab === "bible") h += bibleHtml();
+    else if (UI.tab === "fast") h += fastHtml();
+    else h += journalHtml();
+    h += tabsHtml();
+    if (UI.celebrate) h += celebrateHtml();
+  }
+  app.innerHTML = h;
+  UI.climb = null; document.body.style.overflow = UI.celebrate ? "hidden" : ""; if (UI.celebrate) afterCelebrate(); setListenUI();
+  if (UI.screen && UI.screen.type === "reader") fillReader();
+  window.scrollTo(0, UI.keepScroll ? UI.keepScroll : 0); UI.keepScroll = 0;
+}
+function pt(n) { var t0 = (n - 1) / 20; return [30 + t0 * 205, 144 - t0 * 100 + (n % 2 ? -2 : 2)]; }
+function hexRgb(h) { h = h.replace("#", ""); return [parseInt(h.substr(0, 2), 16), parseInt(h.substr(2, 2), 16), parseInt(h.substr(4, 2), 16)]; }
+function mix(a, b, t) { var A = hexRgb(a), B = hexRgb(b); return "rgb(" + [0, 1, 2].map(function (i) { return Math.round(A[i] + (B[i] - A[i]) * t); }).join(",") + ")"; }
+function isDark() { var th = document.documentElement.getAttribute("data-theme"); if (th) return th === "dark"; return !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches); }
+function reducedMotion() { return !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches); }
+function skyAt(p) { var st = isDark() ? ["#0B0F26", "#2B2350", "#6B4560"] : ["#8E96C9", "#E9B98E", "#F7E7C1"]; return p < 0.5 ? mix(st[0], st[1], p * 2) : mix(st[1], st[2], (p - 0.5) * 2); }
+function sunY(p) { return 114 - p * 84; }
+function animAttr(attr, from, to, begin) { return '<animate attributeName="' + attr + '" from="' + from + '" to="' + to + '" dur="1.4s" begin="' + (begin || "0.3s") + '" fill="freeze"/>'; }
+function mountainHtml() {
+  var cur = currentDay(), fin = allDone(), n, pts = [], dots = "";
+  var p = S.done.length / TOTAL, cl = UI.climb && !reducedMotion() ? UI.climb : null;
+  for (n = 1; n <= TOTAL; n++) {
+    var q = pt(n);
+    pts.push(q[0].toFixed(1) + "," + q[1].toFixed(1));
+    var on = n === cur && !fin, cls = "m-dot" + (S.done.indexOf(n) >= 0 ? " done" : (on ? " now" : ""));
+    dots += '<circle class="' + cls + '" cx="' + q[0].toFixed(1) + '" cy="' + q[1].toFixed(1) + '" r="' + (on ? 7 : 5) + '"/>';
+  }
+  var stars = [[20, -8], [52, 6], [96, -4], [140, 10], [176, -10], [210, 4], [300, 8], [118, 24], [84, 2], [250, 18]], so = Math.max(0, 1 - p * 1.7), st = "";
+  stars.forEach(function (s0) { st += '<circle cx="' + s0[0] + '" cy="' + s0[1] + '" r="1.3" fill="#fff" opacity="' + so.toFixed(2) + '">' + (cl ? animAttr("opacity", Math.max(0, 1 - cl.p0 * 1.7).toFixed(2), so.toFixed(2)) : "") + "</circle>"; });
+  var h = '<div class="mtn"><svg viewBox="0 -20 320 180" role="img" aria-label="' + esc(t("climbed", { n: S.done.length })) + '">';
+  h += '<defs><clipPath id="mc"><rect x="0" y="-20" width="320" height="180" rx="14"/></clipPath></defs><g clip-path="url(#mc)">';
+  h += '<rect x="0" y="-20" width="320" height="180" fill="' + skyAt(p) + '">' + (cl ? animAttr("fill", skyAt(cl.p0), skyAt(p)) : "") + "</rect>" + st;
+  h += '<circle class="m-glow" cx="40" cy="' + sunY(p).toFixed(1) + '" r="20">' + (cl ? animAttr("cy", sunY(cl.p0).toFixed(1), sunY(p).toFixed(1)) : "") + "</circle>";
+  h += '<circle class="m-fire2" cx="40" cy="' + sunY(p).toFixed(1) + '" r="11">' + (cl ? animAttr("cy", sunY(cl.p0).toFixed(1), sunY(p).toFixed(1)) : "") + "</circle>";
+  h += '<polygon class="m-far" points="0,160 0,112 36,92 78,108 128,72 186,102 236,84 286,100 320,86 320,160"/>';
+  h += '<polygon class="m-bg" points="0,146 30,128 62,112 78,114 96,96 112,98 130,80 152,70 168,72 186,54 204,46 220,34 233,36 242,20 254,34 262,32 276,56 292,72 306,84 320,96 320,160 0,160"/>';
+  h += '<polygon class="m-shade" points="242,20 254,34 262,32 276,56 292,72 306,84 320,96 320,160 266,160 256,118 248,76"/>';
+  h += '<ellipse class="m-cloud" cx="206" cy="24" rx="17" ry="5"/><ellipse class="m-cloud" cx="272" cy="22" rx="20" ry="5"/><ellipse class="m-cloud" cx="60" cy="40" rx="18" ry="5"/>';
+  h += '<polyline class="m-trail" points="' + pts.join(" ") + '"/>' + dots;
+  if (cl) { var A = pt(cl.from), B = pt(cl.to); h += '<circle r="6" fill="var(--gold)" stroke="var(--flame)" stroke-width="2" cx="' + A[0].toFixed(1) + '" cy="' + A[1].toFixed(1) + '">' + animAttr("cx", A[0].toFixed(1), B[0].toFixed(1)) + animAttr("cy", A[1].toFixed(1), B[1].toFixed(1)) + "</circle>"; }
+  if (fin) h += '<circle class="m-glow" cx="241" cy="-2" r="20"/><path class="m-fire" d="M241,3 C233,-4 239,-9 238,-17 C245,-12 250,-5 241,3Z"/><path class="m-fire2" d="M241,3 C237,-1 240,-4 240,-8 C244,-5 245,-1 241,3Z"/>';
+  h += '<rect class="m-tab' + (fin ? " on" : "") + '" x="233" y="4" width="8" height="14" rx="4"/><rect class="m-tab' + (fin ? " on" : "") + '" x="243" y="4" width="8" height="14" rx="4"/>';
+  h += '</g><text class="m-txt" x="262" y="-4">' + esc(t("summit")) + '</text><text class="m-txt" x="8" y="154">' + esc(t("start")) + "</text></svg>";
+  h += '<p class="small"><b>' + esc(t("climbed", { n: S.done.length })) + "</b> &middot; " + esc(fin ? t("atSummit") : t("toGo", { n: TOTAL - S.done.length })) + "</p></div>";
+  return h;
+}
+/* ---------- Candles, celebration, quote, commentary, listen ---------- */
+function candlesHtml(newN) {
+  var h = '<svg class="cdl" viewBox="0 0 280 168" role="img" aria-label="' + esc(t("litCount", { n: S.done.length })) + '">';
+  for (var n = 1; n <= TOTAL; n++) {
+    var r = Math.floor((n - 1) / 7), c = (n - 1) % 7, x = 20 + c * 40, y = 44 + r * 46, lit = S.done.indexOf(n) >= 0;
+    h += '<rect class="wax" x="' + (x - 6) + '" y="' + y + '" width="12" height="22" rx="2"/>';
+    if (lit) h += '<g class="flame' + (n === newN ? " new" : "") + '"><path class="fl1" d="M' + x + ',' + (y - 3) + ' C' + (x - 7) + ',' + (y - 10) + ' ' + (x - 3) + ',' + (y - 16) + ' ' + x + ',' + (y - 26) + ' C' + (x + 3) + ',' + (y - 17) + ' ' + (x + 7) + ',' + (y - 10) + ' ' + x + ',' + (y - 3) + 'Z"/><path class="fl2" d="M' + x + ',' + (y - 3) + ' C' + (x - 3) + ',' + (y - 7) + ' ' + (x - 1) + ',' + (y - 10) + ' ' + x + ',' + (y - 14) + ' C' + (x + 1) + ',' + (y - 10) + ' ' + (x + 3) + ',' + (y - 7) + ' ' + x + ',' + (y - 3) + 'Z"/></g>';
+    else h += '<line class="wick" x1="' + x + '" y1="' + (y - 1) + '" x2="' + x + '" y2="' + (y - 6) + '"/>';
+  }
+  return h + "</svg>";
+}
+function candleCard() {
+  return '<div class="card"><h2>' + esc(t("candles")) + '</h2><p class="small">' + esc(t("candlesP")) + "</p>" + candlesHtml(0) + '<p class="small">' + esc(t("litCount", { n: S.done.length })) + "</p></div>";
+}
+function celebrateHtml() {
+  var n = UI.celebrate, fin = allDone(), d = dayData(n);
+  var h = '<div class="cele" role="dialog" aria-modal="true" aria-label="' + esc(t("celeDone", { n: n })) + '">';
+  h += '<p class="eyebrow">' + esc(t("celeDone", { n: n })) + "</p>";
+  h += fin ? "<h2>" + esc(t("done21")) + '</h2><p style="max-width:420px">' + esc(t("done21p")) + "</p>" : "<h2>" + esc(L(d.title)) + "</h2>";
+  h += candlesHtml(n) + '<p class="small">' + esc(t("litCount", { n: S.done.length })) + "</p>";
+  if (!fin) h += '<div class="verse" id="cv">&hellip;<cite>' + esc(keyRef(d)) + "</cite></div>";
+  h += '<button class="btn" style="margin-top:14px;min-width:200px" id="cdb" data-act="celebdone">' + esc(fin ? t("journal") : t("cont")) + "</button></div>";
+  return h;
+}
+function afterCelebrate() {
+  var d = dayData(UI.celebrate);
+  loadBook("acts").then(function (b) { var el = document.getElementById("cv"); if (!el) return; var c = el.querySelector("cite"); el.innerHTML = esc(keyVerseText(d, b)) + c.outerHTML; }).catch(function () {});
+  setTimeout(function () { var b = document.getElementById("cdb"); if (b) b.focus(); }, 50);
+}
+function quoteHtml(d) {
+  var q = d.quote; if (!q) return "";
+  var sv = S.lang === "sv" && q.t.sv, txt = sv ? q.t.sv : q.t.en, by = q.by + (q.src ? ", " + q.src : "");
+  return '<div class="card"><h3>' + esc(t("quoteHead")) + '</h3><div class="verse qt">&ldquo;' + esc(txt) + "&rdquo;<cite>" + esc(by) + (sv ? " &middot; " + esc(t("translated")) : "") + "</cite></div></div>";
+}
+function comHtml(d) {
+  if (!d.com || !d.com.length) return "";
+  var h = '<div class="card"><details class="com"><summary>' + esc(t("commentary")) + '</summary><p class="small">' + esc(t("where")) + ": " + esc(L(d.place)) + "</p>";
+  d.com.forEach(function (x) { h += "<p><b>" + esc(L(x.h)) + ".</b> " + esc(L(x.p)) + "</p>"; });
+  return h + "</details></div>";
+}
+function canSpeak() { return "speechSynthesis" in window && "SpeechSynthesisUtterance" in window; }
+function listenBtn(what, label) {
+  if (!canSpeak()) return "";
+  return '<button class="btn alt full" style="margin-top:8px" data-act="listen" data-what="' + what + '" data-label="' + esc(label) + '">&#9654; ' + esc(label) + "</button>";
+}
+var SP = { key: null, token: 0 };
+function clearSpeaking() { var els = document.querySelectorAll(".v.speaking"); for (var i = 0; i < els.length; i++) els[i].classList.remove("speaking"); }
+function setListenUI() {
+  var bs = document.querySelectorAll('[data-act="listen"]');
+  for (var i = 0; i < bs.length; i++) {
+    var on = SP.key && bs[i].getAttribute("data-what") === SP.key;
+    bs[i].textContent = (on ? "■ " + t("stop") : "▶ " + bs[i].getAttribute("data-label"));
+  }
+}
+function stopSpeak() {
+  SP.token++; SP.key = null;
+  if (canSpeak()) { try { speechSynthesis.cancel(); } catch (e) {} }
+  clearSpeaking(); setListenUI();
+}
+function speakList(key, items, lang) {
+  if (!canSpeak()) return;
+  stopSpeak();
+  var tok = ++SP.token, idx = 0; SP.key = key;
+  function finish() { if (SP.token === tok) { SP.key = null; clearSpeaking(); setListenUI(); } }
+  function next() {
+    if (SP.token !== tok) return;
+    if (idx >= items.length) { finish(); return; }
+    var it = items[idx++], u = new SpeechSynthesisUtterance(it.text);
+    u.lang = lang; u.rate = 0.95;
+    u.onstart = function () { if (SP.token !== tok) return; clearSpeaking(); if (it.el) { it.el.classList.add("speaking"); try { it.el.scrollIntoView({ block: "center", behavior: "smooth" }); } catch (e) {} } };
+    u.onend = next; u.onerror = finish;
+    try { speechSynthesis.speak(u); } catch (e) { finish(); }
+  }
+  setListenUI(); next();
+}
+function doListen(what) {
+  if (SP.key === what) { stopSpeak(); return; }
+  var n = UI.view || currentDay(), lang = S.lang === "sv" ? "sv-SE" : "en-US";
+  if (what === "dev") speakList("dev", [{ text: L(dayData(n).dev) }], lang);
+  else if (what === "reader") {
+    var els = document.querySelectorAll("#rd .v"), items = [];
+    for (var i = 0; i < els.length; i++) items.push({ text: els[i].textContent.replace(/^\d+/, "").trim(), el: els[i] });
+    speakList("reader", items, "en-US");
+  } else if (what === "today") {
+    var d = dayData(n); SP.key = what; setListenUI();
+    loadBook("acts").then(function (b) {
+      var items = [];
+      d.ch.forEach(function (c) { items.push({ text: "Acts " + c }); (b[c - 1] || []).forEach(function (v) { items.push({ text: v }); }); });
+      speakList("today", items, "en-US");
+    }).catch(function () { SP.key = null; setListenUI(); });
+  }
+}
+
+function topHtml() {
+  return '<div class="top"><div class="brand">' + esc(t("appSub")) + "<small>" + esc(t("title")) + '</small></div><button class="pill" data-act="lang">' + esc(t("langBtn")) + "</button></div>";
+}
+function tabsHtml() {
+  var tabs = ["today", "journey", "bible", "fast", "journal"], h = '<nav class="tabs" aria-label="Main"><div class="in">';
+  tabs.forEach(function (k) { h += '<button data-act="tab" data-tab="' + k + '"' + (UI.tab === k ? ' aria-current="page"' : "") + ">" + esc(t(k)) + "</button>"; });
+  return h + "</div></nav>";
+}
+function fastOptionsHtml() {
+  return C.fasts.map(function (f) {
+    var on = S.fasts.indexOf(f.id) >= 0;
+    return '<label class="opt' + (on ? " on" : "") + '"><input type="checkbox" data-act="fastopt" data-id="' + f.id + '"' + (on ? " checked" : "") + '><span><b>' + esc(L(f.name)) + "</b><span class=\"small\">" + esc(L(f.desc)) + "</span></span></label>";
+  }).join("");
+}
+function healthHtml() {
+  var h = '<div class="card"><h2>' + esc(L(C.health.title)) + "</h2><ul style=\"padding-left:20px;margin:0\">";
+  L(C.health.items).forEach(function (x) { h += "<li style=\"margin:6px 0\">" + esc(x) + "</li>"; });
+  return h + "</ul></div>";
+}
+function expectHtml() {
+  var h = '<div class="card"><h2>' + esc(L(C.expect.title)) + "</h2>";
+  L(C.expect.items).forEach(function (x) { h += "<details><summary>" + esc(x.h) + "</summary><p style=\"margin-top:6px\">" + esc(x.p) + "</p></details>"; });
+  return h + "</div>";
+}
+function onboardHtml() {
+  var step = UI.step || 1, h = "";
+  if (step === 1) {
+    h += '<div class="top"><div class="brand">' + esc(t("appSub")) + "</div></div>";
+    h += '<p class="eyebrow">' + esc(t("title")) + '</p><h1 style="font-size:32px;margin:6px 0 10px">' + esc(t("welcome")) + "</h1><p>" + esc(t("welcomeP")) + "</p>";
+    h += '<h2 style="font-size:16px;margin-top:20px">' + esc(t("chooseLang")) + '</h2><div class="lang"><button class="btn ' + (S.lang === "en" ? "" : "alt") + '" data-act="setlang" data-l="en">English</button><button class="btn ' + (S.lang === "sv" ? "" : "alt") + '" data-act="setlang" data-l="sv">Svenska</button></div>';
+    h += '<button class="btn full" data-act="step" data-s="2">' + esc(t("next")) + "</button>";
+  } else if (step === 2) {
+    h += '<h1 style="font-size:26px;margin:6px 0 6px">' + esc(t("chooseFast")) + '</h1><p class="small">' + esc(t("chooseFastP")) + "</p>" + fastOptionsHtml() + healthHtml();
+    h += '<div class="row"><button class="btn alt" data-act="step" data-s="1">' + esc(t("back")) + '</button><button class="btn" style="flex:1" data-act="step" data-s="3">' + esc(t("next")) + "</button></div>";
+  } else {
+    h += expectHtml();
+    h += '<div class="row"><button class="btn alt" data-act="step" data-s="2">' + esc(t("back")) + '</button><button class="btn" style="flex:1" data-act="finish">' + esc(t("begin")) + "</button></div>";
+  }
+  return h;
+}
+function todayHtml() {
+  var n = UI.view || currentDay(), d = dayData(n), tk = tick(n), nt = note(n), done = S.done.indexOf(n) >= 0, h = "";
+  var pct = Math.round(S.done.length / TOTAL * 100);
+  h += '<div class="hero"><div class="numeral" aria-hidden="true">' + n + '</div><div><p class="eyebrow">' + esc(t("dayOf", { n: n })) + "</p><h1>" + esc(L(d.title)) + "</h1></div></div>";
+  h += mountainHtml();
+  if (allDone() && !UI.view) h += '<div class="card celebrate"><h2>' + esc(t("done21")) + "</h2><p>" + esc(t("done21p")) + '</p><div style="margin-top:10px"><button class="btn alt" style="background:#fff;color:#151A33" data-act="tab" data-tab="journal">' + esc(t("journal")) + "</button></div></div>";
+  h += '<div class="card"><h2>' + esc(t("read")) + " &middot; " + esc(refText(d)) + '</h2><div class="verse" id="kv">…<cite>' + esc(t("keyVerse")) + " &middot; " + esc(keyRef(d)) + '</cite></div>';
+  h += '<button class="btn full" data-act="openday" data-n="' + n + '">' + esc(t("openReading")) + '</button>' + listenBtn("today", t("listenRead")) + '<label class="check"><input type="checkbox" data-act="tick" data-k="read"' + (tk.read ? " checked" : "") + "><span>" + esc(t("readTick")) + "</span></label></div>";
+  h += comHtml(d);
+  h += '<div class="card"><h2>' + esc(t("devotional")) + "</h2><p>" + esc(L(d.dev)) + "</p>" + listenBtn("dev", t("listen")) + "</div>";
+  h += quoteHtml(d);
+  h += '<div class="card"><h2>' + esc(t("pray")) + "</h2><p>" + esc(L(d.prayer)) + '</p><label class="small" for="pr" style="display:block;margin-top:10px">' + esc(t("prayerSpace")) + '</label><textarea id="pr" data-note="prayer" placeholder="' + esc(t("prayerPh")) + '">' + esc(nt.prayer) + '</textarea><label class="check"><input type="checkbox" data-act="tick" data-k="pray"' + (tk.pray ? " checked" : "") + "><span>" + esc(t("prayTick")) + "</span></label></div>";
+  h += '<div class="card"><h2>' + esc(t("reflect")) + '</h2><ol class="q">' + L(d.q).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ol><textarea id="jr" data-note="journal" aria-label="' + esc(t("reflect")) + '" placeholder="' + esc(t("journalPh")) + '">' + esc(nt.journal) + "</textarea></div>";
+  h += '<div class="card"><h2>' + esc(t("yourFast")) + "</h2>";
+  if (S.fasts.length) {
+    h += "<p>" + S.fasts.map(function (id) { for (var i = 0; i < C.fasts.length; i++) if (C.fasts[i].id === id) return esc(L(C.fasts[i].name)); return ""; }).join(" + ") + '</p><label class="check"><input type="checkbox" data-act="tick" data-k="fast"' + (tk.fast ? " checked" : "") + "><span>" + esc(t("fastTick")) + "</span></label>";
+  } else h += '<p class="small">' + esc(t("noFast")) + '</p><div style="margin-top:8px"><button class="btn alt" data-act="tab" data-tab="fast">' + esc(t("chooseFastBtn")) + "</button></div>";
+  h += "</div>";
+  if (done) h += '<div class="card"><p><b style="color:var(--ok)">&#10003; ' + esc(t("completed", { n: n })) + '</b></p><div style="margin-top:8px"><button class="btn alt" data-act="undo" data-n="' + n + '">' + esc(t("undo")) + "</button></div></div>";
+  else h += '<button class="btn full" data-act="complete" data-n="' + n + '">' + esc(t("completeDay", { n: n })) + "</button>";
+  h += '<div class="card" style="margin-top:16px"><h3>' + esc(t("tuesday")) + "</h3><p>" + esc(L(C.prayerNight)) + '</p></div><p class="note">' + esc(t("saved")) + "</p>";
+  setTimeout(fillKeyVerse, 0);
+  return h;
+}
+function fillKeyVerse() {
+  var el = document.getElementById("kv"); if (!el) return;
+  var n = UI.view || currentDay(), d = dayData(n);
+  loadBook("acts").then(function (b) {
+    var el2 = document.getElementById("kv"); if (!el2) return;
+    var cite = el2.querySelector("cite");
+    el2.innerHTML = esc(keyVerseText(d, b)) + cite.outerHTML;
+  }).catch(function () {});
+}
+function journeyHtml() {
+  var cur = currentDay(), h = '<h1 style="font-size:26px;margin:4px 0 4px">' + esc(t("weeks")) + '</h1><p class="small">' + esc(t("tapDay")) + "</p>" + mountainHtml() + candleCard();
+  for (var w = 0; w < 3; w++) {
+    h += '<div class="card"><h3>' + esc(L(C.weeks[w])) + '</h3><div class="grid">';
+    for (var i = 1; i <= 7; i++) {
+      var n = w * 7 + i, cls = "dot" + (S.done.indexOf(n) >= 0 ? " done" : n === cur && !allDone() ? " now" : "");
+      h += '<button class="' + cls + '" data-act="gotoday" data-n="' + n + '" aria-label="' + esc(t("dayOf", { n: n }) + ": " + L(dayData(n).title)) + '">' + n + "</button>";
+    }
+    h += "</div>";
+    for (var j = 1; j <= 7; j++) { var m = w * 7 + j; h += '<p class="small" style="margin:2px 0"><b>' + m + ".</b> " + esc(L(dayData(m).title)) + " &middot; " + esc(refText(dayData(m))) + "</p>"; }
+    h += "</div>";
+  }
+  return h;
+}
+function bibleHtml() {
+  var h = '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("bible")) + '</h1><p class="small">' + esc(t("bibleNote")) + "</p>";
+  var keys = Object.keys(S.hl);
+  h += '<div class="card"><h2>' + esc(t("highlights")) + "</h2>";
+  if (!keys.length) h += '<p class="small">' + esc(t("noHl")) + "</p>";
+  else keys.slice().reverse().forEach(function (k) {
+    var o = S.hl[k], p = k.split(".");
+    h += '<p style="margin:8px 0"><button class="pill" data-act="openref" data-b="' + p[0] + '" data-c="' + p[1] + '" data-v="' + p[2] + '">' + esc(bookName(p[0]) + " " + p[1] + ":" + p[2]) + '</button> <span style="font-family:var(--serif)">' + esc(o.t) + "</span></p>";
+  });
+  h += "</div>";
+  if (UI.book) {
+    var bk = null; BIBLE_INDEX.forEach(function (x) { if (x.id === UI.book) bk = x; });
+    h += '<div class="card"><div class="row" style="justify-content:space-between"><h2>' + esc(bk.name) + '</h2><button class="pill" data-act="closebook">' + esc(t("back")) + '</button></div><div class="chs">';
+    for (var c = 1; c <= bk.ch; c++) h += '<button data-act="openref" data-b="' + bk.id + '" data-c="' + c + '">' + c + "</button>";
+    h += "</div></div>";
+  } else {
+    var q = (UI.search || "").toLowerCase();
+    h += '<label class="small" for="bs">' + esc(t("search")) + '</label><input id="bs" type="search" data-act="bsearch" value="' + esc(UI.search || "") + '" style="width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;margin:4px 0 6px">';
+    [["ot", 0, 39], ["nt", 39, 66]].forEach(function (g) {
+      h += '<h3 style="margin:14px 0 8px">' + esc(t(g[0])) + '</h3><div class="books">';
+      BIBLE_INDEX.slice(g[1], g[2]).forEach(function (b) { if (!q || b.name.toLowerCase().indexOf(q) >= 0) h += '<button data-act="book" data-id="' + b.id + '">' + esc(b.name) + "</button>"; });
+      h += "</div>";
+    });
+  }
+  return h;
+}
+function fastHtml() {
+  return '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("fast")) + "</h1>" + fastOptionsHtml() + healthHtml() + expectHtml() + '<div class="card"><h3>' + esc(t("tuesday")) + "</h3><p>" + esc(L(C.prayerNight)) + "</p></div>";
+}
+function journalText() {
+  var out = [];
+  for (var n = 1; n <= TOTAL; n++) {
+    var x = S.notes[n]; if (x && (x.prayer || x.journal)) out.push(t("notesFor", { n: n, t: L(dayData(n).title) }) + "\n" + (x.prayer ? t("prayerWord") + ": " + x.prayer + "\n" : "") + (x.journal ? x.journal + "\n" : ""));
+  }
+  if (S.testimony) out.push(t("testimony") + "\n" + S.testimony);
+  return out.join("\n");
+}
+function journalHtml() {
+  var h = '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("myJournal")) + "</h1>";
+  h += '<div class="card"><h2>' + esc(t("testimony")) + '</h2><p class="small">' + esc(t("testimonyP")) + '</p><textarea id="ts" data-note="testimony" style="min-height:160px" aria-label="' + esc(t("testimony")) + '">' + esc(S.testimony) + "</textarea></div>";
+  var any = false;
+  for (var n = TOTAL; n >= 1; n--) {
+    var x = S.notes[n]; if (!x || !(x.prayer || x.journal)) continue; any = true;
+    h += '<div class="card"><h3>' + esc(t("notesFor", { n: n, t: L(dayData(n).title) })) + "</h3>" + (x.prayer ? '<p class="small">' + esc(t("prayerWord")) + '</p><p style="white-space:pre-wrap">' + esc(x.prayer) + "</p>" : "") + (x.journal ? '<p class="small" style="margin-top:8px">' + esc(t("reflect")) + '</p><p style="white-space:pre-wrap">' + esc(x.journal) + "</p>" : "") + "</div>";
+  }
+  if (!any) h += '<p class="small">' + esc(t("noNotes")) + "</p>";
+  h += '<div style="margin-top:12px"><button class="btn alt" data-act="copy">' + esc(t("copy")) + '</button><p class="note" id="cmsg" role="status"></p></div><p class="note">' + esc(t("saved")) + "</p>";
+  return h;
+}
+function readerShell() {
+  var s = UI.screen;
+  return '<div class="top"><button class="pill" data-act="closereader">&larr; ' + esc(t("closeReader")) + '</button><span class="small">' + esc(s.title || "") + '</span></div><div style="margin:6px 0">' + listenBtn("reader", t("listen")) + '</div><p class="small">' + esc(t("tapVerse")) + '</p><div class="reader" id="rd"><p class="small">…</p></div><div class="row" id="rnav" style="margin-top:20px"></div>';
+}
+function fillReader() {
+  var s = UI.screen, rd = document.getElementById("rd"), nav = document.getElementById("rnav");
+  loadBook(s.book).then(function (bk) {
+    var el = document.getElementById("rd"); if (!el) return;
+    var html = "";
+    s.chapters.forEach(function (c) { html += chapterHtml(s.book, c, bk); });
+    el.innerHTML = html;
+    var navEl = document.getElementById("rnav");
+    if (s.free) {
+      var c = s.chapters[0], idx = BIBLE_INDEX.map(function (b) { return b.id; }).indexOf(s.book), bi = BIBLE_INDEX[idx], nh = "";
+      if (c > 1) nh += '<button class="btn alt" data-act="openref" data-b="' + s.book + '" data-c="' + (c - 1) + '">&larr; ' + esc(t("prevCh")) + "</button>";
+      if (c < bi.ch) nh += '<button class="btn" data-act="openref" data-b="' + s.book + '" data-c="' + (c + 1) + '">' + esc(t("nextCh")) + " &rarr;</button>";
+      navEl.innerHTML = nh;
+    }
+    if (s.scrollV) { var tgt = el.querySelector('[data-c="' + s.chapters[0] + '"][data-v="' + s.scrollV + '"]'); if (tgt) tgt.scrollIntoView({ block: "center" }); }
+  }).catch(function () { var el = document.getElementById("rd"); if (el) el.innerHTML = "<p>Could not load the text. Please check your connection and try again.</p>"; });
+}
+
+/* ---------- Events ---------- */
+function copyText(txt) {
+  var m = document.getElementById("cmsg");
+  try { navigator.clipboard.writeText(txt).then(function () { if (m) m.textContent = t("copied"); }, function () { if (m) m.textContent = t("copyFail"); }); }
+  catch (e) { if (m) m.textContent = t("copyFail"); }
+}
+document.addEventListener("click", function (e) {
+  var el = e.target.closest("[data-act]"); if (!el) return;
+  var a = el.getAttribute("data-act");
+  if (a === "hl" ) { toggleHl(el); return; }
+  if (el.tagName === "INPUT" && (a === "tick" || a === "fastopt")) return; // handled on change
+  if (a === "bsearch") return;
+  if (a === "listen") { doListen(el.getAttribute("data-what")); return; }
+  stopSpeak();
+  e.preventDefault && 0;
+  var n = parseInt(el.getAttribute("data-n"), 10);
+  if (a === "tab") { UI.tab = el.getAttribute("data-tab"); UI.view = (UI.tab === "today") ? UI.view : UI.view; render(); }
+  else if (a === "lang") { S.lang = S.lang === "en" ? "sv" : "en"; save(); render(); }
+  else if (a === "setlang") { S.lang = el.getAttribute("data-l"); save(); render(); }
+  else if (a === "step") { UI.step = parseInt(el.getAttribute("data-s"), 10); render(); }
+  else if (a === "finish") { S.onboarded = true; save(); UI.tab = "today"; render(); }
+  else if (a === "gotoday") { UI.view = n === currentDay() && !allDone() ? null : n; UI.tab = "today"; render(); }
+  else if (a === "complete") { if (S.done.indexOf(n) < 0) S.done.push(n); save(); UI.view = null; UI.celebrate = n; UI.lastN = n; try { if (navigator.vibrate) navigator.vibrate([40, 60, 90]); } catch (x) {} render(); }
+  else if (a === "celebdone") { var dn = S.done.length; UI.celebrate = null; UI.climb = { from: Math.min(UI.lastN || 1, TOTAL), to: Math.min((UI.lastN || 1) + 1, TOTAL), p0: Math.max(0, (dn - 1) / TOTAL), p1: dn / TOTAL }; if (allDone()) { UI.climb = null; UI.tab = "journal"; } render(); }
+  else if (a === "undo") { S.done = S.done.filter(function (x) { return x !== n; }); save(); UI.view = null; render(); }
+  else if (a === "openday") { var d = dayData(n); UI.keepTab = UI.tab; UI.screen = { type: "reader", book: "acts", chapters: d.ch, title: refText(d) }; render(); }
+  else if (a === "closereader") { UI.screen = null; render(); }
+  else if (a === "book") { UI.book = el.getAttribute("data-id"); render(); }
+  else if (a === "closebook") { UI.book = null; render(); }
+  else if (a === "openref") { UI.screen = { type: "reader", free: true, book: el.getAttribute("data-b"), chapters: [parseInt(el.getAttribute("data-c"), 10)], scrollV: el.getAttribute("data-v"), title: bookName(el.getAttribute("data-b")) }; render(); }
+  else if (a === "copy") { copyText(journalText()); }
+});
+document.addEventListener("keydown", function (e) {
+  if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("v")) { e.preventDefault(); toggleHl(e.target); }
+});
+document.addEventListener("change", function (e) {
+  var el = e.target; if (!el.getAttribute) return;
+  var a = el.getAttribute("data-act");
+  if (a === "tick") { var n = UI.view || currentDay(); tick(n)[el.getAttribute("data-k")] = el.checked; save(); }
+  else if (a === "fastopt") {
+    var id = el.getAttribute("data-id"), i = S.fasts.indexOf(id);
+    if (el.checked && i < 0) S.fasts.push(id); else if (!el.checked && i >= 0) S.fasts.splice(i, 1);
+    save(); el.closest(".opt").classList.toggle("on", el.checked);
+  }
+});
+document.addEventListener("input", function (e) {
+  var el = e.target; if (!el.getAttribute) return;
+  var k = el.getAttribute("data-note");
+  if (k === "testimony") { S.testimony = el.value; saveSoon(); }
+  else if (k) { note(UI.view || currentDay())[k] = el.value; saveSoon(); }
+  else if (el.getAttribute("data-act") === "bsearch") {
+    UI.search = el.value; var pos = el.selectionStart; render();
+    var b = document.getElementById("bs"); if (b) { b.focus(); try { b.setSelectionRange(pos, pos); } catch (x) {} }
+  }
+});
+function toggleHl(el) {
+  var b = el.getAttribute("data-b"), c = el.getAttribute("data-c"), v = el.getAttribute("data-v"), k = hlKey(b, c, v);
+  if (S.hl[k]) { delete S.hl[k]; el.classList.remove("hl"); }
+  else { var txt = el.textContent.replace(/^\d+/, "").trim(); S.hl[k] = { t: txt }; el.classList.add("hl"); }
+  save();
+}
+
+/* ---------- Start ---------- */
+S = load();
+Promise.all([
+  fetch("content.json").then(function (r) { return r.json(); }),
+  fetch("bible/index.json").then(function (r) { return r.json(); })
+]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; document.documentElement.lang = S.lang; render(); })
+  .catch(function () { app.innerHTML = '<p>Could not load the app files. Please reload the page.</p>'; });
+</script>
+</body>
+</html>

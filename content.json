@@ -1,0 +1,1754 @@
+{
+ "prayerNight": {
+  "en": "Every Tuesday night, we gather to pray together at St. Peter's Church, Upplandsgatan 12. Come as you are, and bring what God is showing you in the fast.",
+  "sv": "Varje tisdagskväll samlas vi för att be tillsammans i St. Peter's Church, Upplandsgatan 12. Kom som du är och ta med det Gud visar dig under fastan."
+ },
+ "weeks": [
+  {
+   "en": "Week 1: Power and prayer",
+   "sv": "Vecka 1: Kraft och bön"
+  },
+  {
+   "en": "Week 2: Sent and strengthened",
+   "sv": "Vecka 2: Utsänd och stärkt"
+  },
+  {
+   "en": "Week 3: Finish unhindered",
+   "sv": "Vecka 3: Fullfölj utan hinder"
+  }
+ ],
+ "days": [
+  {
+   "n": 1,
+   "ch": [
+    1
+   ],
+   "key": [
+    1,
+    8
+   ],
+   "title": {
+    "en": "Wait for the promise",
+    "sv": "Vänta på löftet"
+   },
+   "dev": {
+    "en": "Jesus told His followers not to leave Jerusalem but to wait for the Father's promise. At the start of a year we want to run ahead with plans. These 21 days begin the other way: power first, then mission. Today, stop and wait on God.",
+    "sv": "Jesus sa åt sina efterföljare att inte lämna Jerusalem utan vänta på Faderns löfte. I början av ett nytt år vill vi springa iväg med våra planer. Dessa 21 dagar börjar tvärtom: kraft först, sedan uppdrag. Stanna upp idag och vänta på Gud."
+   },
+   "prayer": {
+    "en": "Ask the Holy Spirit to fill you fresh, and tell God what you are laying down for this fast.",
+    "sv": "Be den Helige Ande fylla dig på nytt och berätta för Gud vad du lägger ner under den här fastan."
+   },
+   "q": {
+    "en": [
+     "What are you tempted to start in your own strength this year? What would it look like to wait on God first?",
+     "Verse 14 says they all continued steadfastly in prayer. What do you want to be devoted to over these 21 days?"
+    ],
+    "sv": [
+     "Vad är du frestad att starta i egen kraft i år? Hur skulle det se ut att vänta på Gud först?",
+     "Vers 14 säger att alla höll troget fast vid bönen. Vad vill du ägna dig åt under de här 21 dagarna?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "God does nothing but by prayer, and everything with it.",
+     "sv": "Gud gör ingenting utom genom bön, och allt med den."
+    },
+    "by": "John Wesley",
+    "src": ""
+   },
+   "place": {
+    "en": "Jerusalem and the Mount of Olives",
+    "sv": "Jerusalem och Oljeberget"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "The sequel",
+      "sv": "Fortsättningen"
+     },
+     "p": {
+      "en": "Luke opens by saying his first book told what Jesus began to do and teach. Acts is the story of what Jesus keeps doing through His people by the Spirit.",
+      "sv": "Lukas inleder med att hans första bok berättade vad Jesus började göra och lära. Apostlagärningarna handlar om vad Jesus fortsätter göra genom sitt folk i Anden."
+     }
+    },
+    {
+     "h": {
+      "en": "The book's outline",
+      "sv": "Bokens disposition"
+     },
+     "p": {
+      "en": "Verse 8 works as a table of contents: Jerusalem (chapters 1-7), Judea and Samaria (8-12), then the ends of the earth (13-28). Power comes first, then the witness.",
+      "sv": "Vers 8 fungerar som innehållsförteckning: Jerusalem (kapitel 1-7), Judeen och Samaria (8-12) och sedan jordens ände (13-28). Kraften kommer först, sedan vittnesbördet."
+     }
+    },
+    {
+     "h": {
+      "en": "Devoted to prayer",
+      "sv": "Hängivna åt bön"
+     },
+     "p": {
+      "en": "The word behind 'continued steadfastly' in verse 14 returns in 2:42. About 120 believers waited together (1:15), and prayer was the way they waited.",
+      "sv": "Ordet bakom 'höll troget fast' i vers 14 återkommer i 2:42. Ungefär 120 troende väntade tillsammans (1:15), och bön var sättet de väntade på."
+     }
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "ch": [
+    2
+   ],
+   "key": [
+    2,
+    42
+   ],
+   "title": {
+    "en": "Filled and devoted",
+    "sv": "Fylld och hängiven"
+   },
+   "dev": {
+    "en": "On the day of Pentecost the Holy Spirit was poured out and about three thousand people were added to the church. What followed was not a one-time event but a way of life: teaching, fellowship, breaking bread and prayer.",
+    "sv": "På pingstdagen utgöts den Helige Ande och omkring tretusen människor lades till församlingen. Det som följde var ingen engångshändelse utan en livsstil: undervisning, gemenskap, brödsbrytelse och bön."
+   },
+   "prayer": {
+    "en": "Pray for a fresh outpouring on your church and on your own life. Name one person you want to see filled with the Spirit.",
+    "sv": "Be om en ny utgjutelse över din församling och ditt eget liv. Nämn en person du vill se fyllas av Anden."
+   },
+   "q": {
+    "en": [
+     "Which of the four habits in verse 42 is weakest in your life right now?",
+     "Where do you need the Spirit's fire to replace routine?"
+    ],
+    "sv": [
+     "Vilken av de fyra vanorna i vers 42 är svagast i ditt liv just nu?",
+     "Var behöver du Andens eld i stället för rutin?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "God shapes the world by prayer.",
+     "sv": "Gud formar världen genom bön."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Jerusalem, on the day of Pentecost",
+    "sv": "Jerusalem, på pingstdagen"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Pentecost",
+      "sv": "Pingst"
+     },
+     "p": {
+      "en": "Pentecost was the harvest Feast of Weeks, fifty days after Passover (Leviticus 23). The Spirit comes on the day Israel celebrated the first of the harvest, and about three thousand are gathered in.",
+      "sv": "Pingst var skördefesten Veckofesten, femtio dagar efter påsk (3 Mos 23). Anden kommer den dag Israel firade förstlingsskörden, och omkring tre tusen läggs till."
+     }
+    },
+    {
+     "h": {
+      "en": "Babel reversed",
+      "sv": "Babel upphävt"
+     },
+     "p": {
+      "en": "At Babel languages scattered the nations (Genesis 11). At Pentecost each person hears God's works in their own language (2:6-11), and the nations are gathered instead.",
+      "sv": "Vid Babel splittrade språken folken (1 Mos 11). Vid pingst hör var och en Guds storverk på sitt eget språk (2:6-11), och folken samlas i stället."
+     }
+    },
+    {
+     "h": {
+      "en": "Four devotions",
+      "sv": "Fyra grundpelare"
+     },
+     "p": {
+      "en": "Verse 42 names what the first church gave itself to: the apostles' teaching, fellowship, the breaking of bread and the prayers. It is a good checklist for any church.",
+      "sv": "Vers 42 nämner vad den första församlingen ägnade sig åt: apostlarnas undervisning, gemenskapen, brödbrytelsen och bönerna. Det är en bra checklista för varje församling."
+     }
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "ch": [
+    3,
+    4
+   ],
+   "key": [
+    4,
+    31
+   ],
+   "title": {
+    "en": "Boldness in the name",
+    "sv": "Frimodighet i namnet"
+   },
+   "dev": {
+    "en": "Peter and John were arrested for healing a man at the temple gate. When they were released, the church did not pray for safety. They prayed for boldness, and the place where they were praying was shaken.",
+    "sv": "Petrus och Johannes greps för att ha helat en man vid tempelporten. När de släpptes bad församlingen inte om trygghet. De bad om frimodighet, och platsen där de bad skakades."
+   },
+   "prayer": {
+    "en": "Pray for boldness, not comfort. Ask God for one open door to speak about Jesus this week.",
+    "sv": "Be om frimodighet, inte bekvämlighet. Be Gud om en öppen dörr att tala om Jesus den här veckan."
+   },
+   "q": {
+    "en": [
+     "Who do you need boldness to speak to?",
+     "In 4:13 people saw that Peter and John had been with Jesus. What marks your life as time spent with Him?"
+    ],
+    "sv": [
+     "Vem behöver du frimodighet att tala med?",
+     "I 4:13 såg människor att Petrus och Johannes hade varit med Jesus. Vad i ditt liv visar att du har tillbringat tid med honom?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "None but praying leaders can have praying followers.",
+     "sv": "Bara bedjande ledare kan få bedjande efterföljare."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "The temple, Solomon's Portico and the council",
+    "sv": "Templet, Salomos pelarhall och rådet"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "The hour of prayer",
+      "sv": "Bönens timme"
+     },
+     "p": {
+      "en": "They went up to the temple at three in the afternoon, the hour of prayer (3:1). The first believers still lived inside Israel's rhythm of prayer, and the healing happened on the way there.",
+      "sv": "De gick upp till templet klockan tre på eftermiddagen, bönens timme (3:1). De första troende levde fortfarande i Israels bönerytm, och helandet skedde på vägen dit."
+     }
+    },
+    {
+     "h": {
+      "en": "Filled again",
+      "sv": "Fylld på nytt"
+     },
+     "p": {
+      "en": "Peter is described as filled with the Holy Spirit in 4:8, though he was already filled at Pentecost. Fullness is renewed for each new moment of witness, and when the church prays the place shakes (4:31).",
+      "sv": "Petrus beskrivs som uppfylld av den Helige Ande i 4:8, fast han redan fyllts vid pingst. Fyllningen förnyas inför varje ny stund av vittnesbörd, och när församlingen ber skakas platsen (4:31)."
+     }
+    },
+    {
+     "h": {
+      "en": "With Jesus",
+      "sv": "Med Jesus"
+     },
+     "p": {
+      "en": "The council saw ordinary, untrained men and recognized that they had been with Jesus (4:13). Their prayer in 4:24-30 quotes Psalm 2 and asks for boldness, not safety.",
+      "sv": "Rådet såg vanliga, outbildade män och förstod att de hade varit med Jesus (4:13). Deras bön i 4:24-30 citerar Psalm 2 och ber om frimodighet, inte om trygghet."
+     }
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "ch": [
+    5
+   ],
+   "key": [
+    5,
+    29
+   ],
+   "title": {
+    "en": "Obey God first",
+    "sv": "Lyd Gud först"
+   },
+   "dev": {
+    "en": "Ananias and Sapphira pretended to give everything while holding back, and God takes honesty seriously. Later the apostles were jailed, freed by an angel, and still told the council that they must obey God rather than people.",
+    "sv": "Ananias och Sapfira låtsades ge allt men höll tillbaka, och Gud tar ärlighet på allvar. Senare fängslades apostlarna, befriades av en ängel och sa ändå till rådet att de måste lyda Gud mer än människor."
+   },
+   "prayer": {
+    "en": "Ask God to search your heart. Confess anything you have been hiding or performing, and receive His forgiveness.",
+    "sv": "Be Gud pröva ditt hjärta. Bekänn det du har dolt eller spelat, och ta emot hans förlåtelse."
+   },
+   "q": {
+    "en": [
+     "Where are you tempted to look more spiritual than you are?",
+     "Whose approval competes with God's in your life?"
+    ],
+    "sv": [
+     "Var är du frestad att se mer andlig ut än du är?",
+     "Vems gillande konkurrerar med Guds i ditt liv?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Three duties of every Christian are giving, praying, and fasting.",
+     "sv": "Tre plikter för varje kristen är att ge, be och fasta."
+    },
+    "by": "Jentezen Franklin",
+    "src": "Fasting"
+   },
+   "place": {
+    "en": "Jerusalem, the temple courts",
+    "sv": "Jerusalem, tempelområdet"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "The real sin",
+      "sv": "Den verkliga synden"
+     },
+     "p": {
+      "en": "Peter says the property was theirs to keep and the money theirs to give as they chose (5:4). The sin was pretending to a generosity they did not have, not holding something back.",
+      "sv": "Petrus säger att egendomen var deras att behålla och pengarna deras att ge som de ville (5:4). Synden var att låtsas en generositet de inte hade, inte att de höll något tillbaka."
+     }
+    },
+    {
+     "h": {
+      "en": "Gamaliel",
+      "sv": "Gamaliel"
+     },
+     "p": {
+      "en": "Gamaliel was a respected Pharisee teacher, and Paul later says he studied under him (22:3). His advice in 5:38-39 is that what is from God cannot be stopped. The apostles are beaten and released, and they rejoice.",
+      "sv": "Gamaliel var en aktad fariseisk lärare, och Paulus säger senare att han studerade för honom (22:3). Hans råd i 5:38-39 är att det som kommer från Gud inte kan stoppas. Apostlarna slås och släpps, och de gläds."
+     }
+    },
+    {
+     "h": {
+      "en": "Obey God",
+      "sv": "Lyd Gud"
+     },
+     "p": {
+      "en": "'We must obey God rather than men' (5:29) echoes what they said in 4:19. Obedience to God is the line the early church kept drawing whenever the authorities pressed.",
+      "sv": "'Man måste lyda Gud mer än människor' (5:29) ekar det de sa i 4:19. Lydnaden mot Gud är den gräns den första församlingen höll fast vid varje gång myndigheterna pressade."
+     }
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "ch": [
+    6,
+    7
+   ],
+   "key": [
+    6,
+    4
+   ],
+   "title": {
+    "en": "Serve and stay full",
+    "sv": "Tjäna och förbli fylld"
+   },
+   "dev": {
+    "en": "The church chose seven men full of the Spirit and wisdom to serve practical needs, so the apostles could give themselves to prayer and the word. Stephen, one of the seven, stayed full of faith and power right to the end, and saw Jesus standing in heaven.",
+    "sv": "Församlingen valde sju män fyllda av Anden och vishet att tjäna praktiska behov, så att apostlarna kunde ägna sig åt bön och ordet. Stefanos, en av de sju, förblev full av tro och kraft ända till slutet och såg Jesus stå i himlen."
+   },
+   "prayer": {
+    "en": "Ask God where He wants you to serve in the church this year, in a way that is practical and unseen.",
+    "sv": "Fråga Gud var han vill att du ska tjäna i församlingen i år, på ett praktiskt och osynligt sätt."
+   },
+   "q": {
+    "en": [
+     "What practical need around you could you serve?",
+     "What does it mean to stay full of the Spirit when you are opposed?"
+    ],
+    "sv": [
+     "Vilket praktiskt behov omkring dig skulle du kunna tjäna?",
+     "Vad innebär det att förbli fylld av Anden när du möter motstånd?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "The story of every great Christian achievement is the history of answered prayer.",
+     "sv": "Historien om varje stor kristen bedrift är historien om bönesvar."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Jerusalem",
+    "sv": "Jerusalem"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Two groups",
+      "sv": "Två grupper"
+     },
+     "p": {
+      "en": "The Hellenists were Greek-speaking Jewish believers, and their widows were being overlooked (6:1). All seven men chosen have Greek names, so the church put the problem in the hands of people who knew it best.",
+      "sv": "Hellenisterna var grekisktalande judiska troende, och deras änkor blev förbisedda (6:1). Alla sju utvalda har grekiska namn, så församlingen lade problemet i händerna på dem som kände det bäst."
+     }
+    },
+    {
+     "h": {
+      "en": "Prayer and the word",
+      "sv": "Bön och ordet"
+     },
+     "p": {
+      "en": "The apostles shared the work so they could give themselves to prayer and the ministry of the word (6:4). Good leadership protects the priorities without ignoring the practical needs.",
+      "sv": "Apostlarna delade på arbetet för att kunna ägna sig åt bön och ordets tjänst (6:4). Gott ledarskap skyddar prioriteringarna utan att bortse från de praktiska behoven."
+     }
+    },
+    {
+     "h": {
+      "en": "Stephen's speech",
+      "sv": "Stefanos tal"
+     },
+     "p": {
+      "en": "Stephen retells Israel's story to show that God has always moved beyond one place, and that Israel often resisted the Spirit (7:51). He dies echoing Jesus' words on the cross, and Saul is introduced (7:58).",
+      "sv": "Stefanos återberättar Israels historia för att visa att Gud alltid har rört sig bortom en enda plats, och att Israel ofta motstod Anden (7:51). Han dör med ord som ekar Jesu ord på korset, och Saul introduceras (7:58)."
+     }
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "ch": [
+    8
+   ],
+   "key": [
+    8,
+    4
+   ],
+   "title": {
+    "en": "Scattered with the message",
+    "sv": "Skingrad med budskapet"
+   },
+   "dev": {
+    "en": "Persecution scattered the church, and everywhere they went they preached the word. Philip went to Samaria, and then the Spirit sent him to one man in a chariot who was reading Isaiah. God cares about crowds and about individuals.",
+    "sv": "Förföljelsen skingrade församlingen, och överallt där de kom förkunnade de ordet. Filip gick till Samarien, och sedan sände Anden honom till en enda man i en vagn som läste Jesaja. Gud bryr sig om folkmassor och om enskilda."
+   },
+   "prayer": {
+    "en": "Pray for the place God has scattered you: your workplace, your street, your school. Ask Him to show you who is asking questions.",
+    "sv": "Be för den plats där Gud har satt dig: din arbetsplats, din gata, din skola. Be honom visa dig vem som ställer frågor."
+   },
+   "q": {
+    "en": [
+     "Where has God placed you right now, and who is near you there?",
+     "Who around you is like the man reading Isaiah, open but needing someone to explain?"
+    ],
+    "sv": [
+     "Var har Gud placerat dig just nu, och vem finns nära dig där?",
+     "Vem omkring dig är som mannen som läste Jesaja, öppen men i behov av någon som förklarar?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Faith in a prayer-hearing God will make a prayer-loving Christian.",
+     "sv": "Tron på en bönhörande Gud gör en kristen som älskar bön."
+    },
+    "by": "Andrew Murray",
+    "src": ""
+   },
+   "place": {
+    "en": "Samaria and the road to Gaza",
+    "sv": "Samaria och vägen till Gaza"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Samaria",
+      "sv": "Samaria"
+     },
+     "p": {
+      "en": "Jews and Samaritans were long divided (John 4:9). Philip going to Samaria is the second ring of 1:8 coming true, confirmed when Peter and John come and the Samaritans receive the Spirit (8:14-17).",
+      "sv": "Judar och samarier var länge splittrade (Joh 4:9). Att Filippos går till Samaria är den andra ringen i 1:8 som blir verklighet, bekräftad när Petrus och Johannes kommer och samarierna får Anden (8:14-17)."
+     }
+    },
+    {
+     "h": {
+      "en": "Simon",
+      "sv": "Simon"
+     },
+     "p": {
+      "en": "Simon the sorcerer believed and was baptized, yet he tried to buy the Spirit's power (8:18-24). God's gifts are not for sale, and Peter's answer is blunt.",
+      "sv": "Trollkarlen Simon trodde och blev döpt, men försökte köpa Andens kraft (8:18-24). Guds gåvor är inte till salu, och Petrus svar är rakt på sak."
+     }
+    },
+    {
+     "h": {
+      "en": "The Ethiopian",
+      "sv": "Etiopiern"
+     },
+     "p": {
+      "en": "The man was a court official of the Candace, the title of the Ethiopian queens. He was reading Isaiah 53, and Philip began there to tell him about Jesus (8:35). The gospel is moving toward the ends of the earth.",
+      "sv": "Mannen var hovman hos Kandake, titeln på Etiopiens drottningar. Han läste Jesaja 53, och Filippos började där och berättade om Jesus (8:35). Evangeliet är på väg mot jordens ände."
+     }
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "ch": [
+    9
+   ],
+   "key": [
+    9,
+    17
+   ],
+   "title": {
+    "en": "God changes lives",
+    "sv": "Gud förändrar liv"
+   },
+   "dev": {
+    "en": "Saul set out to arrest Christians and was stopped by Jesus on the road. Ananias was afraid to go to him, but he obeyed, and Saul was filled with the Spirit. A week in, remember that God still turns the most unlikely people around.",
+    "sv": "Saulus gav sig av för att gripa kristna och stoppades av Jesus på vägen. Ananias var rädd att gå till honom men lydde, och Saulus fylldes av Anden. En vecka in: kom ihåg att Gud fortfarande vänder de mest osannolika människorna."
+   },
+   "prayer": {
+    "en": "Pray by name for someone who seems far from God. Ask Him to meet them the way He met Saul.",
+    "sv": "Be vid namn för någon som verkar långt från Gud. Be honom möta dem på det sätt han mötte Saulus."
+   },
+   "q": {
+    "en": [
+     "What changes has God made in you that you can thank Him for today?",
+     "Ananias obeyed even though he was afraid. What is God asking you to do that feels risky?"
+    ],
+    "sv": [
+     "Vilka förändringar har Gud gjort i dig som du kan tacka honom för idag?",
+     "Ananias lydde trots att han var rädd. Vad ber Gud dig göra som känns riskabelt?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Fasting is not just a physical discipline; it can be a spiritual feast.",
+     "sv": "Fasta är inte bara en fysisk disciplin; det kan vara en andlig fest."
+    },
+    "by": "Jentezen Franklin",
+    "src": "Fasting"
+   },
+   "place": {
+    "en": "The road to Damascus, then Damascus",
+    "sv": "Vägen till Damaskus och Damaskus"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Why persecute Me?",
+      "sv": "Varför förföljer du mig?"
+     },
+     "p": {
+      "en": "Jesus asks 'Why do you persecute Me?' (9:4). He treats an attack on His people as an attack on Himself.",
+      "sv": "Jesus frågar 'Varför förföljer du mig?' (9:4). Han ser ett angrepp på sitt folk som ett angrepp på sig själv."
+     }
+    },
+    {
+     "h": {
+      "en": "Ananias",
+      "sv": "Ananias"
+     },
+     "p": {
+      "en": "Ananias is an ordinary disciple who is afraid of Saul, yet he goes and calls him 'Brother Saul' (9:17). God uses an unknown believer to restore the sight of the future apostle to the nations.",
+      "sv": "Ananias är en vanlig lärjunge som är rädd för Saul, men han går och kallar honom 'broder Saul' (9:17). Gud använder en okänd troende för att ge synen tillbaka åt den blivande folkens apostel."
+     }
+    },
+    {
+     "h": {
+      "en": "Barnabas",
+      "sv": "Barnabas"
+     },
+     "p": {
+      "en": "When Saul reached Jerusalem the disciples were afraid of him, and Barnabas took him in and spoke for him (9:26-27). Barnabas appears again in chapters 11 and 13.",
+      "sv": "När Saul kom till Jerusalem var lärjungarna rädda för honom, och Barnabas tog hand om honom och talade för honom (9:26-27). Barnabas dyker upp igen i kapitel 11 och 13."
+     }
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "ch": [
+    10
+   ],
+   "key": [
+    10,
+    34,
+    35
+   ],
+   "title": {
+    "en": "No favorites",
+    "sv": "Gud gör ingen skillnad på människor"
+   },
+   "dev": {
+    "en": "Cornelius prayed and gave to the poor, and God sent an angel to him. Peter, on a rooftop, was shown that God had made clean what he had called unclean. The Spirit fell on people Peter never expected, and the church had to widen its heart.",
+    "sv": "Cornelius bad och gav åt de fattiga, och Gud sände en ängel till honom. Petrus fick på ett hustak se att Gud hade renat det han kallade orent. Anden föll över människor som Petrus aldrig väntat sig, och församlingen fick vidga sitt hjärta."
+   },
+   "prayer": {
+    "en": "Ask God to show you any person or group you have quietly written off, and ask for His heart for them.",
+    "sv": "Be Gud visa dig personer eller grupper du i tysthet har avskrivit, och be om hans hjärta för dem."
+   },
+   "q": {
+    "en": [
+     "Who have you written off, and what is God widening in your heart?",
+     "Cornelius is described as a man of prayer and giving. How do those two habits shape your year?"
+    ],
+    "sv": [
+     "Vem har du avskrivit, och vad vidgar Gud i ditt hjärta?",
+     "Cornelius beskrivs som en man som bad och gav. Hur formar de två vanorna ditt år?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "The church upon its knees would bring heaven upon the earth.",
+     "sv": "Kyrkan på sina knän skulle föra himlen ner till jorden."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Joppa and Caesarea",
+    "sv": "Joppe och Caesarea"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "The rooftop",
+      "sv": "Taket"
+     },
+     "p": {
+      "en": "Peter has the vision of the unclean animals while praying on a roof in Joppa (10:9-16). It is about people more than food. God had to prepare Peter's heart as well as Cornelius' house.",
+      "sv": "Petrus får synen om de orena djuren medan han ber på ett tak i Joppe (10:9-16). Den handlar mer om människor än om mat. Gud behövde förbereda Petrus hjärta lika mycket som Cornelius hus."
+     }
+    },
+    {
+     "h": {
+      "en": "Cornelius",
+      "sv": "Cornelius"
+     },
+     "p": {
+      "en": "Cornelius was a Roman centurion who prayed and gave to the poor, and God took note (10:4). Even so, Peter's message is what brings him salvation (11:14).",
+      "sv": "Cornelius var en romersk officer som bad och gav åt de fattiga, och Gud lade märke till det (10:4). Ändå är det Petrus budskap som ger honom frälsning (11:14)."
+     }
+    },
+    {
+     "h": {
+      "en": "A Gentile Pentecost",
+      "sv": "En pingst för hedningarna"
+     },
+     "p": {
+      "en": "The Spirit falls on Gentiles while Peter is still speaking (10:44), and the Jewish believers are amazed. In chapter 11 Peter defends it by saying it was the same gift they had received at the beginning (11:15-17).",
+      "sv": "Anden faller över hedningar medan Petrus fortfarande talar (10:44), och de judiska troende häpnar. I kapitel 11 försvarar Petrus det med att det var samma gåva som de själva hade fått i början (11:15-17)."
+     }
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "ch": [
+    11,
+    12
+   ],
+   "key": [
+    12,
+    5
+   ],
+   "title": {
+    "en": "A church that prays",
+    "sv": "En församling som ber"
+   },
+   "dev": {
+    "en": "In Antioch the followers of Jesus were first called Christians. In Jerusalem King Herod killed James and put Peter in prison, and the church prayed earnestly for him. God sent an angel and Peter walked out, to a prayer meeting that could hardly believe it.",
+    "sv": "I Antiokia kallades Jesu efterföljare först för kristna. I Jerusalem lät kung Herodes döda Jakob och fängslade Petrus, och församlingen bad uthålligt för honom. Gud sände en ängel och Petrus gick ut, till ett bönemöte som knappt kunde tro det."
+   },
+   "prayer": {
+    "en": "Pray for the impossible situation you carry. Pray also for someone who is 'in prison' today: sick, stuck, or far from home.",
+    "sv": "Be för den omöjliga situation du bär på. Be också för någon som är 'i fängelse' idag: sjuk, fast eller långt hemifrån."
+   },
+   "q": {
+    "en": [
+     "What impossible situation are you bringing to God?",
+     "Who could you pray for with others this week, like the church did for Peter?"
+    ],
+    "sv": [
+     "Vilken omöjlig situation tar du med till Gud?",
+     "Vem kan du be för tillsammans med andra den här veckan, så som församlingen gjorde för Petrus?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Every great movement of God can be traced to a kneeling figure.",
+     "sv": "Varje stor Guds rörelse kan spåras till en knäböjande gestalt."
+    },
+    "by": "D. L. Moody (attributed)",
+    "src": ""
+   },
+   "place": {
+    "en": "Antioch in Syria and Jerusalem",
+    "sv": "Antiokia i Syrien och Jerusalem"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Antioch",
+      "sv": "Antiokia"
+     },
+     "p": {
+      "en": "Antioch was one of the largest cities of the Roman world, and it is where believers were first called Christians (11:26). Barnabas, whose name means 'son of encouragement' (4:36), goes to find Saul and bring him there.",
+      "sv": "Antiokia var en av romarrikets största städer, och det är där de troende först kallades kristna (11:26). Barnabas, vars namn betyder 'tröstens son' (4:36), går för att hämta Saul dit."
+     }
+    },
+    {
+     "h": {
+      "en": "The church gives",
+      "sv": "Församlingen ger"
+     },
+     "p": {
+      "en": "When Agabus foretells a famine, the Antioch church sends relief to the believers in Judea (11:27-30). The new Gentile church gives first.",
+      "sv": "När Agabus förutsäger hungersnöd skickar församlingen i Antiokia hjälp till de troende i Judeen (11:27-30). Den nya församlingen av hedningar ger först."
+     }
+    },
+    {
+     "h": {
+      "en": "Earnest prayer",
+      "sv": "Brinnande bön"
+     },
+     "p": {
+      "en": "In 12:5 the church prays earnestly for Peter in prison, a word that suggests stretched-out intensity. When Peter knocks at the door they can hardly believe it (12:15). The answer surprised the people who were praying.",
+      "sv": "I 12:5 ber församlingen enträget för Petrus i fängelset, ett ord som antyder utsträckt intensitet. När Petrus knackar på dörren kan de knappt tro det (12:15). Svaret överraskade dem som bad."
+     }
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "ch": [
+    13
+   ],
+   "key": [
+    13,
+    2,
+    3
+   ],
+   "title": {
+    "en": "Fasting and sending",
+    "sv": "Fasta och sändning"
+   },
+   "dev": {
+    "en": "While the church in Antioch worshiped and fasted, the Holy Spirit spoke and set apart Barnabas and Saul for a mission. The first missionary journey was born out of fasting. You are about halfway: fasting clears space to hear.",
+    "sv": "Medan församlingen i Antiokia tillbad och fastade talade den Helige Ande och avskilde Barnabas och Saulus för ett uppdrag. Den första missionsresan föddes ur fasta. Du är ungefär halvvägs: fastan skapar utrymme att höra."
+   },
+   "prayer": {
+    "en": "Be still and listen. Ask God what He is saying to you and what He may be sending you into this year.",
+    "sv": "Var stilla och lyssna. Fråga Gud vad han säger till dig och vad han kanske sänder dig in i under det här året."
+   },
+   "q": {
+    "en": [
+     "What have you heard from God so far in this fast?",
+     "Who around you could you pray with, and send out, the way Antioch did?"
+    ],
+    "sv": [
+     "Vad har du hört från Gud hittills under den här fastan?",
+     "Vem omkring dig kan du be tillsammans med, och sända ut, så som Antiokia gjorde?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "There is power in corporate fasting and power in corporate praise.",
+     "sv": "Det finns kraft i gemensam fasta och kraft i gemensam lovsång."
+    },
+    "by": "Jentezen Franklin",
+    "src": "Fasting"
+   },
+   "place": {
+    "en": "Antioch, Cyprus and Pisidian Antioch",
+    "sv": "Antiokia, Cypern och Antiokia i Pisidien"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "A mixed team",
+      "sv": "Ett blandat lag"
+     },
+     "p": {
+      "en": "The leaders in 13:1 include a Levite from Cyprus, a man from Cyrene, someone raised with Herod the tetrarch, and Saul. A church of many backgrounds sends out its best.",
+      "sv": "Ledarna i 13:1 är bland andra en levit från Cypern, en man från Kyrene, någon som vuxit upp med tetrarken Herodes, och Saul. En församling med många bakgrunder sänder ut sina bästa."
+     }
+    },
+    {
+     "h": {
+      "en": "Fasting first",
+      "sv": "Fastan först"
+     },
+     "p": {
+      "en": "The sending happens while they worship and fast, and the Holy Spirit speaks (13:2). They fast and pray again before laying hands on Barnabas and Saul (13:3). The first mission began in a prayer meeting, not a planning meeting.",
+      "sv": "Utsändandet sker medan de tillber och fastar, och den Helige Ande talar (13:2). De fastar och ber igen innan de lägger händerna på Barnabas och Saul (13:3). Den första missionen började i en bönesamling, inte i ett planeringsmöte."
+     }
+    },
+    {
+     "h": {
+      "en": "Paul's first sermon",
+      "sv": "Pauli första predikan"
+     },
+     "p": {
+      "en": "Paul's first recorded sermon, in Pisidian Antioch (13:16-41), retells Israel's story and lands on the resurrection of Jesus. Compare its shape with Peter's in chapter 2.",
+      "sv": "Pauli första bevarade predikan, i Antiokia i Pisidien (13:16-41), återberättar Israels historia och landar i Jesu uppståndelse. Jämför upplägget med Petrus predikan i kapitel 2."
+     }
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "ch": [
+    14,
+    15
+   ],
+   "key": [
+    14,
+    22
+   ],
+   "title": {
+    "en": "Strengthened through hardship",
+    "sv": "Stärkt genom prövningar"
+   },
+   "dev": {
+    "en": "Paul was stoned and left for dead in Lystra, yet he got up and went back into the city. He and Barnabas then strengthened the disciples and appointed elders with prayer and fasting. In chapter 15 the church affirmed that salvation is by grace.",
+    "sv": "Paulus stenades och lämnades för död i Lystra, men han reste sig och gick tillbaka in i staden. Han och Barnabas stärkte sedan lärjungarna och utsåg äldste med bön och fasta. I kapitel 15 bekräftade församlingen att frälsning är genom nåd."
+   },
+   "prayer": {
+    "en": "Bring your hardest area to God and ask for strength to get up again. Thank Him that you are saved by grace, not performance.",
+    "sv": "Ta med ditt svåraste område till Gud och be om kraft att resa dig igen. Tacka honom för att du är frälst genom nåd, inte genom prestation."
+   },
+   "q": {
+    "en": [
+     "What hardship are you facing, and how is God strengthening you in it?",
+     "How do you keep grace at the center when you fast and pray hard?"
+    ],
+    "sv": [
+     "Vilken prövning möter du, och hur stärker Gud dig i den?",
+     "Hur håller du nåden i centrum när du fastar och ber intensivt?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Fasting helps express, deepens, confirms the resolution that we are ready to sacrifice anything, even ourselves, to attain what we seek for the kingdom of God.",
+     "sv": "Fastan hjälper oss att uttrycka, fördjupa och bekräfta beslutet att vi är redo att offra allt, till och med oss själva, för att nå det vi söker för Guds rike."
+    },
+    "by": "Andrew Murray",
+    "src": ""
+   },
+   "place": {
+    "en": "Lystra, Derbe and Jerusalem",
+    "sv": "Lystra, Derbe och Jerusalem"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Stoned and standing",
+      "sv": "Stenad men uppe"
+     },
+     "p": {
+      "en": "At Lystra the crowd that had called Paul and Barnabas gods turned and stoned Paul (14:11-19). He gets up and goes back into the city. Hold on to 14:22: we enter the kingdom through many hardships.",
+      "sv": "I Lystra vände sig folkmassan som kallat Paulus och Barnabas gudar och stenade Paulus (14:11-19). Han reser sig och går tillbaka in i staden. Håll fast vid 14:22: vi går in i Guds rike genom många svårigheter."
+     }
+    },
+    {
+     "h": {
+      "en": "Prayer and fasting",
+      "sv": "Bön och fasta"
+     },
+     "p": {
+      "en": "Paul and Barnabas appoint elders in every church with prayer and fasting (14:23). Fasting appears again at a moment of leadership and commitment.",
+      "sv": "Paulus och Barnabas utser äldste i varje församling med bön och fasta (14:23). Fastan dyker upp igen vid ett ögonblick av ledarskap och överlåtelse."
+     }
+    },
+    {
+     "h": {
+      "en": "The council",
+      "sv": "Rådet"
+     },
+     "p": {
+      "en": "The Jerusalem council (chapter 15) decides whether Gentiles must keep the law of Moses. It is settled by the grace of the Lord Jesus (15:11), with James quoting Amos 9 (15:16-17).",
+      "sv": "Rådet i Jerusalem (kapitel 15) avgör om hedningar måste hålla Moses lag. Det avgörs av Herren Jesu nåd (15:11), där Jakob citerar Amos 9 (15:16-17)."
+     }
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "ch": [
+    16
+   ],
+   "key": [
+    16,
+    25
+   ],
+   "title": {
+    "en": "Praise in the dark",
+    "sv": "Lovsång i mörkret"
+   },
+   "dev": {
+    "en": "Paul and Silas were beaten and locked in the inner prison. At midnight they were praying and singing hymns, the prisoners were listening, and an earthquake opened the doors. The jailer and his household came to faith that night.",
+    "sv": "Paulus och Silas blev slagna och inlåsta i det innersta fängelset. Vid midnatt bad de och sjöng lovsånger, fångarna lyssnade, och en jordbävning öppnade dörrarna. Fångvaktaren och hela hans hushåll kom till tro samma natt."
+   },
+   "prayer": {
+    "en": "Worship out loud for a few minutes, even if you do not feel like it. Thank God in the middle of what is unresolved.",
+    "sv": "Tillbe högt i några minuter, även om du inte känner för det. Tacka Gud mitt i det som är olöst."
+   },
+   "q": {
+    "en": [
+     "What would worship look like in your midnight?",
+     "Who might be watching how you respond to difficulty?"
+    ],
+    "sv": [
+     "Hur skulle lovsång se ut i din midnatt?",
+     "Vem kanske ser hur du reagerar på svårigheter?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Storm the throne of grace and persevere therein, and mercy will come down.",
+     "sv": "Storma nådens tron och håll ut, så ska barmhärtighet komma ner."
+    },
+    "by": "John Wesley",
+    "src": ""
+   },
+   "place": {
+    "en": "Troas and Philippi, Macedonia",
+    "sv": "Troas och Filippi i Makedonien"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "The Macedonian call",
+      "sv": "Kallelsen från Makedonien"
+     },
+     "p": {
+      "en": "Paul sees a man of Macedonia asking for help (16:9). The 'we' begins in 16:10, which suggests Luke joined them at Troas. The gospel crosses into Europe.",
+      "sv": "Paulus ser en man från Makedonien som ber om hjälp (16:9). 'Vi' börjar i 16:10, vilket tyder på att Lukas anslöt i Troas. Evangeliet går över till Europa."
+     }
+    },
+    {
+     "h": {
+      "en": "Lydia",
+      "sv": "Lydia"
+     },
+     "p": {
+      "en": "Lydia, a seller of purple cloth, is the first convert in Philippi. They met at a place of prayer by the river, and the Lord opened her heart (16:13-15).",
+      "sv": "Lydia, en purpurförsäljare, är den första som kommer till tro i Filippi. De möttes vid en böneplats vid floden, och Herren öppnade hennes hjärta (16:13-15)."
+     }
+    },
+    {
+     "h": {
+      "en": "The jailer",
+      "sv": "Fångvaktaren"
+     },
+     "p": {
+      "en": "Paul and Silas sing at midnight, an earthquake opens the doors, and the jailer asks 'What must I do to be saved?' (16:30). The next day Paul points out that he is a Roman citizen (16:37).",
+      "sv": "Paulus och Silas sjunger vid midnatt, en jordbävning öppnar dörrarna och fångvaktaren frågar 'Vad måste jag göra för att bli frälst?' (16:30). Dagen därpå påpekar Paulus att han är romersk medborgare (16:37)."
+     }
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "ch": [
+    17
+   ],
+   "key": [
+    17,
+    27
+   ],
+   "title": {
+    "en": "Speak in a searching world",
+    "sv": "Tala i en sökande värld"
+   },
+   "dev": {
+    "en": "In Athens Paul looked closely at the city's altars and began from what people already believed. In Berea, the believers examined the Scriptures every day to see if what they heard was true. Both are needed: care for the culture, and roots in the word.",
+    "sv": "I Aten tittade Paulus noga på stadens altaren och utgick från det människor redan trodde. I Berea undersökte de troende Skrifterna varje dag för att se om det de hörde var sant. Båda behövs: omsorg om kulturen och rötter i ordet."
+   },
+   "prayer": {
+    "en": "Pray for Stockholm and its people who are searching. Ask God for words that are clear, respectful and true.",
+    "sv": "Be för Stockholm och människorna som söker. Be Gud om ord som är tydliga, respektfulla och sanna."
+   },
+   "q": {
+    "en": [
+     "What do the people around you seem to be searching for?",
+     "How consistent are you in the word each day, like the Bereans?"
+    ],
+    "sv": [
+     "Vad verkar människorna omkring dig söka efter?",
+     "Hur regelbunden är du i ordet varje dag, som beroerna?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Talking to men for God is a great thing, but talking to God for men is greater still.",
+     "sv": "Att tala till människor för Gud är stort, men att tala till Gud för människor är ännu större."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Thessalonica, Berea and Athens",
+    "sv": "Tessalonika, Beroia och Aten"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "The noble Bereans",
+      "sv": "De ädla beroerna"
+     },
+     "p": {
+      "en": "The Bereans examined the Scriptures daily to see whether Paul's message was true (17:11). Luke calls this noble-minded.",
+      "sv": "Beroerna granskade skrifterna varje dag för att se om Pauli budskap stämde (17:11). Lukas kallar det ädelt."
+     }
+    },
+    {
+     "h": {
+      "en": "Athens",
+      "sv": "Aten"
+     },
+     "p": {
+      "en": "Athens was the city of philosophers and full of idols. Paul begins with an altar to an unknown god (17:23) and quotes Greek poets (17:28) before he reaches Jesus and the resurrection.",
+      "sv": "Aten var filosofernas stad och full av avgudar. Paulus börjar med ett altare åt en okänd gud (17:23) och citerar grekiska skalder (17:28) innan han kommer till Jesus och uppståndelsen."
+     }
+    },
+    {
+     "h": {
+      "en": "A mixed response",
+      "sv": "Blandad respons"
+     },
+     "p": {
+      "en": "Some mock, some want to hear more, and a few believe, including Dionysius, a member of the Areopagus (17:32-34). Faithful speaking does not promise a crowd.",
+      "sv": "Några hånar, några vill höra mer och några tror, bland dem Dionysios, medlem av Areopagen (17:32-34). Trogen vittnesbörd lovar ingen folkmassa."
+     }
+    }
+   ]
+  },
+  {
+   "n": 14,
+   "ch": [
+    18
+   ],
+   "key": [
+    18,
+    9,
+    10
+   ],
+   "title": {
+    "en": "Do not be afraid, keep speaking",
+    "sv": "Var inte rädd, fortsätt tala"
+   },
+   "dev": {
+    "en": "In Corinth, Paul met Priscilla and Aquila and worked and ministered alongside them. When opposition rose, the Lord spoke to him in a night vision and told him not to be afraid but to keep speaking, because He was with him.",
+    "sv": "I Korinth träffade Paulus Priskilla och Aquila och arbetade och verkade tillsammans med dem. När motståndet växte talade Herren till honom i en syn om natten och sa åt honom att inte vara rädd utan fortsätta tala, eftersom han var med honom."
+   },
+   "prayer": {
+    "en": "Name your fear to God. Ask for His presence to be bigger than the fear that silences you.",
+    "sv": "Nämn din rädsla för Gud. Be att hans närvaro ska vara större än rädslan som tystar dig."
+   },
+   "q": {
+    "en": [
+     "What fear is keeping you quiet?",
+     "Who are your Priscilla and Aquila, the partners you serve God alongside?"
+    ],
+    "sv": [
+     "Vilken rädsla håller dig tyst?",
+     "Vilka är din Priskilla och Aquila, de som du tjänar Gud tillsammans med?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "The Gospel cannot live, fight, conquer without prayer, prayer unceasing, instant and ardent.",
+     "sv": "Evangeliet kan inte leva, strida och segra utan bön, en ständig, brådskande och brinnande bön."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Corinth",
+    "sv": "Korinth"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Tentmakers",
+      "sv": "Tältmakare"
+     },
+     "p": {
+      "en": "Paul stays with Aquila and Priscilla, who had left Rome (18:2), and works with them at tentmaking. Ministry and a trade went hand in hand.",
+      "sv": "Paulus bor hos Aquila och Priscilla, som hade lämnat Rom (18:2), och arbetar med dem som tältmakare. Tjänst och yrke gick hand i hand."
+     }
+    },
+    {
+     "h": {
+      "en": "I am with you",
+      "sv": "Jag är med dig"
+     },
+     "p": {
+      "en": "Jesus speaks to Paul in a night vision: do not be afraid, I am with you, and I have many people in this city (18:9-10). Paul stays eighteen months (18:11).",
+      "sv": "Jesus talar till Paulus i en syn om natten: var inte rädd, jag är med dig, och jag har många människor i den här staden (18:9-10). Paulus stannar i arton månader (18:11)."
+     }
+    },
+    {
+     "h": {
+      "en": "Gallio",
+      "sv": "Gallio"
+     },
+     "p": {
+      "en": "The proconsul Gallio (18:12) is known from an inscription at Delphi, which helps date Paul's time in Corinth to about AD 50-52. He dismisses the charge against Paul.",
+      "sv": "Prokonsuln Gallio (18:12) är känd från en inskription i Delfi, som hjälper till att datera Pauli tid i Korinth till ungefär år 50-52. Han avvisar anklagelsen mot Paulus."
+     }
+    }
+   ]
+  },
+  {
+   "n": 15,
+   "ch": [
+    19
+   ],
+   "key": [
+    19,
+    20
+   ],
+   "title": {
+    "en": "Power and repentance",
+    "sv": "Kraft och omvändelse"
+   },
+   "dev": {
+    "en": "In Ephesus God did extraordinary miracles through Paul, and many believers confessed their practices. People who had practiced magic burned their scrolls in public. The word of the Lord kept growing and prevailing. Revival and repentance go together.",
+    "sv": "I Efesos gjorde Gud ovanliga under genom Paulus, och många troende bekände sina gärningar. De som ägnat sig åt magi brände sina böcker offentligt. Herrens ord fortsatte att växa och vinna makt. Väckelse och omvändelse hör ihop."
+   },
+   "prayer": {
+    "en": "Ask God what needs to go from your life. Confess it, and ask Him to fill the space with something better.",
+    "sv": "Fråga Gud vad som behöver bort ur ditt liv. Bekänn det och be honom fylla utrymmet med något bättre."
+   },
+   "q": {
+    "en": [
+     "What do you need to burn, delete or walk away from?",
+     "What would it look like for the word of the Lord to grow mightily in Stockholm?"
+    ],
+    "sv": [
+     "Vad behöver du bränna, radera eller lämna bakom dig?",
+     "Hur skulle det se ut om Herrens ord växte med kraft i Stockholm?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "I am not moved by what I see. I am moved only by what I believe.",
+     "sv": "Jag rörs inte av det jag ser. Jag rörs bara av det jag tror."
+    },
+    "by": "Smith Wigglesworth",
+    "src": ""
+   },
+   "place": {
+    "en": "Ephesus",
+    "sv": "Efesos"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "A city of Artemis",
+      "sv": "Artemis stad"
+     },
+     "p": {
+      "en": "Ephesus was home to the great temple of Artemis. Paul taught daily in the hall of Tyrannus (19:9) and stayed about three years (20:31).",
+      "sv": "Efesos var hem för Artemis stora tempel. Paulus undervisade dagligen i Tyrannus sal (19:9) och stannade omkring tre år (20:31)."
+     }
+    },
+    {
+     "h": {
+      "en": "Burned scrolls",
+      "sv": "Brända böcker"
+     },
+     "p": {
+      "en": "New believers brought their magic books and burned them, worth fifty thousand silver coins (19:19). Repentance had a visible cost.",
+      "sv": "Nya troende tog med sig sina magiböcker och brände dem, till ett värde av femtiotusen silvermynt (19:19). Omvändelsen hade ett synligt pris."
+     }
+    },
+    {
+     "h": {
+      "en": "The riot",
+      "sv": "Upploppet"
+     },
+     "p": {
+      "en": "Demetrius the silversmith stirs up a riot because the gospel threatens the trade in idols (19:23-27). The word had spread far enough to affect business.",
+      "sv": "Silversmeden Demetrios väcker ett upplopp eftersom evangeliet hotar handeln med avgudabilder (19:23-27). Ordet hade spridit sig så långt att det påverkade affärerna."
+     }
+    }
+   ]
+  },
+  {
+   "n": 16,
+   "ch": [
+    20
+   ],
+   "key": [
+    20,
+    24
+   ],
+   "title": {
+    "en": "Finish the race",
+    "sv": "Fullfölj loppet"
+   },
+   "dev": {
+    "en": "Paul said goodbye to the elders of Ephesus, reminding them of how he had lived among them and warning them to guard the flock. He quoted Jesus: it is more blessed to give than to receive. His goal was to finish the race and the ministry he received.",
+    "sv": "Paulus tog farväl av de äldste i Efesos, påminde dem om hur han hade levt bland dem och varnade dem att vakta hjorden. Han citerade Jesus: det är saligare att ge än att ta emot. Hans mål var att fullfölja loppet och tjänsten han fått."
+   },
+   "prayer": {
+    "en": "Pray that you finish this year well. Ask God what He wants you to give: time, money, attention, forgiveness.",
+    "sv": "Be att du ska fullfölja det här året väl. Fråga Gud vad han vill att du ska ge: tid, pengar, uppmärksamhet, förlåtelse."
+   },
+   "q": {
+    "en": [
+     "What would finishing well look like for you this year?",
+     "How can you be more generous right now?"
+    ],
+    "sv": [
+     "Hur skulle det se ut att fullfölja väl i år?",
+     "Hur kan du vara mer generös just nu?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "We cannot run our spiritual operations on the prayers of the past generation.",
+     "sv": "Vi kan inte driva vårt andliga arbete på föregående generations böner."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Troas and Miletus",
+    "sv": "Troas och Miletos"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Troas",
+      "sv": "Troas"
+     },
+     "p": {
+      "en": "On the first day of the week they gathered to break bread, and Paul talked until midnight. Eutychus falls from the window and is raised (20:7-12).",
+      "sv": "På veckans första dag samlades de för att bryta bröd, och Paulus talade till midnatt. Eutychos faller från fönstret och uppväcks (20:7-12)."
+     }
+    },
+    {
+     "h": {
+      "en": "A farewell to the elders",
+      "sv": "Avsked från de äldste"
+     },
+     "p": {
+      "en": "Paul's address at Miletus (20:18-35) is the only speech in Acts aimed at believers. The leaders are called elders and overseers (20:17, 28), and told to shepherd the flock.",
+      "sv": "Pauli tal i Miletos (20:18-35) är det enda talet i Apostlagärningarna som riktas till troende. Ledarna kallas äldste och tillsyningsmän (20:17, 28) och uppmanas att vara herdar för hjorden."
+     }
+    },
+    {
+     "h": {
+      "en": "More blessed to give",
+      "sv": "Saligare att ge"
+     },
+     "p": {
+      "en": "Paul quotes Jesus: 'It is more blessed to give than to receive' (20:35). This saying is not found in the four Gospels.",
+      "sv": "Paulus citerar Jesus: 'Det är saligare att ge än att ta emot' (20:35). Det här ordet finns inte i de fyra evangelierna."
+     }
+    }
+   ]
+  },
+  {
+   "n": 17,
+   "ch": [
+    21
+   ],
+   "key": [
+    21,
+    13
+   ],
+   "title": {
+    "en": "Resolved",
+    "sv": "Beslutsam"
+   },
+   "dev": {
+    "en": "Friends warned Paul not to go to Jerusalem, and a prophet told him he would be bound. Paul answered that he was ready not only to be bound but to die for the name of the Lord Jesus. The church let him go and said, the Lord's will be done.",
+    "sv": "Vänner varnade Paulus för att gå till Jerusalem, och en profet sa att han skulle bli bunden. Paulus svarade att han var redo att inte bara bli bunden utan också dö för Herren Jesu namn. Församlingen lät honom gå och sa: Herrens vilja ske."
+   },
+   "prayer": {
+    "en": "Tell God you want His will above your comfort. Ask for peace in the obedience He is calling you to.",
+    "sv": "Säg till Gud att du vill ha hans vilja framför din bekvämlighet. Be om frid i den lydnad han kallar dig till."
+   },
+   "q": {
+    "en": [
+     "Where is God asking for costly obedience from you?",
+     "Who can walk with you in it and say, the Lord's will be done?"
+    ],
+    "sv": [
+     "Var ber Gud dig om kostsam lydnad?",
+     "Vem kan gå med dig i den och säga: Herrens vilja ske?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Prayer in its highest form and grandest success assumes the attitude of a wrestler with God.",
+     "sv": "Bönen i sin högsta form och största framgång intar en brottares hållning inför Gud."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Tyre, Caesarea and Jerusalem",
+    "sv": "Tyrus, Caesarea och Jerusalem"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Warnings",
+      "sv": "Varningar"
+     },
+     "p": {
+      "en": "At Tyre the disciples tell Paul 'through the Spirit' not to go up to Jerusalem (21:4), and Agabus acts out a prophecy with Paul's belt (21:10-11). Paul hears the warning and still goes.",
+      "sv": "I Tyrus säger lärjungarna 'genom Anden' åt Paulus att inte gå upp till Jerusalem (21:4), och Agabus gestaltar en profetia med Pauli bälte (21:10-11). Paulus hör varningen och går ändå."
+     }
+    },
+    {
+     "h": {
+      "en": "Philip's daughters",
+      "sv": "Filippos döttrar"
+     },
+     "p": {
+      "en": "In Caesarea they stay with Philip the evangelist, whose four daughters prophesied (21:8-9).",
+      "sv": "I Caesarea bor de hos evangelisten Filippos, vars fyra döttrar profeterade (21:8-9)."
+     }
+    },
+    {
+     "h": {
+      "en": "Ready",
+      "sv": "Redo"
+     },
+     "p": {
+      "en": "Paul says he is ready to be bound and even to die for the name of the Lord Jesus (21:13). His friends answer, 'The will of the Lord be done' (21:14).",
+      "sv": "Paulus säger att han är redo att bli bunden och till och med dö för Herren Jesu namn (21:13). Hans vänner svarar: 'Låt Herrens vilja ske' (21:14)."
+     }
+    }
+   ]
+  },
+  {
+   "n": 18,
+   "ch": [
+    22,
+    23
+   ],
+   "key": [
+    23,
+    11
+   ],
+   "title": {
+    "en": "Tell your story",
+    "sv": "Berätta din historia"
+   },
+   "dev": {
+    "en": "Arrested in Jerusalem, Paul asked to speak and told the crowd his story: who he was, how he met Jesus, and what Jesus sent him to do. That night the Lord stood beside him and told him to cheer up, because he would also testify in Rome.",
+    "sv": "Gripen i Jerusalem bad Paulus att få tala och berättade för folkhopen sin historia: vem han var, hur han mötte Jesus och vad Jesus sände honom att göra. Samma natt stod Herren hos honom och sa åt honom att ta mod, för han skulle också vittna i Rom."
+   },
+   "prayer": {
+    "en": "Thank God for where He has stood beside you. Ask Him for the courage to share your story with one person this week.",
+    "sv": "Tacka Gud för tillfällen då han har stått vid din sida. Be om mod att dela din historia med en person den här veckan."
+   },
+   "q": {
+    "en": [
+     "What is your two-minute story of meeting Jesus?",
+     "When has the Lord stood by you in a hard moment?"
+    ],
+    "sv": [
+     "Vad är din tvåminutershistoria om hur du mötte Jesus?",
+     "När har Herren stått vid din sida i ett svårt ögonblick?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Fasting is a constant means of renewing yourself spiritually.",
+     "sv": "Fastan är ett ständigt sätt att förnya sig själv andligen."
+    },
+    "by": "Jentezen Franklin",
+    "src": "Fasting"
+   },
+   "place": {
+    "en": "Jerusalem, the barracks and the council",
+    "sv": "Jerusalem, kasernen och rådet"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "His own story",
+      "sv": "Hans egen historia"
+     },
+     "p": {
+      "en": "From the steps Paul speaks in Aramaic and tells his story: where he was raised, how he met Jesus and what Jesus told him to do (22:1-21). A testimony can be that simple: before, how I met Jesus, after.",
+      "sv": "Från trappan talar Paulus arameiska och berättar sin historia: var han växte upp, hur han mötte Jesus och vad Jesus sa åt honom att göra (22:1-21). Ett vittnesbörd kan vara så enkelt: före, hur jag mötte Jesus, efter."
+     }
+    },
+    {
+     "h": {
+      "en": "Citizenship",
+      "sv": "Medborgarskap"
+     },
+     "p": {
+      "en": "Paul uses his Roman citizenship to avoid being flogged (22:25-29). It was lawful, and it shows wisdom, not weak faith.",
+      "sv": "Paulus använder sitt romerska medborgarskap för att slippa bli piskad (22:25-29). Det var lagligt och visar vishet, inte svag tro."
+     }
+    },
+    {
+     "h": {
+      "en": "Take courage",
+      "sv": "Var frimodig"
+     },
+     "p": {
+      "en": "After a violent day before the council, Jesus stands by him: 'Take courage' (23:11). More than forty men swear to kill him (23:12-13), and Paul's nephew hears of the plot.",
+      "sv": "Efter en våldsam dag inför rådet står Jesus vid hans sida: 'Var frimodig' (23:11). Mer än fyrtio män svär att döda honom (23:12-13), och Pauli systerson får höra om planen."
+     }
+    }
+   ]
+  },
+  {
+   "n": 19,
+   "ch": [
+    24,
+    25,
+    26
+   ],
+   "key": [
+    26,
+    19
+   ],
+   "title": {
+    "en": "Faithful before rulers",
+    "sv": "Trogen inför makthavare"
+   },
+   "dev": {
+    "en": "Paul stood before Felix, Festus and King Agrippa. Felix became afraid when Paul spoke of righteousness and judgment and put him off for a more convenient time. Paul told Agrippa that he had not been disobedient to the heavenly vision.",
+    "sv": "Paulus stod inför Felix, Festus och kung Agrippa. Felix blev rädd när Paulus talade om rättfärdighet och dom och sköt upp saken till ett bättre tillfälle. Paulus sa till Agrippa att han inte hade varit olydig mot den himmelska synen."
+   },
+   "prayer": {
+    "en": "Ask God for clarity on what He has called you to this year, and for the courage to stop putting it off.",
+    "sv": "Be Gud om klarhet över vad han har kallat dig till i år och om mod att sluta skjuta upp det."
+   },
+   "q": {
+    "en": [
+     "What has God put in front of you that you keep delaying, like Felix?",
+     "What vision or direction has God given you for this year?"
+    ],
+    "sv": [
+     "Vad har Gud lagt framför dig som du fortsätter skjuta upp, som Felix?",
+     "Vilken syn eller riktning har Gud gett dig för det här året?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Pray and never faint, is the motto Christ gives us for praying.",
+     "sv": "Be och tappa aldrig modet: det är det valspråk Kristus ger oss för bönen."
+    },
+    "by": "E. M. Bounds",
+    "src": ""
+   },
+   "place": {
+    "en": "Caesarea",
+    "sv": "Caesarea"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Felix",
+      "sv": "Felix"
+     },
+     "p": {
+      "en": "Felix is alarmed when Paul speaks of righteousness, self-control and the coming judgment (24:25), and he keeps Paul in custody for two years hoping for a bribe (24:26-27).",
+      "sv": "Felix blir förskräckt när Paulus talar om rättfärdighet, självbehärskning och den kommande domen (24:25), och han håller Paulus fången i två år i hopp om mutor (24:26-27)."
+     }
+    },
+    {
+     "h": {
+      "en": "Caesar",
+      "sv": "Kejsaren"
+     },
+     "p": {
+      "en": "When Festus wants to send Paul to Jerusalem, Paul uses a Roman citizen's right and appeals to Caesar (25:11). That decision is what takes him to Rome.",
+      "sv": "När Festus vill skicka Paulus till Jerusalem använder Paulus en romersk medborgares rätt och vädjar till kejsaren (25:11). Det beslutet tar honom till Rom."
+     }
+    },
+    {
+     "h": {
+      "en": "Agrippa",
+      "sv": "Agrippa"
+     },
+     "p": {
+      "en": "Before King Agrippa, Paul tells his story again and says he was not disobedient to the heavenly vision (26:19). Agrippa says Paul nearly persuades him (26:28).",
+      "sv": "Inför kung Agrippa berättar Paulus sin historia igen och säger att han inte var olydig mot den himmelska synen (26:19). Agrippa säger att Paulus nästan övertalar honom (26:28)."
+     }
+    }
+   ]
+  },
+  {
+   "n": 20,
+   "ch": [
+    27
+   ],
+   "key": [
+    27,
+    25
+   ],
+   "title": {
+    "en": "God keeps His word in the storm",
+    "sv": "Gud håller sitt ord i stormen"
+   },
+   "dev": {
+    "en": "On the way to Rome, the ship was caught in a fierce storm for days. Paul told the crew that an angel had said no life would be lost, and he said he believed God that it would happen just as he was told. God's promise held, even though the ship did not.",
+    "sv": "På väg till Rom drabbades skeppet av en våldsam storm i många dagar. Paulus sa till besättningen att en ängel hade sagt att inget liv skulle gå förlorat, och att han trodde Gud att det skulle ske precis som han fått höra. Guds löfte höll, även om skeppet inte gjorde det."
+   },
+   "prayer": {
+    "en": "Write down a promise from God for your life and pray it back to Him. Choose to believe Him in the middle of the storm.",
+    "sv": "Skriv ner ett löfte från Gud för ditt liv och be det tillbaka till honom. Välj att tro honom mitt i stormen."
+   },
+   "q": {
+    "en": [
+     "What storm are you in, and what has God promised you?",
+     "Who around you needs to hear you say, take courage?"
+    ],
+    "sv": [
+     "Vilken storm befinner du dig i, och vad har Gud lovat dig?",
+     "Vem omkring dig behöver höra dig säga: ta mod?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Expect unexpected things 'above all that we ask or think.'",
+     "sv": "Förvänta dig oväntade ting, 'över allt vad vi ber eller tänker.'"
+    },
+    "by": "Andrew Murray",
+    "src": ""
+   },
+   "place": {
+    "en": "The sea from Caesarea to Malta",
+    "sv": "Havet från Caesarea till Malta"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "The voyage",
+      "sv": "Sjöresan"
+     },
+     "p": {
+      "en": "They sail on an Alexandrian grain ship with 276 people aboard (27:37). Paul warned them early (27:10) and was not listened to.",
+      "sv": "De seglar på ett alexandrinskt sädesfartyg med 276 personer ombord (27:37). Paulus varnade dem tidigt (27:10) och blev inte lyssnad på."
+     }
+    },
+    {
+     "h": {
+      "en": "An angel and a promise",
+      "sv": "En ängel och ett löfte"
+     },
+     "p": {
+      "en": "An angel of God stands by Paul and tells him he must stand before Caesar (27:23-24). Paul tells the crew 'I believe God' (27:25). He is the prisoner and the calmest man on the ship.",
+      "sv": "En Guds ängel står hos Paulus och säger att han måste stå inför kejsaren (27:23-24). Paulus säger till besättningen 'Jag tror Gud' (27:25). Han är fången och den lugnaste mannen på skeppet."
+     }
+    },
+    {
+     "h": {
+      "en": "Bread",
+      "sv": "Bröd"
+     },
+     "p": {
+      "en": "In 27:35 Paul takes bread, gives thanks in front of everyone and eats, which echoes how Jesus gave thanks. Hope becomes practical here.",
+      "sv": "I 27:35 tar Paulus bröd, tackar Gud inför alla och äter, vilket ekar hur Jesus tackade. Hoppet blir praktiskt här."
+     }
+    }
+   ]
+  },
+  {
+   "n": 21,
+   "ch": [
+    28
+   ],
+   "key": [
+    28,
+    31
+   ],
+   "title": {
+    "en": "Unhindered",
+    "sv": "Utan hinder"
+   },
+   "dev": {
+    "en": "Paul arrived in Rome as a prisoner and still welcomed everyone, preaching boldly and unhindered. Acts ends without a final amen, because the story continues through ordinary believers. You have reached day 21. Give thanks, and write down what God did.",
+    "sv": "Paulus kom till Rom som fånge och tog ändå emot alla, och predikade frimodigt och utan hinder. Apostlagärningarna slutar utan ett sista amen, eftersom berättelsen fortsätter genom vanliga troende. Du har nått dag 21. Tacka Gud och skriv ner vad han gjorde."
+   },
+   "prayer": {
+    "en": "Thank God for these 21 days. Offer Him the year ahead and ask what your next step is.",
+    "sv": "Tacka Gud för de här 21 dagarna. Överlämna året framför dig till honom och fråga vad ditt nästa steg är."
+   },
+   "q": {
+    "en": [
+     "What did God do in these 21 days? Write your testimony in the Journal tab.",
+     "What is your next step for the year ahead?"
+    ],
+    "sv": [
+     "Vad gjorde Gud under de här 21 dagarna? Skriv ditt vittnesbörd i fliken Dagbok.",
+     "Vilket är ditt nästa steg för året som kommer?"
+    ]
+   },
+   "quote": {
+    "t": {
+     "en": "Think of your place and privilege in Christ, and expect great things!",
+     "sv": "Tänk på din plats och ditt privilegium i Kristus, och förvänta dig stora ting!"
+    },
+    "by": "Andrew Murray",
+    "src": ""
+   },
+   "place": {
+    "en": "Malta and Rome",
+    "sv": "Malta och Rom"
+   },
+   "com": [
+    {
+     "h": {
+      "en": "Malta",
+      "sv": "Malta"
+     },
+     "p": {
+      "en": "The islanders show unusual kindness (28:2). A viper bites Paul and he is unharmed, and he prays for the father of Publius, who is healed (28:3-9).",
+      "sv": "Öborna visar ovanlig vänlighet (28:2). En huggorm biter Paulus utan att skada honom, och han ber för Publius far, som blir botad (28:3-9)."
+     }
+    },
+    {
+     "h": {
+      "en": "Rome",
+      "sv": "Rom"
+     },
+     "p": {
+      "en": "Believers from Rome come out to meet Paul on the Appian Way, and Paul thanks God and takes courage (28:15). He lives under guard in a rented house for two years (28:30).",
+      "sv": "Troende från Rom kommer ut för att möta Paulus på Via Appia, och Paulus tackar Gud och fattar mod (28:15). Han bor under bevakning i ett hyrt hus i två år (28:30)."
+     }
+    },
+    {
+     "h": {
+      "en": "Unhindered",
+      "sv": "Utan hinder"
+     },
+     "p": {
+      "en": "The last word of Acts in Greek is 'unhindered'. Paul is chained and the gospel is not. The book ends open, as the story goes on through the church.",
+      "sv": "Apostlagärningarnas sista ord på grekiska är 'utan hinder'. Paulus är fjättrad men evangeliet är det inte. Boken slutar öppet, eftersom berättelsen fortsätter genom församlingen."
+     }
+    }
+   ]
+  }
+ ],
+ "fasts": [
+  {
+   "id": "daniel",
+   "name": {
+    "en": "Daniel fast",
+    "sv": "Danielsfasta"
+   },
+   "desc": {
+    "en": "Follow the pattern of Daniel (Daniel 1 and 10): vegetables, fruit, whole grains, beans, nuts and water. Leave out meat, dairy, sweets, white bread, coffee and alcohol.",
+    "sv": "Följ Daniels mönster (Daniel 1 och 10): grönsaker, frukt, fullkorn, baljväxter, nötter och vatten. Avstå från kött, mejeriprodukter, sötsaker, vitt bröd, kaffe och alkohol."
+   }
+  },
+  {
+   "id": "liquid",
+   "name": {
+    "en": "Liquids only",
+    "sv": "Endast vätska"
+   },
+   "desc": {
+    "en": "Water, broth, tea and juice, with no solid food. Many people choose set days (for example before the Tuesday prayer night) rather than all 21.",
+    "sv": "Vatten, buljong, te och juice, men ingen fast föda. Många väljer bestämda dagar (till exempel före tisdagens bönekväll) i stället för alla 21."
+   }
+  },
+  {
+   "id": "full",
+   "name": {
+    "en": "Full fast",
+    "sv": "Hel fasta"
+   },
+   "desc": {
+    "en": "Water only. This is the most demanding option and is best kept to one day or a few days, with a doctor's advice if you are unsure. It is not meant for all 21 days.",
+    "sv": "Endast vatten. Detta är det mest krävande alternativet och passar bäst för en eller några dagar, med läkares råd om du är osäker. Det är inte tänkt för alla 21 dagarna."
+   }
+  },
+  {
+   "id": "social",
+   "name": {
+    "en": "Social media fast",
+    "sv": "Sociala medier-fasta"
+   },
+   "desc": {
+    "en": "Step away from social media, streaming and news. Use the time to read, pray and be present with people. Good alone or combined with a food fast.",
+    "sv": "Ta ett steg tillbaka från sociala medier, streaming och nyheter. Använd tiden till att läsa, be och vara närvarande med människor. Passar bra ensamt eller tillsammans med en matfasta."
+   }
+  }
+ ],
+ "health": {
+  "title": {
+   "en": "Before you fast",
+   "sv": "Innan du fastar"
+  },
+  "items": {
+   "en": [
+    "Talk to your doctor first if you are pregnant or nursing, have diabetes, low blood pressure or another medical condition, take regular medication, or are under 18.",
+    "If you have ever struggled with food or an eating disorder, choose the social media fast. Food fasting is not the right path for you.",
+    "Drink plenty of water. Stop and eat if you feel dizzy, faint, or unwell.",
+    "Fasting does not earn God's favor. It is a way of making room for Him."
+   ],
+   "sv": [
+    "Prata med din läkare först om du är gravid eller ammar, har diabetes, lågt blodtryck eller annan sjukdom, tar regelbunden medicin eller är under 18 år.",
+    "Om du någon gång har haft problem med mat eller en ätstörning, välj sociala medier-fastan. Matfasta är inte rätt väg för dig.",
+    "Drick mycket vatten. Avbryt och ät om du känner dig yr, svag eller sjuk.",
+    "Fastan förtjänar inte Guds ynnest. Den är ett sätt att ge honom utrymme."
+   ]
+  }
+ },
+ "expect": {
+  "title": {
+   "en": "What to expect",
+   "sv": "Vad du kan förvänta dig"
+  },
+  "items": {
+   "en": [
+    {
+     "h": "Days 1-3",
+     "p": "Hunger, headaches and tiredness are common as your body adjusts, especially if you usually have caffeine or sugar. Drink water, rest more, and keep your day simple."
+    },
+    {
+     "h": "Days 4-7",
+     "p": "Cravings often ease and prayer and reading can feel easier. Some days will still feel flat. That is normal. Keep showing up."
+    },
+    {
+     "h": "Days 8-14",
+     "p": "A steadier rhythm often comes, and so can resistance and the temptation to quit. Remember why you started, and lean on the Tuesday prayer night."
+    },
+    {
+     "h": "Days 15-21",
+     "p": "Stay focused and finish well. Plan how you will break your fast, and keep a record of what God has been saying and doing."
+    },
+    {
+     "h": "Breaking your fast",
+     "p": "Bring food back gently over a day or two with small portions and simple meals, not one large feast."
+    },
+    {
+     "h": "If you miss a day",
+     "p": "There is grace. This app continues where you left off. Do not start over, just pick up the next day."
+    }
+   ],
+   "sv": [
+    {
+     "h": "Dag 1-3",
+     "p": "Hunger, huvudvärk och trötthet är vanligt när kroppen ställer om, särskilt om du brukar ha koffein eller socker. Drick vatten, vila mer och håll dagen enkel."
+    },
+    {
+     "h": "Dag 4-7",
+     "p": "Suget minskar ofta och bön och läsning kan kännas lättare. Vissa dagar känns fortfarande platta. Det är normalt. Fortsätt dyka upp."
+    },
+    {
+     "h": "Dag 8-14",
+     "p": "En stadigare rytm kommer ofta, men också motstånd och frestelsen att ge upp. Kom ihåg varför du började och luta dig mot tisdagens bönekväll."
+    },
+    {
+     "h": "Dag 15-21",
+     "p": "Håll fokus och avsluta väl. Planera hur du ska bryta fastan och anteckna vad Gud har sagt och gjort."
+    },
+    {
+     "h": "Att bryta fastan",
+     "p": "Inför mat försiktigt under en eller två dagar, med små portioner och enkla måltider, inte en stor fest."
+    },
+    {
+     "h": "Om du missar en dag",
+     "p": "Det finns nåd. Appen fortsätter där du slutade. Börja inte om, ta bara nästa dag."
+    }
+   ]
+  }
+ }
+}

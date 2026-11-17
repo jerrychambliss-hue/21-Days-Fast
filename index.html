@@ -204,7 +204,7 @@ var T = {
     deleteHead: "Delete my account", deleteP: "Deletes your account and everything saved in the cloud. The notes on this phone stay.", deleteBtn: "Delete my account and cloud data", deleteConfirm: "Tap again to delete for good",
     errBad: "Wrong email or password.", errExists: "There is already an account with that email. Try signing in.", errRate: "Too many tries. Please wait a minute.", errWeak: "Choose a longer password (8 or more characters).",
     errEmail: "Please enter a valid email.", errConsent: "Please tick the box to continue.", errNet: "Could not reach the server. Check your connection.",
-    countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
+    haveAcct: "Already have an account? Sign in", countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
   },
   sv: {
     summit: "Sinai", climbed: "{n} av 21 dagar avklarade", toGo: "{n} kvar till bergets topp", atSummit: "Du nådde bergets topp.", start: "Bas",
@@ -240,7 +240,7 @@ var T = {
     deleteHead: "Radera mitt konto", deleteP: "Raderar ditt konto och allt som sparats i molnet. Anteckningarna på den här telefonen finns kvar.", deleteBtn: "Radera mitt konto och molndata", deleteConfirm: "Tryck igen för att radera för gott",
     errBad: "Fel e-post eller lösenord.", errExists: "Det finns redan ett konto med den e-posten. Försök logga in.", errRate: "För många försök. Vänta en minut.", errWeak: "Välj ett längre lösenord (minst 8 tecken).",
     errEmail: "Skriv in en giltig e-postadress.", errConsent: "Kryssa i rutan för att fortsätta.", errNet: "Kunde inte nå servern. Kontrollera din anslutning.",
-    countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
+    haveAcct: "Har du redan ett konto? Logga in", countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
   }
 };
 function t(k, o) {
@@ -295,9 +295,9 @@ var app = document.getElementById("app");
 function render() {
   if (!C || !S) return;
   var h;
-  if (!S.onboarded) h = onboardHtml();
+  if (UI.screen && UI.screen.type === "account") { h = accountHtml(); }
+  else if (!S.onboarded) h = onboardHtml();
   else if (UI.screen && UI.screen.type === "reader") { h = readerShell(); }
-  else if (UI.screen && UI.screen.type === "account") { h = accountHtml(); }
   else {
     h = topHtml() + (memOnly ? '<div class="card"><p class="small">' + esc(t("memOnly")) + "</p></div>" : "");
     if (UI.tab === "today") h += todayHtml();
@@ -473,6 +473,7 @@ function onboardHtml() {
     h += '<p class="eyebrow">' + esc(t("title")) + '</p><h1 style="font-size:32px;margin:6px 0 10px">' + esc(t("welcome")) + "</h1><p>" + esc(t("welcomeP")) + "</p>";
     h += '<h2 style="font-size:16px;margin-top:20px">' + esc(t("chooseLang")) + '</h2><div class="lang"><button class="btn ' + (S.lang === "en" ? "" : "alt") + '" data-act="setlang" data-l="en">English</button><button class="btn ' + (S.lang === "sv" ? "" : "alt") + '" data-act="setlang" data-l="sv">Svenska</button></div>';
     h += '<button class="btn full" data-act="step" data-s="2">' + esc(t("next")) + "</button>";
+    if (SB) h += '<p style="text-align:center;margin-top:16px"><button class="pill" data-act="account">' + esc(t("haveAcct")) + "</button></p>";
   } else if (step === 2) {
     h += '<h1 style="font-size:26px;margin:6px 0 6px">' + esc(t("chooseFast")) + '</h1><p class="small">' + esc(t("chooseFastP")) + "</p>" + fastOptionsHtml() + healthHtml();
     h += '<div class="row"><button class="btn alt" data-act="step" data-s="1">' + esc(t("back")) + '</button><button class="btn" style="flex:1" data-act="step" data-s="3">' + esc(t("next")) + "</button></div>";
@@ -756,7 +757,7 @@ function setAmsg(txt) { var el = document.getElementById("amsg"); if (el) el.tex
 function acctSubmit() {
   if (!SB) { setAmsg(t("errNet")); return; }
   var em = (document.getElementById("ae").value || "").trim(), pw = document.getElementById("ap").value || "", up = UI.acctMode === "up";
-  UI.acctEmail = em;
+  UI.acctEmail = em; var wasOn = S.onboarded;
   if (!/^\S+@\S+\.\S+$/.test(em)) { setAmsg(t("errEmail")); return; }
   if (pw.length < 8) { setAmsg(t("errWeak")); return; }
   if (up && !document.getElementById("ac").checked) { setAmsg(t("errConsent")); return; }
@@ -767,7 +768,7 @@ function acctSubmit() {
     var sess = r.data && r.data.session;
     if (!sess) { setAmsg(t("checkEmail")); return; }
     CLOUD.user = sess.user;
-    return pullAndMerge().then(function () { fetchCount(); render(); });
+    return pullAndMerge().then(function () { fetchCount(); if (!wasOn) { UI.screen = null; UI.tab = "today"; } render(); });
   }).catch(function (e) { setAmsg(friendly(e)); });
 }
 function acctSignOut() {

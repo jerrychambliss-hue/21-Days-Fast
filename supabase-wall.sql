@@ -86,3 +86,4 @@ revoke all on function public.wall_submit(text), public.wall_list(), public.wall
   public.wall_pray(uuid), public.wall_pending(), public.wall_moderate(uuid, boolean) from public, anon;
 grant execute on function public.wall_submit(text), public.wall_list(), public.wall_mine(), public.wall_delete(uuid),
   public.wall_pray(uuid), public.wall_pending(), public.wall_moderate(uuid, boolean) to authenticated;
+notify pgrst, 'reload schema';

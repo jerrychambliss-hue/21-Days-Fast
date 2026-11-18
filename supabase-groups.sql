@@ -175,3 +175,16 @@ revoke all on function public.group_create(text), public.group_join(text), publi
 grant execute on function public.group_create(text), public.group_join(text), public.group_leave(uuid), public.group_mine(),
   public.group_members_list(uuid), public.group_posts_list(uuid,text), public.group_post(uuid,text,text,boolean),
   public.group_post_delete(uuid), public.group_remove(uuid,uuid), public.group_add_leader(uuid,text), public.pastor_groups() to authenticated;
+
+-- Delete a whole group (its leaders and pastors only).
+create or replace function public.group_delete(gid uuid) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if not (public._is_leader(gid) or public._is_staff()) then raise exception 'not allowed'; end if;
+  delete from public.groups where id = gid;
+end $$;
+revoke all on function public.group_delete(uuid) from public, anon;
+grant execute on function public.group_delete(uuid) to authenticated;
+
+-- Make the app see the new functions right away.
+notify pgrst, 'reload schema';

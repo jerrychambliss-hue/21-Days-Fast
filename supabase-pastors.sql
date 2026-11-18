@@ -75,3 +75,4 @@ grant execute on function public.pastor_overview() to authenticated;
 --    with their email (remove the two dashes at the start of the next two lines):
 -- insert into public.staff (user_id) select id from auth.users where email = 'PASTOR-EMAIL@example.com'
 -- on conflict do nothing;
+notify pgrst, 'reload schema';

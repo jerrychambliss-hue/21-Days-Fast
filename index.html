@@ -167,7 +167,7 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
 .pi{width:24px;height:27px;vertical-align:-8px;margin-right:6px;color:var(--flame)}
 .pi path{stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
 .pi .hd{fill:none}.pi.on .hd{fill:currentColor;fill-opacity:.25}.pi .ht{fill:currentColor;stroke:none}
-.pray-btn{display:inline-flex;align-items:center}
+.pray-btn{display:inline-flex;align-items:center;white-space:nowrap}.wallnote .meta{flex-wrap:wrap}
 @media (prefers-reduced-motion:no-preference){.pi.on .ht{transform-box:fill-box;transform-origin:50% 50%;animation:beat 1.6s ease-in-out infinite}@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}}
 .tabs button{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:600;padding:9px 2px calc(9px + env(safe-area-inset-bottom));min-width:0;min-height:56px}
 .tabs button span{white-space:nowrap}
@@ -1016,24 +1016,24 @@ function groupHtml() {
   }
   var leader = cur.role === "leader";
   h += '<h2 style="font-size:24px;margin:2px 0 4px">' + esc(cur.name) + '</h2>';
-  if (leader && cur.code) {
-    var link = location.origin + location.pathname + "?join=" + cur.code;
-    h += '<div class="card"><h3>' + esc(t("grpInvite")) + '</h3><p class="small">' + esc(t("grpInviteP")) + '</p><p style="font-family:var(--display);font-size:32px;letter-spacing:.12em;margin:8px 0">' + esc(cur.code) + '</p><button class="btn alt" data-act="groupcopy" data-link="' + esc(link) + '">' + esc(t("grpCopy")) + "</button>" + (GR.msg ? ' <span class="small">' + esc(GR.msg) + "</span>" : "") + "</div>";
-  }
+  h += '<div class="card"><h3>' + esc(t("grpWall")) + '</h3><textarea id="gw" maxlength="1000" placeholder="' + esc(t("grpWallPh")) + '"></textarea><label class="check"><input type="checkbox" id="gwa"><span class="small">' + esc(t("grpAnon")) + '</span></label><button class="btn" data-act="groupwall">' + esc(t("grpWallPost")) + "</button></div>";
+  if (!GR.wall.length) h += '<p class="small">' + esc(t("grpWallNone")) + "</p>";
+  GR.wall.forEach(function (x) { h += groupNote(x, x.mine || leader, true); });
   h += '<div class="card"><h3>' + esc(t("grpDevo")) + "</h3>";
   if (leader) h += '<textarea id="gdv" maxlength="1000" placeholder="' + esc(t("grpDevoPh")) + '"></textarea><div style="margin:8px 0"><button class="btn" data-act="groupdevo">' + esc(t("grpDevoPost")) + "</button></div>";
   if (!GR.devo.length) h += '<p class="small">' + esc(t("grpDevoNone")) + "</p>";
   GR.devo.forEach(function (x) { h += groupNote(x, leader); });
   h += "</div>";
+  if (leader && cur.code) {
+    var link = location.origin + location.pathname + "?join=" + cur.code;
+    h += '<div class="card"><h3>' + esc(t("grpInvite")) + '</h3><p class="small">' + esc(t("grpInviteP")) + '</p><p style="font-family:var(--display);font-size:32px;letter-spacing:.12em;margin:8px 0">' + esc(cur.code) + '</p><button class="btn alt" data-act="groupcopy" data-link="' + esc(link) + '">' + esc(t("grpCopy")) + "</button>" + (GR.msg ? ' <span class="small">' + esc(GR.msg) + "</span>" : "") + "</div>";
+  }
   h += '<div class="card"><h3>' + esc(t("grpMembers")) + " (" + GR.members.length + ")</h3>";
   GR.members.forEach(function (m) {
     h += '<div class="row" style="justify-content:space-between;border-top:1px solid var(--line);padding:8px 0"><span><b>' + esc(m.name) + "</b>" + (m.role === "leader" ? ' <span class="small">&middot; ' + esc(t("grpLeader")) + "</span>" : "") + '<br><span class="small">' + esc(m.days_done) + '/21' + (m.done_today ? " &middot; &#10003; " + esc(t("grpToday")) : "") + "</span></span>" +
       (leader && m.mid && m.role !== "leader" ? '<button class="pill" data-act="groupremove" data-id="' + esc(m.mid) + '">' + esc(t("grpRemove")) + "</button>" : "") + "</div>";
   });
   h += "</div>";
-  h += '<div class="card"><h3>' + esc(t("grpWall")) + '</h3><textarea id="gw" maxlength="1000" placeholder="' + esc(t("grpWallPh")) + '"></textarea><label class="check"><input type="checkbox" id="gwa"><span class="small">' + esc(t("grpAnon")) + '</span></label><button class="btn" data-act="groupwall">' + esc(t("grpWallPost")) + "</button></div>";
-  if (!GR.wall.length) h += '<p class="small">' + esc(t("grpWallNone")) + "</p>";
-  GR.wall.forEach(function (x) { h += groupNote(x, x.mine || leader, true); });
   h += '<div class="row" style="margin-top:18px"><button class="btn alt" data-act="groupanother">' + esc(t("grpAnother")) + '</button><button class="btn alt" data-act="groupleave">' + esc(GR.confirmLeave ? t("grpLeaveConfirm") : t("grpLeave")) + "</button></div>";
   return h;
 }

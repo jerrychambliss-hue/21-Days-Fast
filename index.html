@@ -164,6 +164,11 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
 .prayhead{display:flex;align-items:center;gap:12px;margin:26px 0 -4px}
 .prayhead .pl{font-family:var(--display);font-size:46px;font-weight:500;color:var(--flame);line-height:1;width:34px;text-align:center}
 .prayhead h2{font-size:22px}
+.pi{width:24px;height:27px;vertical-align:-8px;margin-right:6px;color:var(--flame)}
+.pi path{stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.pi .hd{fill:none}.pi.on .hd{fill:currentColor;fill-opacity:.25}.pi .ht{fill:currentColor;stroke:none}
+.pray-btn{display:inline-flex;align-items:center}
+@media (prefers-reduced-motion:no-preference){.pi.on .ht{transform-box:fill-box;transform-origin:50% 50%;animation:beat 1.6s ease-in-out infinite}@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -693,6 +698,7 @@ document.addEventListener("click", function (e) {
   else if (a === "groupcopy") { groupCopy(el.getAttribute("data-link")); }
   else if (a === "groupdevo") { groupPost("devo"); }
   else if (a === "groupwall") { groupPost("wall"); }
+  else if (a === "grouppray") { groupAct("group_pray", { pid: el.getAttribute("data-id") }); }
   else if (a === "grouppostdel") { groupAct("group_post_delete", { pid: el.getAttribute("data-id") }); }
   else if (a === "groupremove") { groupAct("group_remove", { gid: GR.sel, mid: el.getAttribute("data-id") }); }
   else if (a === "groupleave") { if (!GR.confirmLeave) { GR.confirmLeave = true; render(); } else { GR.confirmLeave = false; var lg = GR.sel; GR.sel = null; groupAct("group_leave", { gid: lg }); } }
@@ -893,6 +899,9 @@ function wallSend() {
 function wallAct(fn, args) {
   SB.rpc(fn, args).then(function (r) { if (r.error) { WALL.err = friendly(r.error); render(); } else loadWall(); });
 }
+function prayIcon(on) {
+  return '<svg class="pi' + (on ? " on" : "") + '" viewBox="0 0 32 36" aria-hidden="true"><path class="ht" d="M16 9C16 9 11.8 6.6 11.8 4.2C11.8 2.8 12.9 2 14 2C14.9 2 15.6 2.5 16 3.2C16.4 2.5 17.1 2 18 2C19.1 2 20.2 2.8 20.2 4.2C20.2 6.6 16 9 16 9Z"/><path class="hd" d="M16 12C13.6 14.4 10.8 18 10.4 22.6C10.2 25.4 10.6 28.6 11.4 33L16 33Z"/><path class="hd" d="M16 12C18.4 14.4 21.2 18 21.6 22.6C21.8 25.4 21.4 28.6 20.6 33L16 33Z"/></svg>';
+}
 function wallHtml() {
   var h = '<div class="top"><button class="pill" data-act="closewall">&larr; ' + esc(t("closeReader")) + '</button><button class="pill" data-act="openwall">' + esc(t("refresh")) + "</button></div>";
   h += '<h1 style="font-size:28px;margin:4px 0 6px">' + esc(t("wallTitle")) + "</h1>";
@@ -911,13 +920,13 @@ function wallHtml() {
   }
   if (!WALL.list.length) h += '<p class="small" style="margin-top:14px">' + esc(t("wallEmpty")) + "</p>";
   WALL.list.forEach(function (r) {
-    h += '<div class="wallnote">' + esc(r.body) + '<div class="meta"><span class="small">' + esc(t("wallPrayedN", { n: r.prayed })) + "</span>" +
-      (r.i_prayed ? '<span class="small">&#10003; ' + esc(t("wallPrayed")) + "</span>" : '<button class="btn alt" data-act="wallpray" data-id="' + esc(r.id) + '">' + esc(t("wallPrayed")) + "</button>") + "</div></div>";
+    h += '<div class="wallnote">' + esc(r.body) + '<div class="meta"><span class="small">' + prayIcon(r.prayed > 0) + esc(t("wallPrayedN", { n: r.prayed })) + "</span>" +
+      (r.i_prayed ? '<span class="small">&#10003; ' + esc(t("wallPrayed")) + "</span>" : '<button class="btn alt pray-btn" data-act="wallpray" data-id="' + esc(r.id) + '">' + prayIcon(false) + esc(t("wallPrayed")) + "</button>") + "</div></div>";
   });
   if (WALL.mine.length) {
     h += '<h3 style="margin-top:18px">' + esc(t("wallMine")) + "</h3>";
     WALL.mine.forEach(function (r) {
-      h += '<div class="wallnote">' + esc(r.body) + '<div class="meta"><span class="small">' + esc(r.status === "pending" ? t("wallPending") : t("wallApproved")) + '</span><button class="btn alt" data-act="walldel" data-id="' + esc(r.id) + '">' + esc(t("wallRemoveMine")) + "</button></div></div>";
+      h += '<div class="wallnote">' + esc(r.body) + '<div class="meta"><span class="small">' + (r.status === "pending" ? esc(t("wallPending")) : prayIcon((r.prayed || 0) > 0) + esc(t("wallPrayedN", { n: r.prayed || 0 }))) + '</span><button class="btn alt" data-act="walldel" data-id="' + esc(r.id) + '">' + esc(t("wallRemoveMine")) + "</button></div></div>";
     });
   }
   return h;
@@ -962,9 +971,10 @@ function groupAct(fn, args) { SB.rpc(fn, args).then(function (r) { if (r.error) 
 function groupCopy(link) {
   try { navigator.clipboard.writeText(link).then(function () { GR.msg = t("grpCopied"); render(); }, function () { window.prompt("", link); }); } catch (e) { window.prompt("", link); }
 }
-function groupNote(x, canDel) {
+function groupNote(x, canDel, pray) {
   var who = x.author === null || x.author === undefined ? t("grpAnonName") : x.author, when = String(x.created_at || "").slice(0, 10);
   return '<div class="wallnote">' + esc(x.body) + '<div class="meta"><span class="small">' + esc(who) + (when ? " &middot; " + esc(when) : "") + "</span>" +
+    (pray ? (x.i_prayed || x.mine ? '<span class="small">' + prayIcon((x.prayed || 0) > 0) + esc(t("wallPrayedN", { n: x.prayed || 0 })) + "</span>" : '<button class="btn alt pray-btn" data-act="grouppray" data-id="' + esc(x.id) + '">' + prayIcon(false) + esc(t("wallPrayed")) + (x.prayed ? " &middot; " + x.prayed : "") + "</button>") : "") +
     (canDel ? '<button class="btn alt" data-act="grouppostdel" data-id="' + esc(x.id) + '">' + esc(t("grpDelete")) + "</button>" : "") + "</div></div>";
 }
 function groupHtml() {
@@ -1003,7 +1013,7 @@ function groupHtml() {
   h += "</div>";
   h += '<div class="card"><h3>' + esc(t("grpWall")) + '</h3><textarea id="gw" maxlength="1000" placeholder="' + esc(t("grpWallPh")) + '"></textarea><label class="check"><input type="checkbox" id="gwa"><span class="small">' + esc(t("grpAnon")) + '</span></label><button class="btn" data-act="groupwall">' + esc(t("grpWallPost")) + "</button></div>";
   if (!GR.wall.length) h += '<p class="small">' + esc(t("grpWallNone")) + "</p>";
-  GR.wall.forEach(function (x) { h += groupNote(x, x.mine || leader); });
+  GR.wall.forEach(function (x) { h += groupNote(x, x.mine || leader, true); });
   h += '<div class="row" style="margin-top:18px"><button class="btn alt" data-act="groupanother">' + esc(t("grpAnother")) + '</button><button class="btn alt" data-act="groupleave">' + esc(GR.confirmLeave ? t("grpLeaveConfirm") : t("grpLeave")) + "</button></div>";
   return h;
 }

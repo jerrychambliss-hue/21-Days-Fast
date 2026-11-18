@@ -6,15 +6,15 @@
 <title>21 Days Fast</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <style>
 /* Layout idea: one narrow column, bottom tab bar, big flame-colored day numeral as the anchor. */
 :root{
-  --bg:#F5F8F5; --surface:#FFFFFF; --ink:#18271F; --muted:#56685E; --line:#D9E4DC;
+  --bg:#FAF7EF; --surface:#FFFDF8; --ink:#27291F; --muted:#6A6B5B; --line:#E5DEC9;
   --sky:#E3EEE7; --rock-far:#C9D9CE; --rock:#8DA997; --rock-dark:#5E7C6A; --cloud:#FFFFFF;
   --flame:#3C7A5B; --on-flame:#FFFFFF; --gold:#E8B84A; --hl:rgba(143,200,168,.40); --ok:#2F7A52;
-  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
-  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
   --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   color-scheme:light;
 }
@@ -137,6 +137,23 @@ details.com summary{font-family:var(--display);font-size:18px;font-weight:800}
 @media (prefers-reduced-motion:reduce){.flame,.flame.new{animation:none}}
 .inp{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;margin:4px 0 10px}
 .hdr{display:flex;gap:8px;align-items:center}
+
+/* warm, handmade feel */
+body{font-size:17px}
+h1,h2,h3{font-weight:600;letter-spacing:0}
+.brand{font-weight:700;letter-spacing:0}
+.eyebrow{text-transform:none;letter-spacing:.02em;font-style:italic;font-weight:600;font-size:14px;font-family:var(--display)}
+.numeral{font-weight:500}
+.card{border-radius:6px;box-shadow:0 1px 0 var(--line),0 8px 16px -14px rgba(70,55,20,.35)}
+.btn{border-radius:6px;font-weight:600}
+.pill{border-radius:6px}
+.opt,.books button,.chs button,.dot,textarea{border-radius:6px}
+.bar>i{background:var(--flame)}
+.bar{border-radius:3px}.bar>i{border-radius:3px}
+.tabs button{font-weight:600;font-size:13px}
+.verse{border-left-width:2px}
+.wallnote{border:1px solid var(--line);background:var(--surface);border-radius:2px 8px 4px 8px;padding:14px 16px;margin:10px 0;font-family:var(--serif);font-size:17px;line-height:1.5;box-shadow:0 1px 0 var(--line),0 8px 14px -12px rgba(70,55,20,.35)}
+.wallnote .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-family:var(--body)}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -204,7 +221,7 @@ var T = {
     deleteHead: "Delete my account", deleteP: "Deletes your account and everything saved in the cloud. The notes on this phone stay.", deleteBtn: "Delete my account and cloud data", deleteConfirm: "Tap again to delete for good",
     errBad: "Wrong email or password.", errExists: "There is already an account with that email. Try signing in.", errRate: "Too many tries. Please wait a minute.", errWeak: "Choose a longer password (8 or more characters).",
     errEmail: "Please enter a valid email.", errConsent: "Please tick the box to continue.", errNet: "Could not reach the server. Check your connection.",
-    hello: "Welcome, {name}", yourName: "Your name", nameReq: "Please enter your name (up to 60 characters).", visibleLabel: "Let the pastors and leaders at SOS Church see my name and which day I am on.", saveProfile: "Save", profSaved: "Saved.", pastorOpen: "Open pastor view", pastorTitle: "Pastor view", pastorNote: "Only people who chose to be visible are listed by name. Prayers and notes are never shown here.", pAccounts: "Accounts", pActive: "Active today", pFinished: "Finished all 21", pPerDay: "People who finished each day", pMembers: "Members", pDay: "Day {n}", pLast: "Last active", pNone: "No members yet.", refresh: "Refresh", pLoading: "Loading…", pDenied: "This account does not have pastor access.", haveAcct: "Already have an account? Sign in", countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
+    hello: "Welcome, {name}", yourName: "Your name", nameReq: "Please enter your name (up to 60 characters).", visibleLabel: "Let the pastors and leaders at SOS Church see my name and which day I am on.", saveProfile: "Save", profSaved: "Saved.", pastorOpen: "Open pastor view", pastorTitle: "Pastor view", pastorNote: "Only people who chose to be visible are listed by name. Prayers and notes are never shown here.", pAccounts: "Accounts", pActive: "Active today", pFinished: "Finished all 21", pPerDay: "People who finished each day", pMembers: "Members", pDay: "Day {n}", pLast: "Last active", pNone: "No members yet.", refresh: "Refresh", pLoading: "Loading…", pDenied: "This account does not have pastor access.", wallOpen: "Prayer wall", wallTitle: "Prayer wall", wallIntro: "Share a request anonymously. A pastor reads each one before it appears. Please leave out names and private details about other people.", wallPlace: "What can we pray for?", wallSend: "Send request", wallSent: "Thank you. A pastor will read it before it appears on the wall.", wallNeedLogin: "Sign in to read and share prayer requests.", wallPrayed: "I prayed", wallPrayedN: "{n} prayed", wallEmpty: "No requests on the wall yet.", wallMine: "Your requests", wallPending: "Waiting for a pastor", wallApproved: "On the wall", wallRemove: "Remove", wallApprove: "Approve", wallQueue: "Requests to approve", wallRemoveMine: "Delete", wallOpenBtn: "Open the prayer wall", wallDesc: "Pray for one another, anonymously.", haveAcct: "Already have an account? Sign in", countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
   },
   sv: {
     summit: "Sinai", climbed: "{n} av 21 dagar avklarade", toGo: "{n} kvar till bergets topp", atSummit: "Du nådde bergets topp.", start: "Bas",
@@ -240,7 +257,7 @@ var T = {
     deleteHead: "Radera mitt konto", deleteP: "Raderar ditt konto och allt som sparats i molnet. Anteckningarna på den här telefonen finns kvar.", deleteBtn: "Radera mitt konto och molndata", deleteConfirm: "Tryck igen för att radera för gott",
     errBad: "Fel e-post eller lösenord.", errExists: "Det finns redan ett konto med den e-posten. Försök logga in.", errRate: "För många försök. Vänta en minut.", errWeak: "Välj ett längre lösenord (minst 8 tecken).",
     errEmail: "Skriv in en giltig e-postadress.", errConsent: "Kryssa i rutan för att fortsätta.", errNet: "Kunde inte nå servern. Kontrollera din anslutning.",
-    hello: "Välkommen, {name}", yourName: "Ditt namn", nameReq: "Skriv ditt namn (högst 60 tecken).", visibleLabel: "Låt pastorer och ledare i SOS Church se mitt namn och vilken dag jag är på.", saveProfile: "Spara", profSaved: "Sparat.", pastorOpen: "Öppna pastorsvyn", pastorTitle: "Pastorsvy", pastorNote: "Bara personer som valt att vara synliga listas med namn. Böner och anteckningar visas aldrig här.", pAccounts: "Konton", pActive: "Aktiva idag", pFinished: "Klarat alla 21", pPerDay: "Personer som klarat varje dag", pMembers: "Medlemmar", pDay: "Dag {n}", pLast: "Senast aktiv", pNone: "Inga medlemmar ännu.", refresh: "Uppdatera", pLoading: "Laddar…", pDenied: "Det här kontot har inte pastorsåtkomst.", haveAcct: "Har du redan ett konto? Logga in", countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
+    hello: "Välkommen, {name}", yourName: "Ditt namn", nameReq: "Skriv ditt namn (högst 60 tecken).", visibleLabel: "Låt pastorer och ledare i SOS Church se mitt namn och vilken dag jag är på.", saveProfile: "Spara", profSaved: "Sparat.", pastorOpen: "Öppna pastorsvyn", pastorTitle: "Pastorsvy", pastorNote: "Bara personer som valt att vara synliga listas med namn. Böner och anteckningar visas aldrig här.", pAccounts: "Konton", pActive: "Aktiva idag", pFinished: "Klarat alla 21", pPerDay: "Personer som klarat varje dag", pMembers: "Medlemmar", pDay: "Dag {n}", pLast: "Senast aktiv", pNone: "Inga medlemmar ännu.", refresh: "Uppdatera", pLoading: "Laddar…", pDenied: "Det här kontot har inte pastorsåtkomst.", wallOpen: "Förbönsvägg", wallTitle: "Förbönsvägg", wallIntro: "Dela ett förbönsämne anonymt. En pastor läser varje inlägg innan det visas. Skriv inte namn eller privata uppgifter om andra.", wallPlace: "Vad kan vi be för?", wallSend: "Skicka", wallSent: "Tack. En pastor läser det innan det visas på väggen.", wallNeedLogin: "Logga in för att läsa och dela förbönsämnen.", wallPrayed: "Jag bad", wallPrayedN: "{n} har bett", wallEmpty: "Inga förbönsämnen på väggen ännu.", wallMine: "Dina förbönsämnen", wallPending: "Väntar på en pastor", wallApproved: "På väggen", wallRemove: "Ta bort", wallApprove: "Godkänn", wallQueue: "Att godkänna", wallRemoveMine: "Radera", wallOpenBtn: "Öppna förbönsväggen", wallDesc: "Be för varandra, anonymt.", haveAcct: "Har du redan ett konto? Logga in", countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
   }
 };
 function t(k, o) {
@@ -297,6 +314,7 @@ function render() {
   var h;
   if (UI.screen && UI.screen.type === "account") { h = accountHtml(); }
   else if (UI.screen && UI.screen.type === "pastor") { h = pastorHtml(); }
+  else if (UI.screen && UI.screen.type === "wall") { h = wallHtml(); }
   else if (!S.onboarded) h = onboardHtml();
   else if (UI.screen && UI.screen.type === "reader") { h = readerShell(); }
   else {
@@ -490,6 +508,7 @@ function todayHtml() {
   if (CLOUD.profile && CLOUD.profile.name) h += '<p class="small" style="margin:0 0 2px">' + esc(t("hello", { name: CLOUD.profile.name })) + "</p>";
   h += '<div class="hero"><div class="numeral" aria-hidden="true">' + n + '</div><div><p class="eyebrow">' + esc(t("dayOf", { n: n })) + "</p><h1>" + esc(L(d.title)) + "</h1></div></div>";
   h += mountainHtml() + '<p class="small" id="cnt" style="margin:2px 0 8px">' + esc(countText()) + "</p>";
+  if (SB) h += '<div class="card"><h3>' + esc(t("wallTitle")) + '</h3><p class="small" style="margin-bottom:10px">' + esc(t("wallDesc")) + '</p><button class="btn alt" data-act="openwall">' + esc(t("wallOpenBtn")) + "</button></div>";
   if (allDone() && !UI.view) h += '<div class="card celebrate"><h2>' + esc(t("done21")) + "</h2><p>" + esc(t("done21p")) + '</p><div style="margin-top:10px"><button class="btn alt" style="background:#fff;color:#151A33" data-act="tab" data-tab="journal">' + esc(t("journal")) + "</button></div></div>";
   h += '<div class="card"><h2>' + esc(t("read")) + " &middot; " + esc(refText(d)) + '</h2><div class="verse" id="kv">…<cite>' + esc(t("keyVerse")) + " &middot; " + esc(keyRef(d)) + '</cite></div>';
   h += '<button class="btn full" data-act="openday" data-n="' + n + '">' + esc(t("openReading")) + '</button>' + listenBtn("today", t("listenRead")) + '<label class="check"><input type="checkbox" data-act="tick" data-k="read"' + (tk.read ? " checked" : "") + "><span>" + esc(t("readTick")) + "</span></label></div>";
@@ -642,6 +661,13 @@ document.addEventListener("click", function (e) {
   else if (a === "acctout") { acctSignOut(); }
   else if (a === "acctdelete") { acctDelete(); }
   else if (a === "profsave") { profSave(); }
+  else if (a === "openwall") { UI.screen = { type: "wall" }; loadWall(); }
+  else if (a === "closewall") { UI.screen = null; render(); }
+  else if (a === "wallsend") { wallSend(); }
+  else if (a === "wallpray") { wallAct("wall_pray", { rid: el.getAttribute("data-id") }); }
+  else if (a === "walldel") { wallAct("wall_delete", { rid: el.getAttribute("data-id") }); }
+  else if (a === "wallok") { wallAct("wall_moderate", { rid: el.getAttribute("data-id"), approve: true }); }
+  else if (a === "wallno") { wallAct("wall_moderate", { rid: el.getAttribute("data-id"), approve: false }); }
   else if (a === "openpastor") { UI.screen = { type: "pastor" }; loadPastor(); }
   else if (a === "closepastor") { UI.screen = { type: "account" }; render(); }
 });
@@ -793,6 +819,58 @@ function pastorHtml() {
     h += '<div class="row" style="justify-content:space-between;border-top:1px solid var(--line);padding:8px 0"><span><b>' + esc(r.name || "") + '</b><br><span class="small">' + esc(t("pDay", { n: r.current_day })) + " &middot; " + esc(r.days_done) + "/21</span></span><span class=\"small\">" + esc(when) + "</span></div>";
   });
   return h + "</div>";
+}
+var WALL = { loading: false, list: [], mine: [], queue: [], err: "", msg: "" };
+function loadWall() {
+  if (!SB || !CLOUD.user) { render(); return; }
+  WALL.loading = true; WALL.err = ""; render();
+  var jobs = [SB.rpc("wall_list"), SB.rpc("wall_mine"), CLOUD.staff ? SB.rpc("wall_pending") : Promise.resolve({ data: [] })];
+  Promise.all(jobs).then(function (r) {
+    var bad = r[0].error || r[1].error || r[2].error;
+    if (bad) WALL.err = friendly(bad); else { WALL.list = r[0].data || []; WALL.mine = r[1].data || []; WALL.queue = r[2].data || []; }
+    WALL.loading = false; render();
+  }).catch(function (e) { WALL.loading = false; WALL.err = friendly(e); render(); });
+}
+function wallSend() {
+  var el = document.getElementById("wt"), v = el ? el.value.trim() : "";
+  if (!v) return;
+  WALL.msg = "";
+  SB.rpc("wall_submit", { txt: v }).then(function (r) {
+    if (r.error) { WALL.err = friendly(r.error); render(); return; }
+    WALL.msg = t("wallSent"); loadWall();
+  });
+}
+function wallAct(fn, args) {
+  SB.rpc(fn, args).then(function (r) { if (r.error) { WALL.err = friendly(r.error); render(); } else loadWall(); });
+}
+function wallHtml() {
+  var h = '<div class="top"><button class="pill" data-act="closewall">&larr; ' + esc(t("closeReader")) + '</button><button class="pill" data-act="openwall">' + esc(t("refresh")) + "</button></div>";
+  h += '<h1 style="font-size:28px;margin:4px 0 6px">' + esc(t("wallTitle")) + "</h1>";
+  if (!CLOUD.user) return h + '<div class="card"><p>' + esc(t("wallNeedLogin")) + '</p><div style="margin-top:10px"><button class="btn" data-act="account">' + esc(t("haveAcct")) + "</button></div></div>";
+  h += '<p class="small">' + esc(t("wallIntro")) + "</p>";
+  h += '<div class="card"><textarea id="wt" maxlength="500" placeholder="' + esc(t("wallPlace")) + '"></textarea><div style="margin-top:10px"><button class="btn" data-act="wallsend">' + esc(t("wallSend")) + "</button></div>";
+  if (WALL.msg) h += '<p class="small" role="status" style="margin-top:8px">' + esc(WALL.msg) + "</p>";
+  if (WALL.err) h += '<p class="small" role="alert" style="margin-top:8px">' + esc(WALL.err) + "</p>";
+  h += "</div>";
+  if (WALL.loading) return h + '<p class="small">' + esc(t("pLoading")) + "</p>";
+  if (CLOUD.staff && WALL.queue.length) {
+    h += '<h3 style="margin-top:18px">' + esc(t("wallQueue")) + " (" + WALL.queue.length + ")</h3>";
+    WALL.queue.forEach(function (q) {
+      h += '<div class="wallnote">' + esc(q.body) + '<div class="meta"><button class="btn" data-act="wallok" data-id="' + esc(q.id) + '">' + esc(t("wallApprove")) + '</button><button class="btn alt" data-act="wallno" data-id="' + esc(q.id) + '">' + esc(t("wallRemove")) + "</button></div></div>";
+    });
+  }
+  if (!WALL.list.length) h += '<p class="small" style="margin-top:14px">' + esc(t("wallEmpty")) + "</p>";
+  WALL.list.forEach(function (r) {
+    h += '<div class="wallnote">' + esc(r.body) + '<div class="meta"><span class="small">' + esc(t("wallPrayedN", { n: r.prayed })) + "</span>" +
+      (r.i_prayed ? '<span class="small">&#10003; ' + esc(t("wallPrayed")) + "</span>" : '<button class="btn alt" data-act="wallpray" data-id="' + esc(r.id) + '">' + esc(t("wallPrayed")) + "</button>") + "</div></div>";
+  });
+  if (WALL.mine.length) {
+    h += '<h3 style="margin-top:18px">' + esc(t("wallMine")) + "</h3>";
+    WALL.mine.forEach(function (r) {
+      h += '<div class="wallnote">' + esc(r.body) + '<div class="meta"><span class="small">' + esc(r.status === "pending" ? t("wallPending") : t("wallApproved")) + '</span><button class="btn alt" data-act="walldel" data-id="' + esc(r.id) + '">' + esc(t("wallRemoveMine")) + "</button></div></div>";
+    });
+  }
+  return h;
 }
 function refreshAccount() { if (UI.screen && UI.screen.type === "account" && CLOUD.user) render(); }
 function syncText() {

@@ -154,6 +154,10 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
 .verse{border-left-width:2px}
 .wallnote{border:1px solid var(--line);background:var(--surface);border-radius:2px 8px 4px 8px;padding:14px 16px;margin:10px 0;font-family:var(--serif);font-size:17px;line-height:1.5;box-shadow:0 1px 0 var(--line),0 8px 14px -12px rgba(70,55,20,.35)}
 .wallnote .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-family:var(--body)}
+
+.prayhead{display:flex;align-items:center;gap:12px;margin:26px 0 -4px}
+.prayhead .pl{font-family:var(--display);font-size:46px;font-weight:500;color:var(--flame);line-height:1;width:34px;text-align:center}
+.prayhead h2{font-size:22px}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -221,7 +225,7 @@ var T = {
     deleteHead: "Delete my account", deleteP: "Deletes your account and everything saved in the cloud. The notes on this phone stay.", deleteBtn: "Delete my account and cloud data", deleteConfirm: "Tap again to delete for good",
     errBad: "Wrong email or password.", errExists: "There is already an account with that email. Try signing in.", errRate: "Too many tries. Please wait a minute.", errWeak: "Choose a longer password (8 or more characters).",
     errEmail: "Please enter a valid email.", errConsent: "Please tick the box to continue.", errNet: "Could not reach the server. Check your connection.",
-    hello: "Welcome, {name}", yourName: "Your name", nameReq: "Please enter your name (up to 60 characters).", visibleLabel: "Let the pastors and leaders at SOS Church see my name and which day I am on.", saveProfile: "Save", profSaved: "Saved.", pastorOpen: "Open pastor view", pastorTitle: "Pastor view", pastorNote: "Only people who chose to be visible are listed by name. Prayers and notes are never shown here.", pAccounts: "Accounts", pActive: "Active today", pFinished: "Finished all 21", pPerDay: "People who finished each day", pMembers: "Members", pDay: "Day {n}", pLast: "Last active", pNone: "No members yet.", refresh: "Refresh", pLoading: "Loading…", pDenied: "This account does not have pastor access.", wallOpen: "Prayer wall", wallTitle: "Prayer wall", wallIntro: "Share a request anonymously. A pastor reads each one before it appears. Please leave out names and private details about other people.", wallPlace: "What can we pray for?", wallSend: "Send request", wallSent: "Thank you. A pastor will read it before it appears on the wall.", wallNeedLogin: "Sign in to read and share prayer requests.", wallPrayed: "I prayed", wallPrayedN: "{n} prayed", wallEmpty: "No requests on the wall yet.", wallMine: "Your requests", wallPending: "Waiting for a pastor", wallApproved: "On the wall", wallRemove: "Remove", wallApprove: "Approve", wallQueue: "Requests to approve", wallRemoveMine: "Delete", wallOpenBtn: "Open the prayer wall", wallDesc: "Pray for one another, anonymously.", haveAcct: "Already have an account? Sign in", countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
+    hello: "Welcome, {name}", yourName: "Your name", nameReq: "Please enter your name (up to 60 characters).", visibleLabel: "Let the pastors and leaders at SOS Church see my name and which day I am on.", saveProfile: "Save", profSaved: "Saved.", pastorOpen: "Open pastor view", pastorTitle: "Pastor view", pastorNote: "Only people who chose to be visible are listed by name. Prayers and notes are never shown here.", pAccounts: "Accounts", pActive: "Active today", pFinished: "Finished all 21", pPerDay: "People who finished each day", pMembers: "Members", pDay: "Day {n}", pLast: "Last active", pNone: "No members yet.", refresh: "Refresh", pLoading: "Loading…", pDenied: "This account does not have pastor access.", wallOpen: "Prayer wall", wallTitle: "Prayer wall", wallIntro: "Share a request anonymously. A pastor prays over each request before it makes it to the prayer wall so the church can support you. Please leave out names and private details about other people.", wallPlace: "What can we pray for?", wallSend: "Send request", wallSent: "Thank you. A pastor will pray over it before it appears on the wall.", wallNeedLogin: "Sign in to read and share prayer requests.", wallPrayed: "I prayed", wallPrayedN: "{n} prayed", wallEmpty: "No requests on the wall yet.", wallMine: "Your requests", wallPending: "Waiting for a pastor", wallApproved: "On the wall", wallRemove: "Remove", wallApprove: "Approve", wallQueue: "Requests to approve", wallRemoveMine: "Delete", wallOpenBtn: "Open the prayer wall", wallDesc: "Pray for one another, anonymously.", landWelcome: "Welcome to SOS Church Stockholm's 21 Days of Prayer and Fasting", landSub: "Pause, rejoice, ask, yield: a simple way to meet God every day through the book of Acts.", prayModel: "Based on the P.R.A.Y. model from 24-7 Prayer.", pauseH: "Pause", pauseP: "Be still in God's presence.", pauseLine: "Take one minute. Breathe slowly and put your phone down. Pray: \"As I draw near to You, God, draw near to me. Holy Spirit, teach me to pray.\"", rejoiceH: "Rejoice", rejoiceP: "Thank God and reflect on His word.", askH: "Ask", askP: "Ask God to help you and the people you care about.", yieldH: "Yield", yieldP: "Surrender to God and say yes to His ways.", yieldLine: "Pray: \"Not my will but Yours be done.\" Then be quiet and listen.", resetHead: "Start over", resetP: "Clears your completed days, notes, prayers and fast choice so you can begin again from Day 1. Your account and name stay. This cannot be undone.", resetBtn: "Start over", resetConfirm: "Tap again to erase my progress", confTitle: "Your email is confirmed", confP: "Welcome to SOS Church Stockholm's 21 Days of Prayer and Fasting. You are signed in on this device. If you use the app from your Home Screen, open it there and sign in once.", confBtn: "Continue", confBadTitle: "This link did not work", confBadP: "It may have expired or already been used. If you already confirmed your email, just sign in.", haveAcct: "Already have an account? Sign in", countOne: "1 person finished a day today", countMany: "{n} people finished a day today"
   },
   sv: {
     summit: "Sinai", climbed: "{n} av 21 dagar avklarade", toGo: "{n} kvar till bergets topp", atSummit: "Du nådde bergets topp.", start: "Bas",
@@ -257,7 +261,7 @@ var T = {
     deleteHead: "Radera mitt konto", deleteP: "Raderar ditt konto och allt som sparats i molnet. Anteckningarna på den här telefonen finns kvar.", deleteBtn: "Radera mitt konto och molndata", deleteConfirm: "Tryck igen för att radera för gott",
     errBad: "Fel e-post eller lösenord.", errExists: "Det finns redan ett konto med den e-posten. Försök logga in.", errRate: "För många försök. Vänta en minut.", errWeak: "Välj ett längre lösenord (minst 8 tecken).",
     errEmail: "Skriv in en giltig e-postadress.", errConsent: "Kryssa i rutan för att fortsätta.", errNet: "Kunde inte nå servern. Kontrollera din anslutning.",
-    hello: "Välkommen, {name}", yourName: "Ditt namn", nameReq: "Skriv ditt namn (högst 60 tecken).", visibleLabel: "Låt pastorer och ledare i SOS Church se mitt namn och vilken dag jag är på.", saveProfile: "Spara", profSaved: "Sparat.", pastorOpen: "Öppna pastorsvyn", pastorTitle: "Pastorsvy", pastorNote: "Bara personer som valt att vara synliga listas med namn. Böner och anteckningar visas aldrig här.", pAccounts: "Konton", pActive: "Aktiva idag", pFinished: "Klarat alla 21", pPerDay: "Personer som klarat varje dag", pMembers: "Medlemmar", pDay: "Dag {n}", pLast: "Senast aktiv", pNone: "Inga medlemmar ännu.", refresh: "Uppdatera", pLoading: "Laddar…", pDenied: "Det här kontot har inte pastorsåtkomst.", wallOpen: "Förbönsvägg", wallTitle: "Förbönsvägg", wallIntro: "Dela ett förbönsämne anonymt. En pastor läser varje inlägg innan det visas. Skriv inte namn eller privata uppgifter om andra.", wallPlace: "Vad kan vi be för?", wallSend: "Skicka", wallSent: "Tack. En pastor läser det innan det visas på väggen.", wallNeedLogin: "Logga in för att läsa och dela förbönsämnen.", wallPrayed: "Jag bad", wallPrayedN: "{n} har bett", wallEmpty: "Inga förbönsämnen på väggen ännu.", wallMine: "Dina förbönsämnen", wallPending: "Väntar på en pastor", wallApproved: "På väggen", wallRemove: "Ta bort", wallApprove: "Godkänn", wallQueue: "Att godkänna", wallRemoveMine: "Radera", wallOpenBtn: "Öppna förbönsväggen", wallDesc: "Be för varandra, anonymt.", haveAcct: "Har du redan ett konto? Logga in", countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
+    hello: "Välkommen, {name}", yourName: "Ditt namn", nameReq: "Skriv ditt namn (högst 60 tecken).", visibleLabel: "Låt pastorer och ledare i SOS Church se mitt namn och vilken dag jag är på.", saveProfile: "Spara", profSaved: "Sparat.", pastorOpen: "Öppna pastorsvyn", pastorTitle: "Pastorsvy", pastorNote: "Bara personer som valt att vara synliga listas med namn. Böner och anteckningar visas aldrig här.", pAccounts: "Konton", pActive: "Aktiva idag", pFinished: "Klarat alla 21", pPerDay: "Personer som klarat varje dag", pMembers: "Medlemmar", pDay: "Dag {n}", pLast: "Senast aktiv", pNone: "Inga medlemmar ännu.", refresh: "Uppdatera", pLoading: "Laddar…", pDenied: "Det här kontot har inte pastorsåtkomst.", wallOpen: "Förbönsvägg", wallTitle: "Förbönsvägg", wallIntro: "Dela ett förbönsämne anonymt. En pastor ber över varje förbön innan den kommer upp på förbönsväggen så att församlingen kan stödja dig. Skriv inte namn eller privata uppgifter om andra.", wallPlace: "Vad kan vi be för?", wallSend: "Skicka", wallSent: "Tack. En pastor ber över det innan det visas på väggen.", wallNeedLogin: "Logga in för att läsa och dela förbönsämnen.", wallPrayed: "Jag bad", wallPrayedN: "{n} har bett", wallEmpty: "Inga förbönsämnen på väggen ännu.", wallMine: "Dina förbönsämnen", wallPending: "Väntar på en pastor", wallApproved: "På väggen", wallRemove: "Ta bort", wallApprove: "Godkänn", wallQueue: "Att godkänna", wallRemoveMine: "Radera", wallOpenBtn: "Öppna förbönsväggen", wallDesc: "Be för varandra, anonymt.", landWelcome: "Välkommen till SOS Church Stockholms 21 dagar av bön och fasta", landSub: "Pausa, gläds, be, överlåt: ett enkelt sätt att möta Gud varje dag genom Apostlagärningarna.", prayModel: "Baserad på P.R.A.Y.-modellen från 24-7 Prayer.", pauseH: "Pausa", pauseP: "Var stilla i Guds närvaro.", pauseLine: "Ta en minut. Andas långsamt och lägg ner telefonen. Be: \"När jag kommer nära dig, Gud, kom nära mig. Helige Ande, lär mig att be.\"", rejoiceH: "Gläds", rejoiceP: "Tacka Gud och begrunda hans ord.", askH: "Be", askP: "Be Gud hjälpa dig och människorna du bryr dig om.", yieldH: "Överlåt", yieldP: "Överlämna dig åt Gud och säg ja till hans vägar.", yieldLine: "Be: \"Inte min vilja utan din ske.\" Var sedan tyst och lyssna.", resetHead: "Börja om", resetP: "Rensar dina avklarade dagar, anteckningar, böner och val av fasta så att du kan börja om från dag 1. Ditt konto och ditt namn finns kvar. Det går inte att ångra.", resetBtn: "Börja om", resetConfirm: "Tryck igen för att radera min framgång", confTitle: "Din e-post är bekräftad", confP: "Välkommen till SOS Church Stockholms 21 dagar av bön och fasta. Du är inloggad på den här enheten. Använder du appen från hemskärmen, öppna den där och logga in en gång.", confBtn: "Fortsätt", confBadTitle: "Länken fungerade inte", confBadP: "Den kan ha gått ut eller redan använts. Har du redan bekräftat din e-post kan du bara logga in.", haveAcct: "Har du redan ett konto? Logga in", countOne: "1 person har avslutat en dag idag", countMany: "{n} personer har avslutat en dag idag"
   }
 };
 function t(k, o) {
@@ -315,6 +319,7 @@ function render() {
   if (UI.screen && UI.screen.type === "account") { h = accountHtml(); }
   else if (UI.screen && UI.screen.type === "pastor") { h = pastorHtml(); }
   else if (UI.screen && UI.screen.type === "wall") { h = wallHtml(); }
+  else if (UI.screen && UI.screen.type === "confirmed") { h = confirmedHtml(); }
   else if (!S.onboarded) h = onboardHtml();
   else if (UI.screen && UI.screen.type === "reader") { h = readerShell(); }
   else {
@@ -489,7 +494,9 @@ function onboardHtml() {
   var step = UI.step || 1, h = "";
   if (step === 1) {
     h += '<div class="top"><div class="brand">' + esc(t("appSub")) + "</div></div>";
-    h += '<p class="eyebrow">' + esc(t("title")) + '</p><h1 style="font-size:32px;margin:6px 0 10px">' + esc(t("welcome")) + "</h1><p>" + esc(t("welcomeP")) + "</p>";
+    h += '<div style="margin:26px 0 8px;text-align:center"><svg viewBox="0 0 120 60" width="150" aria-hidden="true"><path d="M0 56 L38 14 L58 38 L78 22 L120 56 Z" fill="var(--rock-far)"/><path d="M18 56 L52 20 L74 46 L96 30 L120 56 Z" fill="var(--rock)" opacity=".8"/><path d="M60 14 C54 22 56 28 60 31 C64 28 66 22 60 14 Z" fill="var(--gold)"/></svg></div>';
+    h += '<h1 style="font-size:32px;margin:6px 0 12px;text-align:center">' + esc(t("landWelcome")) + '</h1><p style="text-align:center">' + esc(t("landSub")) + '</p><p class="small" style="text-align:center;margin-top:10px">' + esc(t("pauseH")) + " &middot; " + esc(t("rejoiceH")) + " &middot; " + esc(t("askH")) + " &middot; " + esc(t("yieldH")) + "</p>";
+    h += '<p style="margin-top:14px">' + esc(t("welcomeP")) + "</p>";
     h += '<h2 style="font-size:16px;margin-top:20px">' + esc(t("chooseLang")) + '</h2><div class="lang"><button class="btn ' + (S.lang === "en" ? "" : "alt") + '" data-act="setlang" data-l="en">English</button><button class="btn ' + (S.lang === "sv" ? "" : "alt") + '" data-act="setlang" data-l="sv">Svenska</button></div>';
     h += '<button class="btn full" data-act="step" data-s="2">' + esc(t("next")) + "</button>";
     if (SB) h += '<p style="text-align:center;margin-top:16px"><button class="pill" data-act="account">' + esc(t("haveAcct")) + "</button></p>";
@@ -502,20 +509,27 @@ function onboardHtml() {
   }
   return h;
 }
+function prayHead(letter, key) {
+  return '<div class="prayhead"><span class="pl" aria-hidden="true">' + letter + '</span><div><h2>' + esc(t(key + "H")) + '</h2><p class="small">' + esc(t(key + "P")) + "</p></div></div>";
+}
 function todayHtml() {
   var n = UI.view || currentDay(), d = dayData(n), tk = tick(n), nt = note(n), done = S.done.indexOf(n) >= 0, h = "";
   var pct = Math.round(S.done.length / TOTAL * 100);
   if (CLOUD.profile && CLOUD.profile.name) h += '<p class="small" style="margin:0 0 2px">' + esc(t("hello", { name: CLOUD.profile.name })) + "</p>";
   h += '<div class="hero"><div class="numeral" aria-hidden="true">' + n + '</div><div><p class="eyebrow">' + esc(t("dayOf", { n: n })) + "</p><h1>" + esc(L(d.title)) + "</h1></div></div>";
   h += mountainHtml() + '<p class="small" id="cnt" style="margin:2px 0 8px">' + esc(countText()) + "</p>";
-  if (SB) h += '<div class="card"><h3>' + esc(t("wallTitle")) + '</h3><p class="small" style="margin-bottom:10px">' + esc(t("wallDesc")) + '</p><button class="btn alt" data-act="openwall">' + esc(t("wallOpenBtn")) + "</button></div>";
   if (allDone() && !UI.view) h += '<div class="card celebrate"><h2>' + esc(t("done21")) + "</h2><p>" + esc(t("done21p")) + '</p><div style="margin-top:10px"><button class="btn alt" style="background:#fff;color:#151A33" data-act="tab" data-tab="journal">' + esc(t("journal")) + "</button></div></div>";
+  h += prayHead("P", "pause") + '<div class="card"><p>' + esc(t("pauseLine")) + '</p><p class="note">' + esc(t("prayModel")) + "</p></div>";
+  h += prayHead("R", "rejoice");
   h += '<div class="card"><h2>' + esc(t("read")) + " &middot; " + esc(refText(d)) + '</h2><div class="verse" id="kv">…<cite>' + esc(t("keyVerse")) + " &middot; " + esc(keyRef(d)) + '</cite></div>';
   h += '<button class="btn full" data-act="openday" data-n="' + n + '">' + esc(t("openReading")) + '</button>' + listenBtn("today", t("listenRead")) + '<label class="check"><input type="checkbox" data-act="tick" data-k="read"' + (tk.read ? " checked" : "") + "><span>" + esc(t("readTick")) + "</span></label></div>";
   h += comHtml(d);
   h += '<div class="card"><h2>' + esc(t("devotional")) + "</h2><p>" + esc(L(d.dev)) + "</p>" + listenBtn("dev", t("listen")) + "</div>";
   h += quoteHtml(d);
+  h += prayHead("A", "ask");
   h += '<div class="card"><h2>' + esc(t("pray")) + "</h2><p>" + esc(L(d.prayer)) + '</p><label class="small" for="pr" style="display:block;margin-top:10px">' + esc(t("prayerSpace")) + '</label><textarea id="pr" data-note="prayer" placeholder="' + esc(t("prayerPh")) + '">' + esc(nt.prayer) + '</textarea><label class="check"><input type="checkbox" data-act="tick" data-k="pray"' + (tk.pray ? " checked" : "") + "><span>" + esc(t("prayTick")) + "</span></label></div>";
+  if (SB) h += '<div class="card"><h3>' + esc(t("wallTitle")) + '</h3><p class="small" style="margin-bottom:10px">' + esc(t("wallDesc")) + '</p><button class="btn alt" data-act="openwall">' + esc(t("wallOpenBtn")) + "</button></div>";
+  h += prayHead("Y", "yield") + '<div class="card"><p>' + esc(t("yieldLine")) + "</p></div>";
   h += '<div class="card"><h2>' + esc(t("reflect")) + '</h2><ol class="q">' + L(d.q).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ol><textarea id="jr" data-note="journal" aria-label="' + esc(t("reflect")) + '" placeholder="' + esc(t("journalPh")) + '">' + esc(nt.journal) + "</textarea></div>";
   h += '<div class="card"><h2>' + esc(t("yourFast")) + "</h2>";
   if (S.fasts.length) {
@@ -549,6 +563,7 @@ function journeyHtml() {
     for (var j = 1; j <= 7; j++) { var m = w * 7 + j; h += '<p class="small" style="margin:2px 0"><b>' + m + ".</b> " + esc(L(dayData(m).title)) + " &middot; " + esc(refText(dayData(m))) + "</p>"; }
     h += "</div>";
   }
+  h += resetCard();
   return h;
 }
 function bibleHtml() {
@@ -654,7 +669,9 @@ document.addEventListener("click", function (e) {
   else if (a === "openref") { UI.screen = { type: "reader", free: true, book: el.getAttribute("data-b"), chapters: [parseInt(el.getAttribute("data-c"), 10)], scrollV: el.getAttribute("data-v"), title: bookName(el.getAttribute("data-b")) }; render(); }
   else if (a === "copy") { copyText(journalText()); }
   else if (a === "account") { UI.screen = { type: "account" }; UI.acctMode = "in"; render(); }
-  else if (a === "closeaccount") { UI.screen = null; UI.confirmDelete = false; render(); }
+  else if (a === "closeaccount") { UI.screen = null; UI.confirmDelete = false; UI.confirmReset = false; render(); }
+  else if (a === "resetprog") { resetProgress(); }
+  else if (a === "confirmdone") { UI.screen = null; UI.tab = "today"; render(); }
   else if (a === "acctmode") { var ee = document.getElementById("ae"); if (ee) UI.acctEmail = ee.value; UI.acctMode = el.getAttribute("data-m"); render(); }
   else if (a === "acctsubmit") { acctSubmit(); }
   else if (a === "acctsync") { pushNow().then(function () { render(); }); }
@@ -708,7 +725,7 @@ var SB = null, CLOUD = { user: null, status: "", msg: "", lastSync: null, profil
 function initCloud() {
   try {
     if (!window.supabase || !window.supabase.createClient) return;
-    SB = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } });
+    SB = window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
     SB.auth.onAuthStateChange(function (ev, session) { CLOUD.user = session ? session.user : null; });
     SB.auth.getSession().then(function (r) {
       var sess = r && r.data && r.data.session;
@@ -773,7 +790,8 @@ function loadProfile() {
   var uid = CLOUD.user.id;
   return SB.from("profiles").select("name,visible").eq("user_id", uid).maybeSingle().then(function (r) {
     CLOUD.profile = (r && r.data) ? r.data : null;
-    return SB.rpc("is_staff");
+    var md = CLOUD.user.user_metadata, p0 = (!CLOUD.profile && md && md.name) ? saveProfile(String(md.name).slice(0, 60), true).catch(function () {}) : Promise.resolve();
+    return p0.then(function () { return SB.rpc("is_staff"); });
   }).then(function (r) { CLOUD.staff = !!(r && r.data === true); }).catch(function () {});
 }
 function saveProfile(name, visible) {
@@ -898,7 +916,7 @@ function acctSubmit() {
   if (pw.length < 8) { setAmsg(t("errWeak")); return; }
   if (up && !document.getElementById("ac").checked) { setAmsg(t("errConsent")); return; }
   setAmsg(t("working"));
-  var req = up ? SB.auth.signUp({ email: em, password: pw }) : SB.auth.signInWithPassword({ email: em, password: pw });
+  var req = up ? SB.auth.signUp({ email: em, password: pw, options: { data: { name: nm }, emailRedirectTo: location.origin + location.pathname } }) : SB.auth.signInWithPassword({ email: em, password: pw });
   req.then(function (r) {
     if (r.error) throw r.error;
     var sess = r.data && r.data.session;
@@ -917,6 +935,25 @@ function acctSignOut() {
       saveLocal(); UI.screen = null; UI.tab = "today"; render();
     });
   }).catch(cloudFail);
+}
+function confirmedHtml() {
+  var ok = UI.screen.ok, h = '<div style="text-align:center;margin-top:48px"><div class="numeral" style="font-size:64px" aria-hidden="true">' + (ok ? "&#10003;" : "!") + "</div>";
+  h += '<h1 style="font-size:28px;margin:12px 0">' + esc(t(ok ? "confTitle" : "confBadTitle")) + '</h1><p>' + esc(t(ok ? "confP" : "confBadP")) + '</p><div style="margin-top:20px">';
+  h += ok ? '<button class="btn full" data-act="confirmdone">' + esc(t("confBtn")) + "</button>" : '<button class="btn full" data-act="account">' + esc(t("signIn")) + "</button>";
+  return h + "</div></div>";
+}
+function resetProgress() {
+  if (!UI.confirmReset) { UI.confirmReset = true; render(); return; }
+  UI.confirmReset = false; UI.view = null; UI.climb = null; UI.celebrate = null; UI.lastN = null;
+  resetLocalData(); save();
+  if (SB && CLOUD.user) {
+    SB.from("completions").delete().eq("user_id", CLOUD.user.id).then(function () { fetchCount(); }, function () {});
+    pushNow();
+  }
+  UI.screen = null; UI.tab = "today"; render(); window.scrollTo(0, 0);
+}
+function resetCard() {
+  return '<div class="card"><h3>' + esc(t("resetHead")) + '</h3><p class="small">' + esc(t("resetP")) + '</p><div style="margin-top:10px"><button class="btn alt" data-act="resetprog">' + esc(UI.confirmReset ? t("resetConfirm") : t("resetBtn")) + "</button></div></div>";
 }
 function acctDelete() {
   if (!SB || !CLOUD.user) return;
@@ -937,6 +974,7 @@ function accountHtml() {
     var pr = CLOUD.profile || { name: "", visible: true };
     h += '<div class="card"><h3>' + esc(t("yourName")) + '</h3><input class="inp" id="an" type="text" maxlength="60" autocomplete="name" value="' + esc(pr.name) + '"><label class="check"><input type="checkbox" id="av"' + (pr.visible !== false ? " checked" : "") + '><span class="small">' + esc(t("visibleLabel")) + '</span></label><button class="btn alt" data-act="profsave">' + esc(t("saveProfile")) + '</button><p class="small" id="pmsg" role="status" style="margin-top:6px"></p></div>';
     if (CLOUD.staff) h += '<div class="card"><h3>' + esc(t("pastorTitle")) + '</h3><button class="btn" data-act="openpastor">' + esc(t("pastorOpen")) + "</button></div>";
+    h += resetCard();
     h += '<div class="card"><h3>' + esc(t("deleteHead")) + '</h3><p class="small">' + esc(t("deleteP")) + '</p><div style="margin-top:10px"><button class="btn alt" data-act="acctdelete">' + esc(UI.confirmDelete ? t("deleteConfirm") : t("deleteBtn")) + "</button></div></div>";
   } else {
     var up = UI.acctMode === "up";
@@ -953,6 +991,11 @@ function accountHtml() {
 
 /* ---------- Start ---------- */
 S = load();
+(function () {
+  var hs = location.hash || "";
+  if (/(^|[#&])error(_code|_description)?=/.test(hs)) { UI.screen = { type: "confirmed", ok: false }; try { history.replaceState(null, "", location.pathname + location.search); } catch (e) {} }
+  else if (/type=(signup|email_change|invite|magiclink)/.test(hs) || /access_token=/.test(hs)) UI.screen = { type: "confirmed", ok: true };
+})();
 window.addEventListener("load", initCloud);
 Promise.all([
   fetch("content.json").then(function (r) { return r.json(); }),

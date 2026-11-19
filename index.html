@@ -189,7 +189,8 @@ p+p{margin-top:var(--s3)}
 .tabs button{padding-bottom:9px}
 .reader,.verse{hanging-punctuation:first;text-wrap:pretty}
 p,li{text-wrap:pretty}
-.logo{display:block;width:96px;height:96px;margin:var(--s5) auto var(--s3);border-radius:22px;box-shadow:0 1px 0 var(--line),0 14px 28px -16px rgba(40,50,35,.5)}
+.logo{display:block;width:112px;height:112px;margin:var(--s5) auto var(--s5);border-radius:26px;box-shadow:0 2px 4px rgba(30,45,35,.10),0 12px 24px -6px rgba(30,45,35,.28),0 36px 56px -18px rgba(30,45,35,.38);transform:translateY(-4px)}
+:root[data-theme="dark"] .logo{box-shadow:0 2px 4px rgba(0,0,0,.4),0 14px 28px -6px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06)}
 .install{display:flex;gap:var(--s3);align-items:flex-start}
 .install .ico{flex:none;width:36px;height:36px;border-radius:9px}
 @media (prefers-reduced-motion:no-preference){
@@ -200,6 +201,13 @@ p,li{text-wrap:pretty}
   .hello>*:nth-child(2){animation-delay:.12s}.hello>*:nth-child(3){animation-delay:.24s}.hello>*:nth-child(4){animation-delay:.36s}.hello>*:nth-child(n+5){animation-delay:.48s}
   @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 }
+ol.steps{margin:0;padding-left:0;list-style:none;counter-reset:st}
+ol.steps li{counter-increment:st;position:relative;padding:var(--s3) 0 var(--s3) 44px;border-top:1px solid var(--line)}
+ol.steps li:first-child{border-top:0}
+ol.steps li::before{content:counter(st);position:absolute;left:0;top:10px;width:30px;height:30px;border-radius:50%;background:var(--flame);color:var(--on-flame);font:600 15px var(--display);display:flex;align-items:center;justify-content:center}
+.ben{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s2) 0}
+.ben span{flex:none;width:24px;height:24px;border-radius:50%;background:var(--hl);color:var(--ok);font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ben p{margin:0}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -545,7 +553,7 @@ function onboardHtml() {
   var step = UI.step || 1, h = "";
   if (step === 1) {
     h += '<div class="top"><div class="brand">' + esc(t("appSub")) + "</div></div>";
-    h += '<img class="logo" src="icon-192.png" alt="SOS Church" width="96" height="96">';
+    h += '<img class="logo" src="icon-192.png" alt="SOS Church" width="112" height="112">';
     h += '<h1 style="font-size:32px;margin:6px 0 12px;text-align:center">' + esc(t("landWelcome")) + '</h1><p style="text-align:center">' + esc(t("landSub")) + '</p><p class="small" style="text-align:center;margin-top:10px">' + esc(t("pauseH")) + " &middot; " + esc(t("rejoiceH")) + " &middot; " + esc(t("askH")) + " &middot; " + esc(t("yieldH")) + "</p>";
     h += '<p style="margin-top:14px">' + esc(t("welcomeP")) + "</p>";
     h += '<h2 style="font-size:16px;margin-top:20px">' + esc(t("chooseLang")) + '</h2><div class="lang"><button class="btn ' + (S.lang === "en" ? "" : "alt") + '" data-act="setlang" data-l="en">English</button><button class="btn ' + (S.lang === "sv" ? "" : "alt") + '" data-act="setlang" data-l="sv">Svenska</button></div>';
@@ -554,9 +562,21 @@ function onboardHtml() {
   } else if (step === 2) {
     h += '<h1 style="font-size:26px;margin:6px 0 6px">' + esc(t("chooseFast")) + '</h1><p class="small">' + esc(t("chooseFastP")) + "</p>" + fastOptionsHtml() + healthHtml();
     h += '<div class="row"><button class="btn alt" data-act="step" data-s="1">' + esc(t("back")) + '</button><button class="btn" style="flex:1" data-act="step" data-s="3">' + esc(t("next")) + "</button></div>";
-  } else {
+  } else if (step === 3) {
     h += expectHtml();
-    h += '<div class="row"><button class="btn alt" data-act="step" data-s="2">' + esc(t("back")) + '</button><button class="btn" style="flex:1" data-act="finish">' + esc(t("begin")) + "</button></div>";
+    h += '<div class="row"><button class="btn alt" data-act="step" data-s="2">' + esc(t("back")) + '</button><button class="btn" style="flex:1" data-act="step" data-s="4">' + esc(t("next")) + "</button></div>";
+  } else if (step === 4) {
+    h += '<h1 style="font-size:26px;margin:6px 0 6px">' + esc(t("instHead")) + '</h1><p class="small">' + esc(t("instIntro")) + '</p><div class="card"><ol class="steps">';
+    ["instS1", "instS2", "instS3", "instS4", "instS5"].forEach(function (k) { h += "<li>" + esc(t(k)) + "</li>"; });
+    h += '</ol></div><p class="small">' + esc(t("instNote")) + '</p>';
+    h += '<div class="row" style="margin-top:16px"><button class="btn alt" data-act="step" data-s="3">' + esc(t("back")) + '</button><button class="btn" style="flex:1" data-act="step" data-s="5">' + esc(t("next")) + "</button></div>";
+  } else {
+    h += '<h1 style="font-size:26px;margin:6px 0 6px">' + esc(t("benHead")) + '</h1><p class="small">' + esc(t("benIntro")) + '</p><div class="card">';
+    ["ben1", "ben2", "ben3", "ben4", "ben5"].forEach(function (k) { h += '<div class="ben"><span aria-hidden="true">&#10003;</span><p>' + esc(t(k)) + "</p></div>"; });
+    h += '</div><p class="small">' + esc(t("benPrivacy")) + '</p>';
+    if (SB) h += '<button class="btn full" style="margin-top:16px" data-act="signupstep">' + esc(t("benCreate")) + "</button>";
+    h += '<button class="btn alt full" style="margin-top:10px" data-act="finish">' + esc(t("benSkip")) + '</button><p class="small" style="text-align:center;margin-top:10px">' + esc(t("benLater")) + '</p>';
+    h += '<p style="margin-top:12px"><button class="pill" data-act="step" data-s="4">&larr; ' + esc(t("back")) + "</button></p>";
   }
   return h;
 }
@@ -709,6 +729,7 @@ document.addEventListener("click", function (e) {
   else if (a === "lang") { S.lang = S.lang === "en" ? "sv" : "en"; save(); render(); }
   else if (a === "setlang") { S.lang = el.getAttribute("data-l"); save(); render(); }
   else if (a === "step") { UI.step = parseInt(el.getAttribute("data-s"), 10); render(); }
+  else if (a === "signupstep") { UI.screen = { type: "account" }; UI.acctMode = "up"; render(); }
   else if (a === "finish") { S.onboarded = true; save(); UI.tab = "today"; render(); }
   else if (a === "gotoday") { UI.view = n === currentDay() && !allDone() ? null : n; UI.tab = "today"; render(); }
   else if (a === "hideinstall") { S.hideInstall = true; save(); render(); }
@@ -1222,7 +1243,7 @@ window.addEventListener("load", initCloud);
 Promise.all([
   fetch("content.json").then(function (r) { return r.json(); }),
   fetch("bible/index.json").then(function (r) { return r.json(); })
-]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; Object.assign(T.en, { errGeneric: "Something went wrong on our side. Please try again in a moment.", instHead: "Keep this on your Home Screen", instP: "Tap the Share button in Safari, then \u201cAdd to Home Screen\u201d. It will open like an app, with the SOS icon.", instBtn: "Got it" }); Object.assign(T.sv, { errGeneric: "Något gick fel hos oss. Försök igen om en stund.", instHead: "Ha den på din hemskärm", instP: "Tryck på Dela-knappen i Safari och välj \u201cLägg till på hemskärmen\u201d. Då öppnas den som en app, med SOS-ikonen.", instBtn: "Uppfattat" }); if (C.ui) ["en", "sv"].forEach(function (l) { var o = C.ui[l] || {}; for (var k in o) if (o[k]) T[l][k] = o[k]; }); document.documentElement.lang = S.lang; render(); })
+]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; Object.assign(T.en, { errGeneric: "Something went wrong on our side. Please try again in a moment.", instHead: "Keep this on your Home Screen", instP: "Tap the Share button in Safari, then \u201cAdd to Home Screen\u201d. It will open like an app, with the SOS icon.", instBtn: "Got it", instIntro: "Do this once and the app opens full-screen like any other app, with its own icon.", instS1: "Open this page in Safari (the blue compass icon). It will not work from inside another app's browser.", instS2: "Look for the Share button: a square with an arrow pointing up. On iPad it is at the top right. On iPhone it is in the bottom bar. In newer versions of iOS, first tap the three dots or three bars (\u2022\u2022\u2022 or \u2630) next to the address bar and Share is in that menu.", instS3: "Scroll down the list that opens until you see \u201cAdd to Home Screen\u201d, and tap it.", instS4: "Tap \u201cAdd\u201d in the top right corner. You can rename it if you like.", instS5: "Go to your Home Screen and tap the SOS icon. That is where you open your 21 Days from now on.", instNote: "Tip: if you cannot find Add to Home Screen, scroll all the way down in the Share list and tap Edit Actions, then add it.", benHead: "Make an account (optional)", benIntro: "You can use the app without one. An account adds these things:", ben1: "Your progress is saved. Switch phones, clear your browser, or use an iPad and phone together and nothing is lost.", ben2: "Pray with a group. Join your Life Group with a code and see who is walking through the 21 days with you.", ben3: "The prayer wall. Share a request that a pastor prays over before it appears, and pray for others.", ben4: "Messages from your Life Group leader, shown inside the app.", ben5: "Your pastors can see that you are taking part, so they can encourage and pray for you.", benPrivacy: "Pastors see your name and which days you have finished, never your journal. You choose what to share and can delete your account at any time.", benCreate: "Create my account", benSkip: "Continue without an account", benLater: "You can make an account any time later." }); Object.assign(T.sv, { errGeneric: "Något gick fel hos oss. Försök igen om en stund.", instHead: "Ha den på din hemskärm", instP: "Tryck på Dela-knappen i Safari och välj \u201cLägg till på hemskärmen\u201d. Då öppnas den som en app, med SOS-ikonen.", instBtn: "Uppfattat", instIntro: "Gör det en gång, så öppnas appen i helskärm som vilken app som helst, med sin egen ikon.", instS1: "Öppna den här sidan i Safari (den blå kompassikonen). Det fungerar inte från en annan apps inbyggda webbläsare.", instS2: "Leta efter Dela-knappen: en fyrkant med en pil uppåt. På iPad finns den uppe till höger. På iPhone finns den i nedre raden. I nyare versioner av iOS trycker du först på de tre prickarna eller tre strecken (\u2022\u2022\u2022 eller \u2630) bredvid adressfältet, och Dela finns i den menyn.", instS3: "Scrolla ner i listan som öppnas tills du ser \u201cLägg till på hemskärmen\u201d och tryck på den.", instS4: "Tryck på \u201cLägg till\u201d uppe till höger. Du kan döpa om den om du vill.", instS5: "Gå till hemskärmen och tryck på SOS-ikonen. Det är där du öppnar dina 21 dagar från och med nu.", instNote: "Tips: hittar du inte Lägg till på hemskärmen, scrolla längst ner i Dela-listan och tryck på Redigera åtgärder, och lägg till den.", benHead: "Skapa ett konto (valfritt)", benIntro: "Du kan använda appen utan konto. Ett konto ger dig det här:", ben1: "Dina framsteg sparas. Byt telefon, rensa webbläsaren eller använd iPad och telefon tillsammans, och inget går förlorat.", ben2: "Be tillsammans med en grupp. Gå med i din livsgrupp med en kod och se vilka som går de 21 dagarna med dig.", ben3: "Förbönsväggen. Dela ett böneämne som en pastor ber över innan det visas, och be för andra.", ben4: "Meddelanden från din livsgruppsledare, direkt i appen.", ben5: "Dina pastorer ser att du deltar, så att de kan uppmuntra och be för dig.", benPrivacy: "Pastorer ser ditt namn och vilka dagar du har klarat, aldrig din dagbok. Du väljer själv vad du delar och kan radera ditt konto när som helst.", benCreate: "Skapa mitt konto", benSkip: "Fortsätt utan konto", benLater: "Du kan skapa ett konto när som helst senare." }); if (C.ui) ["en", "sv"].forEach(function (l) { var o = C.ui[l] || {}; for (var k in o) if (o[k]) T[l][k] = o[k]; }); document.documentElement.lang = S.lang; render(); })
   .catch(function () { app.innerHTML = '<p>Could not load the app files. Please reload the page.</p>'; });
 </script>
 </body>

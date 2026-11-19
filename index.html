@@ -173,6 +173,33 @@ h1,h2,h3{font-weight:600;letter-spacing:0}
 .tabs button span{white-space:nowrap}
 .ti{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 #app{padding-bottom:112px}
+
+/* polish pass: spacing scale, motion, touch */
+:root{--s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:32px;--shadow:0 1px 0 var(--line),0 10px 24px -18px rgba(40,50,35,.45)}
+html{-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{padding-top:env(safe-area-inset-top)}
+#app{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+.card{padding:var(--s5) var(--s4);margin:var(--s4) 0;box-shadow:var(--shadow)}
+.card h2{margin-bottom:var(--s3)}
+p+p{margin-top:var(--s3)}
+.btn,.pill,.opt,.dot,.books button,.chs button,.tabs button{transition:transform .12s ease,background-color .2s ease,border-color .2s ease,opacity .2s ease;touch-action:manipulation}
+.btn:active,.pill:active,.dot:active,.books button:active,.chs button:active{transform:scale(.97)}
+.btn:hover:not([disabled]){filter:brightness(1.05)}
+.tabs{padding-bottom:env(safe-area-inset-bottom);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);background:color-mix(in srgb,var(--surface) 90%,transparent)}
+.tabs button{padding-bottom:9px}
+.reader,.verse{hanging-punctuation:first;text-wrap:pretty}
+p,li{text-wrap:pretty}
+.logo{display:block;width:96px;height:96px;margin:var(--s5) auto var(--s3);border-radius:22px;box-shadow:0 1px 0 var(--line),0 14px 28px -16px rgba(40,50,35,.5)}
+.install{display:flex;gap:var(--s3);align-items:flex-start}
+.install .ico{flex:none;width:36px;height:36px;border-radius:9px}
+@media (prefers-reduced-motion:no-preference){
+  .enter>*{animation:rise .45s cubic-bezier(.2,.7,.2,1) both}
+  .enter>*:nth-child(2){animation-delay:.05s}.enter>*:nth-child(3){animation-delay:.1s}.enter>*:nth-child(4){animation-delay:.15s}.enter>*:nth-child(n+5){animation-delay:.2s}
+  .enter>.tabs{animation:none}
+  .hello>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hello>*:nth-child(2){animation-delay:.12s}.hello>*:nth-child(3){animation-delay:.24s}.hello>*:nth-child(4){animation-delay:.36s}.hello>*:nth-child(n+5){animation-delay:.48s}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -328,9 +355,15 @@ function keyVerseText(d, book) {
 
 /* ---------- Views ---------- */
 var app = document.getElementById("app");
+function installHtml() {
+  var ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var standalone = (window.navigator.standalone === true) || (window.matchMedia && matchMedia("(display-mode: standalone)").matches);
+  if (!ios || standalone || S.hideInstall) return "";
+  return '<div class="card install"><img class="ico" src="icon-192.png" alt="" width="36" height="36"><div><h3>' + esc(t("instHead")) + "</h3><p class=\"small\">" + esc(t("instP")) + '</p><p style="margin-top:10px"><button class="pill" data-act="hideinstall">' + esc(t("instBtn")) + "</button></p></div></div>";
+}
 function render() {
   if (!C || !S) return;
-  var h;
+  var h, sig = [UI.screen && UI.screen.type, S.onboarded ? UI.tab : "o" + (UI.step || 1), !!UI.celebrate].join("|");
   if (UI.screen && UI.screen.type === "account") { h = accountHtml(); }
   else if (UI.screen && UI.screen.type === "pastor") { h = pastorHtml(); }
   else if (UI.screen && UI.screen.type === "wall") { h = wallHtml(); }
@@ -340,7 +373,7 @@ function render() {
   else if (UI.screen && UI.screen.type === "reader") { h = readerShell(); }
   else {
     h = topHtml() + (memOnly ? '<div class="card"><p class="small">' + esc(t("memOnly")) + "</p></div>" : "");
-    if (UI.tab === "today") h += todayHtml();
+    if (UI.tab === "today") h += installHtml() + todayHtml();
     else if (UI.tab === "journey") h += journeyHtml();
     else if (UI.tab === "bible") h += bibleHtml();
     else if (UI.tab === "fast") h += fastHtml();
@@ -350,6 +383,7 @@ function render() {
     if (UI.celebrate) h += celebrateHtml();
   }
   app.innerHTML = h;
+  app.className = sig !== UI.sig ? (S.onboarded ? "enter" : "hello") : ""; UI.sig = sig;
   UI.climb = null; document.body.style.overflow = UI.celebrate ? "hidden" : ""; if (UI.celebrate) afterCelebrate(); setListenUI();
   if (UI.screen && UI.screen.type === "reader") fillReader();
   window.scrollTo(0, UI.keepScroll ? UI.keepScroll : 0); UI.keepScroll = 0;
@@ -511,7 +545,7 @@ function onboardHtml() {
   var step = UI.step || 1, h = "";
   if (step === 1) {
     h += '<div class="top"><div class="brand">' + esc(t("appSub")) + "</div></div>";
-    h += '<div style="margin:26px 0 8px;text-align:center"><svg viewBox="0 0 120 60" width="150" aria-hidden="true"><path d="M0 56 L38 14 L58 38 L78 22 L120 56 Z" fill="var(--rock-far)"/><path d="M18 56 L52 20 L74 46 L96 30 L120 56 Z" fill="var(--rock)" opacity=".8"/><path d="M60 14 C54 22 56 28 60 31 C64 28 66 22 60 14 Z" fill="var(--gold)"/></svg></div>';
+    h += '<img class="logo" src="icon-192.png" alt="SOS Church" width="96" height="96">';
     h += '<h1 style="font-size:32px;margin:6px 0 12px;text-align:center">' + esc(t("landWelcome")) + '</h1><p style="text-align:center">' + esc(t("landSub")) + '</p><p class="small" style="text-align:center;margin-top:10px">' + esc(t("pauseH")) + " &middot; " + esc(t("rejoiceH")) + " &middot; " + esc(t("askH")) + " &middot; " + esc(t("yieldH")) + "</p>";
     h += '<p style="margin-top:14px">' + esc(t("welcomeP")) + "</p>";
     h += '<h2 style="font-size:16px;margin-top:20px">' + esc(t("chooseLang")) + '</h2><div class="lang"><button class="btn ' + (S.lang === "en" ? "" : "alt") + '" data-act="setlang" data-l="en">English</button><button class="btn ' + (S.lang === "sv" ? "" : "alt") + '" data-act="setlang" data-l="sv">Svenska</button></div>';
@@ -677,6 +711,7 @@ document.addEventListener("click", function (e) {
   else if (a === "step") { UI.step = parseInt(el.getAttribute("data-s"), 10); render(); }
   else if (a === "finish") { S.onboarded = true; save(); UI.tab = "today"; render(); }
   else if (a === "gotoday") { UI.view = n === currentDay() && !allDone() ? null : n; UI.tab = "today"; render(); }
+  else if (a === "hideinstall") { S.hideInstall = true; save(); render(); }
   else if (a === "complete") { if (S.done.indexOf(n) < 0) S.done.push(n); save(); cloudComplete(n, true); UI.view = null; UI.celebrate = n; UI.lastN = n; try { if (navigator.vibrate) navigator.vibrate([40, 60, 90]); } catch (x) {} render(); }
   else if (a === "celebdone") { var dn = S.done.length; UI.celebrate = null; UI.climb = { from: Math.min(UI.lastN || 1, TOTAL), to: Math.min((UI.lastN || 1) + 1, TOTAL), p0: Math.max(0, (dn - 1) / TOTAL), p1: dn / TOTAL }; if (allDone()) { UI.climb = null; UI.tab = "journal"; } render(); }
   else if (a === "undo") { S.done = S.done.filter(function (x) { return x !== n; }); save(); cloudComplete(n, false); UI.view = null; render(); }
@@ -854,7 +889,7 @@ function pastorHtml() {
   var P = UI.pastor || {}, h = '<div class="top"><button class="pill" data-act="closepastor">&larr; ' + esc(t("closeReader")) + '</button><button class="pill" data-act="openpastor">' + esc(t("refresh")) + "</button></div>";
   h += '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("pastorTitle")) + "</h1>";
   if (P.loading) return h + '<p class="small">' + esc(t("pLoading")) + "</p>";
-  if (P.err) return h + '<div class="card"><p>' + esc(/not allowed/i.test(P.err) ? t("pDenied") : P.err) + "</p></div>";
+  if (P.err) return h + '<div class="card"><p>' + esc(/not allowed/i.test(P.err) ? t("pDenied") : friendly({ message: P.err })) + "</p></div>";
   var T = P.totals || {}, per = T.per_day || [], max = 1, i;
   for (i = 0; i < per.length; i++) if (per[i] > max) max = per[i];
   h += '<div class="card"><div class="row" style="justify-content:space-between;text-align:center">';
@@ -1079,7 +1114,7 @@ function gmanageHtml() {
 function refreshAccount() { if (UI.screen && UI.screen.type === "account" && CLOUD.user) render(); }
 function syncText() {
   if (CLOUD.status === "syncing") return t("syncing");
-  if (CLOUD.status === "error") return t("syncErr") + (CLOUD.msg ? ": " + CLOUD.msg : "");
+  if (CLOUD.status === "error") return t("syncErr");
   if (CLOUD.lastSync) { var d = CLOUD.lastSync; return t("syncedAt", { time: ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2) }); }
   return t("syncedNow");
 }
@@ -1090,7 +1125,7 @@ function friendly(e) {
   if (/rate limit|too many/i.test(m)) return t("errRate");
   if (/password/i.test(m) && /character|least|weak|short/i.test(m)) return t("errWeak");
   if (/fetch|network|failed to/i.test(m)) return t("errNet");
-  return m || t("errNet");
+  return t("errGeneric");
 }
 function setAmsg(txt) { var el = document.getElementById("amsg"); if (el) el.textContent = txt; }
 function acctSubmit() {
@@ -1187,7 +1222,7 @@ window.addEventListener("load", initCloud);
 Promise.all([
   fetch("content.json").then(function (r) { return r.json(); }),
   fetch("bible/index.json").then(function (r) { return r.json(); })
-]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; if (C.ui) ["en", "sv"].forEach(function (l) { var o = C.ui[l] || {}; for (var k in o) if (o[k]) T[l][k] = o[k]; }); document.documentElement.lang = S.lang; render(); })
+]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; Object.assign(T.en, { errGeneric: "Something went wrong on our side. Please try again in a moment.", instHead: "Keep this on your Home Screen", instP: "Tap the Share button in Safari, then \u201cAdd to Home Screen\u201d. It will open like an app, with the SOS icon.", instBtn: "Got it" }); Object.assign(T.sv, { errGeneric: "Något gick fel hos oss. Försök igen om en stund.", instHead: "Ha den på din hemskärm", instP: "Tryck på Dela-knappen i Safari och välj \u201cLägg till på hemskärmen\u201d. Då öppnas den som en app, med SOS-ikonen.", instBtn: "Uppfattat" }); if (C.ui) ["en", "sv"].forEach(function (l) { var o = C.ui[l] || {}; for (var k in o) if (o[k]) T[l][k] = o[k]; }); document.documentElement.lang = S.lang; render(); })
   .catch(function () { app.innerHTML = '<p>Could not load the app files. Please reload the page.</p>'; });
 </script>
 </body>

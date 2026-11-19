@@ -1750,5 +1750,49 @@
     }
    ]
   }
+ },
+ "ui": {
+  "en": {
+   "landWelcome": "Welcome to SOS Church Stockholm's 21 Days of Prayer and Fasting",
+   "landSub": "Pause, rejoice, ask, yield: a simple way to meet God every day through the book of Acts.",
+   "welcomeP": "Twenty-one days through the book of Acts: scripture, prayer, fasting and a daily check-in. Start whenever you like. If you miss a day, you pick up where you left off.",
+   "pauseH": "Pause",
+   "pauseP": "Be still in God's presence.",
+   "pauseLine": "Take one minute. Breathe slowly and put your phone down. Pray: \"As I draw near to You, God, draw near to me. Holy Spirit, teach me to pray.\"",
+   "rejoiceH": "Rejoice",
+   "rejoiceP": "Thank God and reflect on His word.",
+   "askH": "Ask",
+   "askP": "Ask God to help you and the people you care about.",
+   "yieldH": "Yield",
+   "yieldP": "Surrender to God and say yes to His ways.",
+   "yieldLine": "Pray: \"Not my will but Yours be done.\" Then be quiet and listen.",
+   "wallIntro": "Share a request anonymously. A pastor prays over each request before it makes it to the prayer wall so the church can support you. Please leave out names and private details about other people.",
+   "wallSent": "Thank you. A pastor will pray over it before it appears on the wall.",
+   "wallDesc": "Pray for one another, anonymously.",
+   "consent": "I understand that my progress and the notes I write are stored on a server run by our hosting provider, Supabase. Only I can read my notes. Pastors and leaders at SOS Church can see my name and which day I am on. I can turn that off, or delete everything, here at any time.",
+   "grpJoinP": "Enter the code from your group leader. Your group members and leader will see your name and which days you have completed.",
+   "nbP": "Your group and pastors see names, not email addresses. Add yours so they know who you are."
+  },
+  "sv": {
+   "landWelcome": "Välkommen till SOS Church Stockholms 21 dagar av bön och fasta",
+   "landSub": "Pausa, gläds, be, överlåt: ett enkelt sätt att möta Gud varje dag genom Apostlagärningarna.",
+   "welcomeP": "Tjugoen dagar genom Apostlagärningarna: bibelläsning, bön, fasta och en daglig avprickning. Börja när du vill. Missar du en dag fortsätter du där du slutade.",
+   "pauseH": "Pausa",
+   "pauseP": "Var stilla i Guds närvaro.",
+   "pauseLine": "Ta en minut. Andas långsamt och lägg ner telefonen. Be: \"När jag kommer nära dig, Gud, kom nära mig. Helige Ande, lär mig att be.\"",
+   "rejoiceH": "Gläds",
+   "rejoiceP": "Tacka Gud och begrunda hans ord.",
+   "askH": "Be",
+   "askP": "Be Gud hjälpa dig och människorna du bryr dig om.",
+   "yieldH": "Överlåt",
+   "yieldP": "Överlämna dig åt Gud och säg ja till hans vägar.",
+   "yieldLine": "Be: \"Inte min vilja utan din ske.\" Var sedan tyst och lyssna.",
+   "wallIntro": "Dela ett förbönsämne anonymt. En pastor ber över varje förbön innan den kommer upp på förbönsväggen så att församlingen kan stödja dig. Skriv inte namn eller privata uppgifter om andra.",
+   "wallSent": "Tack. En pastor ber över det innan det visas på väggen.",
+   "wallDesc": "Be för varandra, anonymt.",
+   "consent": "Jag förstår att min framgång och mina anteckningar lagras på en server hos vår leverantör Supabase. Bara jag kan läsa mina anteckningar. Pastorer och ledare i SOS Church kan se mitt namn och vilken dag jag är på. Jag kan stänga av det, eller radera allt, här när som helst.",
+   "grpJoinP": "Skriv koden från din gruppledare. Dina gruppmedlemmar och din ledare ser ditt namn och vilka dagar du har klarat.",
+   "nbP": "Din grupp och pastorerna ser namn, inte e-postadresser. Lägg till ditt så att de vet vem du är."
+  }
  }
 }

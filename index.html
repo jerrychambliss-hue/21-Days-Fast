@@ -1187,7 +1187,7 @@ window.addEventListener("load", initCloud);
 Promise.all([
   fetch("content.json").then(function (r) { return r.json(); }),
   fetch("bible/index.json").then(function (r) { return r.json(); })
-]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; document.documentElement.lang = S.lang; render(); })
+]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; if (C.ui) ["en", "sv"].forEach(function (l) { var o = C.ui[l] || {}; for (var k in o) if (o[k]) T[l][k] = o[k]; }); document.documentElement.lang = S.lang; render(); })
   .catch(function () { app.innerHTML = '<p>Could not load the app files. Please reload the page.</p>'; });
 </script>
 </body>

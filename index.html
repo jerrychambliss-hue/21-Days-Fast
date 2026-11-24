@@ -1076,11 +1076,16 @@ function tabIcon(k) {
 function prayIcon(on) {
   return '<svg class="pi' + (on ? " on" : "") + '" viewBox="0 0 32 36" aria-hidden="true"><path class="ht" d="M16 9C16 9 11.8 6.6 11.8 4.2C11.8 2.8 12.9 2 14 2C14.9 2 15.6 2.5 16 3.2C16.4 2.5 17.1 2 18 2C19.1 2 20.2 2.8 20.2 4.2C20.2 6.6 16 9 16 9Z"/><path class="hd" d="M16 12C13.6 14.4 10.8 18 10.4 22.6C10.2 25.4 10.6 28.6 11.4 33L16 33Z"/><path class="hd" d="M16 12C18.4 14.4 21.2 18 21.6 22.6C21.8 25.4 21.4 28.6 20.6 33L16 33Z"/></svg>';
 }
+function aboutHtml(head, keys) {
+  var h = '<div class="card about"><h3>' + esc(t(head)) + '</h3><ul style="padding-left:20px;margin:6px 0 0">';
+  keys.forEach(function (k) { h += '<li style="margin:6px 0">' + esc(t(k)) + "</li>"; });
+  return h + "</ul></div>";
+}
 function wallHtml() {
   var h = '<div class="top"><button class="pill" data-act="closewall">&larr; ' + esc(t("closeReader")) + '</button><button class="pill" data-act="openwall">' + esc(t("refresh")) + "</button></div>";
   h += '<h1 style="font-size:28px;margin:4px 0 6px">' + esc(t("wallTitle")) + "</h1>";
   if (!CLOUD.user) return h + '<div class="card"><p>' + esc(t("wallNeedLogin")) + '</p><div style="margin-top:10px"><button class="btn" data-act="account">' + esc(t("haveAcct")) + "</button></div></div>";
-  h += '<p class="small">' + esc(t("wallIntro")) + "</p>";
+  h += '<p class="small">' + esc(t("wallIntro")) + "</p>" + aboutHtml("wallAboutH", ["wallAbout1", "wallAbout2", "wallAbout3", "wallAbout4"]);
   h += '<div class="card"><textarea id="wt" maxlength="500" placeholder="' + esc(t("wallPlace")) + '"></textarea><div style="margin-top:10px"><button class="btn" data-act="wallsend">' + esc(t("wallSend")) + "</button></div>";
   if (WALL.msg) h += '<p class="small" role="status" style="margin-top:8px">' + esc(WALL.msg) + "</p>";
   if (WALL.err) h += '<p class="small" role="alert" style="margin-top:8px">' + esc(WALL.err) + "</p>";
@@ -1171,6 +1176,7 @@ function groupHtml() {
   }
   var leader = cur.role === "leader";
   h += '<h2 style="font-size:24px;margin:2px 0 4px">' + esc(cur.name) + '</h2>';
+  h += aboutHtml("grpAboutH", ["grpAbout1", "grpAbout2", "grpAbout3", "grpAbout4"]);
   h += '<div class="card"><h3>' + esc(t("grpWall")) + '</h3><textarea id="gw" maxlength="1000" placeholder="' + esc(t("grpWallPh")) + '"></textarea><label class="check"><input type="checkbox" id="gwa"><span class="small">' + esc(t("grpAnon")) + '</span></label><button class="btn" data-act="groupwall">' + esc(t("grpWallPost")) + "</button></div>";
   if (!GR.wall.length) h += '<p class="small">' + esc(t("grpWallNone")) + "</p>";
   GR.wall.forEach(function (x) { h += groupNote(x, x.mine || leader, true); });

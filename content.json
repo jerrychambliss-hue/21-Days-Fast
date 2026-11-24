@@ -2014,7 +2014,20 @@
    "initAll": "Prayer initiatives",
    "initFocus": "Focus",
    "chooseFast": "Build your fast",
-   "chooseFastP": "Choose what fits you. You can change it any time in the Fast tab."
+   "chooseFastP": "Choose what fits you. You can change it any time in the Fast tab.",
+   "wallTitle": "All-Church Prayer Wall",
+   "wallOpenBtn": "Open the All-Church Prayer Wall",
+   "grpWall": "Life Group Prayer Wall",
+   "wallAboutH": "How the All-Church Prayer Wall works",
+   "wallAbout1": "Everyone in SOS Church who has an account can read these requests. Nobody can see who wrote them.",
+   "wallAbout2": "A pastor prays over each request before it appears, so you are covered in prayer before anyone else reads it.",
+   "wallAbout3": "When you pray for a request, tap the praying hands. The person who wrote it will see that the church is praying.",
+   "wallAbout4": "Please leave out names and private details about other people.",
+   "grpAboutH": "How your Life Group Prayer Wall works",
+   "grpAbout1": "Only the people in your Life Group, and your group leader, can see this wall.",
+   "grpAbout2": "Share a request or something to praise God for. It appears straight away, with no pastor review first.",
+   "grpAbout3": "Tick “anonymous” if you would like to post without your name showing to the group.",
+   "grpAbout4": "Tap the praying hands when you pray, so your group can see they are supported."
   },
   "sv": {
    "landWelcome": "Välkommen till SOS Church Stockholms 21 dagar av bön och fasta",
@@ -2054,7 +2067,20 @@
    "initAll": "Böneinitiativ",
    "initFocus": "Fokus",
    "chooseFast": "Bygg din fasta",
-   "chooseFastP": "Välj det som passar dig. Du kan ändra det när som helst i fliken Fasta."
+   "chooseFastP": "Välj det som passar dig. Du kan ändra det när som helst i fliken Fasta.",
+   "wallTitle": "Förbönsvägg för hela församlingen",
+   "wallOpenBtn": "Öppna förbönsväggen för hela församlingen",
+   "grpWall": "Livsgruppens förbönsvägg",
+   "wallAboutH": "Så fungerar förbönsväggen för hela församlingen",
+   "wallAbout1": "Alla i SOS Church som har ett konto kan läsa förbönsämnena. Ingen kan se vem som skrev dem.",
+   "wallAbout2": "En pastor ber över varje förbön innan den visas, så du är burit i förbön innan någon annan läser den.",
+   "wallAbout3": "När du ber för ett förbönsämne trycker du på de bedjande händerna. Den som skrev det ser att församlingen ber.",
+   "wallAbout4": "Skriv inte namn eller privata uppgifter om andra.",
+   "grpAboutH": "Så fungerar livsgruppens förbönsvägg",
+   "grpAbout1": "Bara personerna i din livsgrupp och din gruppledare kan se den här väggen.",
+   "grpAbout2": "Dela ett förbönsämne eller något att tacka Gud för. Det visas direkt, utan att en pastor granskar det först.",
+   "grpAbout3": "Kryssa i “anonymt” om du vill skriva utan att ditt namn visas för gruppen.",
+   "grpAbout4": "Tryck på de bedjande händerna när du ber, så att gruppen ser att de får stöd."
   }
  },
  "initiatives": [

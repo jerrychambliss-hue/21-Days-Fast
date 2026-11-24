@@ -208,6 +208,7 @@ ol.steps li::before{content:counter(st);position:absolute;left:0;top:10px;width:
 .ben{display:flex;gap:var(--s3);align-items:flex-start;padding:var(--s2) 0}
 .ben span{flex:none;width:24px;height:24px;border-radius:50%;background:var(--hl);color:var(--ok);font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px}
 .ben p{margin:0}
+.reco h3{margin:16px 0 4px}.reco h3:first-of-type{margin-top:4px}.reco p{margin:0}
 </style>
 <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -533,11 +534,36 @@ function tabsHtml() {
   tabs.forEach(function (k) { h += '<button data-act="tab" data-tab="' + k + '"' + (UI.tab === k ? ' aria-current="page"' : "") + ">" + tabIcon(k) + "<span>" + esc(t(k)) + "</span></button>"; });
   return h + "</div></nav>";
 }
+function fastById(id) { for (var i = 0; i < C.fasts.length; i++) if (C.fasts[i].id === id) return C.fasts[i]; return null; }
+function fastOptHtml(f) {
+  var on = S.fasts.indexOf(f.id) >= 0;
+  return '<label class="opt' + (on ? " on" : "") + '"><input type="checkbox" data-act="fastopt" data-id="' + f.id + '"' + (on ? " checked" : "") + '><span><b>' + esc(L(f.name)) + "</b><span class=\"small\">" + esc(L(f.desc)) + "</span></span></label>";
+}
 function fastOptionsHtml() {
-  return C.fasts.map(function (f) {
-    var on = S.fasts.indexOf(f.id) >= 0;
-    return '<label class="opt' + (on ? " on" : "") + '"><input type="checkbox" data-act="fastopt" data-id="' + f.id + '"' + (on ? " checked" : "") + '><span><b>' + esc(L(f.name)) + "</b><span class=\"small\">" + esc(L(f.desc)) + "</span></span></label>";
-  }).join("");
+  var food = C.fasts.filter(function (f) { return f.group === "food"; }), add = C.fasts.filter(function (f) { return f.group === "addon"; });
+  var h = '<div class="card"><h2>' + esc(t("buildFood")) + '</h2><p class="small" style="margin-bottom:6px">' + esc(t("buildFoodP")) + "</p>" + food.map(fastOptHtml).join("") + "</div>";
+  h += '<div class="card"><h2>' + esc(t("buildAdd")) + '</h2><p class="small" style="margin-bottom:6px">' + esc(t("buildAddP")) + "</p>" + add.map(fastOptHtml).join("") + "</div>";
+  S.fasts.forEach(function (id) {
+    var f = fastById(id); if (!f || !f.tips) return;
+    h += '<div class="card reco"><h2>' + esc(L(f.name)) + ": " + esc(t("recoTitle")) + "</h2>";
+    L(f.tips).forEach(function (x) { h += "<h3>" + esc(x.h) + "</h3><p>" + esc(x.p) + "</p>"; });
+    h += "</div>";
+  });
+  return h;
+}
+function initWeekHtml(w, withTitle) {
+  var W = (C.initiatives || [])[w]; if (!W) return "";
+  var items = (W.items || []).filter(function (x) { return L(x.title); });
+  var focus = L(W.focus || { en: "", sv: "" });
+  if (!items.length && !focus) return "";
+  var h = '<div class="card"><h2>' + esc(withTitle ? L(C.weeks[w]) : t("initTitle")) + "</h2>";
+  if (focus) h += '<p><i>' + esc(t("initFocus")) + ":</i> " + esc(focus) + "</p>";
+  items.forEach(function (x) { h += '<div style="border-top:1px solid var(--line);padding:10px 0 0;margin-top:10px"><p class="small">' + esc(L(x.when)) + "</p><h3>" + esc(L(x.title)) + "</h3>" + (L(x.text) ? "<p>" + esc(L(x.text)) + "</p>" : "") + "</div>"; });
+  return h + "</div>";
+}
+function initAllHtml() {
+  var h = ""; for (var w = 0; w < (C.initiatives || []).length; w++) h += initWeekHtml(w, true);
+  return h ? '<h2 style="margin:20px 0 4px">' + esc(t("initAll")) + "</h2>" + h : "";
 }
 function healthHtml() {
   var h = '<div class="card"><h2>' + esc(L(C.health.title)) + "</h2><ul style=\"padding-left:20px;margin:0\">";
@@ -605,12 +631,13 @@ function todayHtml() {
   h += '<div class="card"><h2>' + esc(t("reflect")) + '</h2><ol class="q">' + L(d.q).map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + '</ol><textarea id="jr" data-note="journal" aria-label="' + esc(t("reflect")) + '" placeholder="' + esc(t("journalPh")) + '">' + esc(nt.journal) + "</textarea></div>";
   h += '<div class="card"><h2>' + esc(t("yourFast")) + "</h2>";
   if (S.fasts.length) {
-    h += "<p>" + S.fasts.map(function (id) { for (var i = 0; i < C.fasts.length; i++) if (C.fasts[i].id === id) return esc(L(C.fasts[i].name)); return ""; }).join(" + ") + '</p><label class="check"><input type="checkbox" data-act="tick" data-k="fast"' + (tk.fast ? " checked" : "") + "><span>" + esc(t("fastTick")) + "</span></label>";
+    h += "<p>" + S.fasts.map(function (id) { var f = fastById(id); return f ? esc(L(f.name)) : ""; }).filter(Boolean).join(" + ") + '</p><label class="check"><input type="checkbox" data-act="tick" data-k="fast"' + (tk.fast ? " checked" : "") + "><span>" + esc(t("fastTick")) + "</span></label>";
   } else h += '<p class="small">' + esc(t("noFast")) + '</p><div style="margin-top:8px"><button class="btn alt" data-act="tab" data-tab="fast">' + esc(t("chooseFastBtn")) + "</button></div>";
   h += "</div>";
   if (done) h += '<div class="card"><p><b style="color:var(--ok)">&#10003; ' + esc(t("completed", { n: n })) + '</b></p><div style="margin-top:8px"><button class="btn alt" data-act="undo" data-n="' + n + '">' + esc(t("undo")) + "</button></div></div>";
   else h += '<button class="btn full" data-act="complete" data-n="' + n + '">' + esc(t("completeDay", { n: n })) + "</button>";
-  h += '<div class="card" style="margin-top:16px"><h3>' + esc(t("tuesday")) + "</h3><p>" + esc(L(C.prayerNight)) + '</p></div><p class="note">' + esc(t("saved")) + "</p>";
+  var iw = initWeekHtml(Math.min(2, Math.floor((n - 1) / 7)), false);
+  h += (iw || '<div class="card" style="margin-top:16px"><h3>' + esc(t("tuesday")) + "</h3><p>" + esc(L(C.prayerNight)) + "</p></div>") + '<p class="note">' + esc(t("saved")) + "</p>";
   setTimeout(fillKeyVerse, 0);
   return h;
 }
@@ -665,7 +692,7 @@ function bibleHtml() {
   return h;
 }
 function fastHtml() {
-  return '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("fast")) + "</h1>" + fastOptionsHtml() + healthHtml() + expectHtml() + '<div class="card"><h3>' + esc(t("tuesday")) + "</h3><p>" + esc(L(C.prayerNight)) + "</p></div>";
+  return '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("fast")) + '</h1><p class="small">' + esc(t("buildP")) + "</p>" + fastOptionsHtml() + healthHtml() + expectHtml() + initAllHtml() + '<div class="card"><h3>' + esc(t("tuesday")) + "</h3><p>" + esc(L(C.prayerNight)) + "</p></div>";
 }
 function journalText() {
   var out = [];
@@ -675,9 +702,21 @@ function journalText() {
   if (S.testimony) out.push(t("testimony") + "\n" + S.testimony);
   return out.join("\n");
 }
+var TS = { msg: "", sending: false };
+function testimonySendHtml() {
+  if (!SB) return "";
+  if (!CLOUD.user) return '<p class="small" style="margin-top:10px">' + esc(t("tsNeedAcct")) + '</p><div style="margin-top:8px"><button class="btn alt" data-act="account">' + esc(t("haveAcct")) + "</button></div>";
+  return '<label class="check"><input type="checkbox" id="tsn" checked><span class="small">' + esc(t("tsName")) + '</span></label><button class="btn" data-act="testisend"' + (TS.sending ? " disabled" : "") + ">" + esc(t("tsSend")) + '</button><p class="small" role="status" style="margin-top:8px">' + esc(TS.msg || t("tsNote")) + "</p>";
+}
+function testimonySend() {
+  var v = (S.testimony || "").trim(), cb = document.getElementById("tsn");
+  if (!v) { TS.msg = t("tsNeedText"); render(); return; }
+  TS.sending = true; TS.msg = ""; var share = cb ? cb.checked : true;
+  SB.rpc("testimony_send", { txt: v, share: share }).then(function (r) { TS.sending = false; TS.msg = r.error ? friendly(r.error) : t("tsSent"); render(); }).catch(function (e) { TS.sending = false; TS.msg = friendly(e); render(); });
+}
 function journalHtml() {
   var h = '<h1 style="font-size:26px;margin:4px 0 8px">' + esc(t("myJournal")) + "</h1>";
-  h += '<div class="card"><h2>' + esc(t("testimony")) + '</h2><p class="small">' + esc(t("testimonyP")) + '</p><textarea id="ts" data-note="testimony" style="min-height:160px" aria-label="' + esc(t("testimony")) + '">' + esc(S.testimony) + "</textarea></div>";
+  h += '<div class="card"><h2>' + esc(t("testimony")) + '</h2><p class="small">' + esc(t("testimonyP")) + '</p><textarea id="ts" data-note="testimony" style="min-height:160px" aria-label="' + esc(t("testimony")) + '">' + esc(S.testimony) + "</textarea>" + testimonySendHtml() + "</div>";
   var any = false;
   for (var n = TOTAL; n >= 1; n--) {
     var x = S.notes[n]; if (!x || !(x.prayer || x.journal)) continue; any = true;
@@ -732,6 +771,8 @@ document.addEventListener("click", function (e) {
   else if (a === "signupstep") { UI.screen = { type: "account" }; UI.acctMode = "up"; render(); }
   else if (a === "finish") { S.onboarded = true; save(); UI.tab = "today"; render(); }
   else if (a === "gotoday") { UI.view = n === currentDay() && !allDone() ? null : n; UI.tab = "today"; render(); }
+  else if (a === "testisend") { testimonySend(); }
+  else if (a === "testiread") { SB.rpc("testimony_mark", { tid: el.getAttribute("data-id"), done: el.getAttribute("data-r") === "1" }).then(function () { loadPastor(); }); }
   else if (a === "hideinstall") { S.hideInstall = true; save(); render(); }
   else if (a === "complete") { if (S.done.indexOf(n) < 0) S.done.push(n); save(); cloudComplete(n, true); UI.view = null; UI.celebrate = n; UI.lastN = n; try { if (navigator.vibrate) navigator.vibrate([40, 60, 90]); } catch (x) {} render(); }
   else if (a === "celebdone") { var dn = S.done.length; UI.celebrate = null; UI.climb = { from: Math.min(UI.lastN || 1, TOTAL), to: Math.min((UI.lastN || 1) + 1, TOTAL), p0: Math.max(0, (dn - 1) / TOTAL), p1: dn / TOTAL }; if (allDone()) { UI.climb = null; UI.tab = "journal"; } render(); }
@@ -789,8 +830,11 @@ document.addEventListener("change", function (e) {
   if (a === "tick") { var n = UI.view || currentDay(); tick(n)[el.getAttribute("data-k")] = el.checked; save(); }
   else if (a === "fastopt") {
     var id = el.getAttribute("data-id"), i = S.fasts.indexOf(id);
+    var fo = fastById(id);
+    if (el.checked && fo && fo.group === "food") S.fasts = S.fasts.filter(function (x) { var o = fastById(x); return !o || o.group !== "food"; });
+    i = S.fasts.indexOf(id);
     if (el.checked && i < 0) S.fasts.push(id); else if (!el.checked && i >= 0) S.fasts.splice(i, 1);
-    save(); el.closest(".opt").classList.toggle("on", el.checked);
+    save(); UI.keepScroll = window.pageYOffset || 1; render();
   }
 });
 document.addEventListener("input", function (e) {
@@ -900,9 +944,9 @@ function profSave() {
 function loadPastor() {
   UI.pastor = { loading: true };
   render();
-  Promise.all([SB.rpc("pastor_totals"), SB.rpc("pastor_overview"), SB.rpc("pastor_groups")]).then(function (r) {
+  Promise.all([SB.rpc("pastor_totals"), SB.rpc("pastor_overview"), SB.rpc("pastor_groups"), SB.rpc("testimony_list")]).then(function (r) {
     if (r[0].error || r[1].error) { UI.pastor = { err: (r[0].error || r[1].error).message || "" }; }
-    else UI.pastor = { totals: r[0].data, rows: r[1].data || [], groups: (r[2] && r[2].data) || [], gerr: (r[2] && r[2].error && r[2].error.message) || "" };
+    else UI.pastor = { totals: r[0].data, rows: r[1].data || [], groups: (r[2] && r[2].data) || [], gerr: (r[2] && r[2].error && r[2].error.message) || "", testi: (r[3] && r[3].data) || [], terr: (r[3] && r[3].error && r[3].error.message) || "" };
     render();
   }).catch(function (e) { UI.pastor = { err: (e && e.message) || "" }; render(); });
 }
@@ -920,6 +964,13 @@ function pastorHtml() {
   h += "</div></div>";
   h += '<div class="card"><h3>' + esc(t("pPerDay")) + "</h3>";
   for (i = 0; i < per.length; i++) h += '<div class="row" style="gap:8px;margin:3px 0"><span class="small" style="width:44px">' + esc(t("pDay", { n: i + 1 })) + '</span><div class="bar" style="flex:1;margin:0"><i style="width:' + Math.round(per[i] / max * 100) + '%"></i></div><span class="small" style="width:28px;text-align:right">' + esc(per[i]) + "</span></div>";
+  h += "</div>";
+  h += '<div class="card"><h3>' + esc(t("pTesti")) + "</h3>";
+  if (P.terr) h += '<p class="small" role="alert">' + esc(t("pTestiErr")) + "</p>";
+  else if (!(P.testi || []).length) h += '<p class="small">' + esc(t("pTestiNone")) + "</p>";
+  (P.testi || []).forEach(function (x) {
+    h += '<div style="border-top:1px solid var(--line);padding:10px 0;' + (x.is_read ? "opacity:.65" : "") + '"><p class="small"><b>' + esc(x.author || t("pTestiAnon")) + "</b> &middot; " + esc(String(x.created_at).slice(0, 10)) + '</p><p style="white-space:pre-wrap;margin-top:4px">' + esc(x.body) + '</p><p style="margin-top:6px"><button class="pill" data-act="testiread" data-id="' + esc(x.id) + '" data-r="' + (x.is_read ? "0" : "1") + '">' + esc(x.is_read ? t("pTestiUnread") : t("pTestiRead")) + "</button></p></div>";
+  });
   h += "</div>";
   h += '<div class="card"><h3>' + esc(t("pGroups")) + "</h3>";
   if (P.gerr) h += '<p class="small" role="alert">' + esc(t("pGroupsErr") + P.gerr) + "</p>";
@@ -1243,7 +1294,7 @@ window.addEventListener("load", initCloud);
 Promise.all([
   fetch("content.json").then(function (r) { return r.json(); }),
   fetch("bible/index.json").then(function (r) { return r.json(); })
-]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; Object.assign(T.en, { errGeneric: "Something went wrong on our side. Please try again in a moment.", instHead: "Keep this on your Home Screen", instP: "Tap the Share button in Safari, then \u201cAdd to Home Screen\u201d. It will open like an app, with the SOS icon.", instBtn: "Got it", instIntro: "Do this once and the app opens full-screen like any other app, with its own icon.", instS1: "Open this page in Safari (the blue compass icon). It will not work from inside another app's browser.", instS2: "Look for the Share button: a square with an arrow pointing up. On iPad it is at the top right. On iPhone it is in the bottom bar. In newer versions of iOS, first tap the three dots or three bars (\u2022\u2022\u2022 or \u2630) next to the address bar and Share is in that menu.", instS3: "Scroll down the list that opens until you see \u201cAdd to Home Screen\u201d, and tap it.", instS4: "Tap \u201cAdd\u201d in the top right corner. You can rename it if you like.", instS5: "Go to your Home Screen and tap the SOS icon. That is where you open your 21 Days from now on.", instNote: "Tip: if you cannot find Add to Home Screen, scroll all the way down in the Share list and tap Edit Actions, then add it.", benHead: "Make an account (optional)", benIntro: "You can use the app without one. An account adds these things:", ben1: "Your progress is saved. Switch phones, clear your browser, or use an iPad and phone together and nothing is lost.", ben2: "Pray with a group. Join your Life Group with a code and see who is walking through the 21 days with you.", ben3: "The prayer wall. Share a request that a pastor prays over before it appears, and pray for others.", ben4: "Messages from your Life Group leader, shown inside the app.", ben5: "Your pastors can see that you are taking part, so they can encourage and pray for you.", benPrivacy: "Pastors see your name and which days you have finished, never your journal. You choose what to share and can delete your account at any time.", benCreate: "Create my account", benSkip: "Continue without an account", benLater: "You can make an account any time later." }); Object.assign(T.sv, { errGeneric: "Något gick fel hos oss. Försök igen om en stund.", instHead: "Ha den på din hemskärm", instP: "Tryck på Dela-knappen i Safari och välj \u201cLägg till på hemskärmen\u201d. Då öppnas den som en app, med SOS-ikonen.", instBtn: "Uppfattat", instIntro: "Gör det en gång, så öppnas appen i helskärm som vilken app som helst, med sin egen ikon.", instS1: "Öppna den här sidan i Safari (den blå kompassikonen). Det fungerar inte från en annan apps inbyggda webbläsare.", instS2: "Leta efter Dela-knappen: en fyrkant med en pil uppåt. På iPad finns den uppe till höger. På iPhone finns den i nedre raden. I nyare versioner av iOS trycker du först på de tre prickarna eller tre strecken (\u2022\u2022\u2022 eller \u2630) bredvid adressfältet, och Dela finns i den menyn.", instS3: "Scrolla ner i listan som öppnas tills du ser \u201cLägg till på hemskärmen\u201d och tryck på den.", instS4: "Tryck på \u201cLägg till\u201d uppe till höger. Du kan döpa om den om du vill.", instS5: "Gå till hemskärmen och tryck på SOS-ikonen. Det är där du öppnar dina 21 dagar från och med nu.", instNote: "Tips: hittar du inte Lägg till på hemskärmen, scrolla längst ner i Dela-listan och tryck på Redigera åtgärder, och lägg till den.", benHead: "Skapa ett konto (valfritt)", benIntro: "Du kan använda appen utan konto. Ett konto ger dig det här:", ben1: "Dina framsteg sparas. Byt telefon, rensa webbläsaren eller använd iPad och telefon tillsammans, och inget går förlorat.", ben2: "Be tillsammans med en grupp. Gå med i din livsgrupp med en kod och se vilka som går de 21 dagarna med dig.", ben3: "Förbönsväggen. Dela ett böneämne som en pastor ber över innan det visas, och be för andra.", ben4: "Meddelanden från din livsgruppsledare, direkt i appen.", ben5: "Dina pastorer ser att du deltar, så att de kan uppmuntra och be för dig.", benPrivacy: "Pastorer ser ditt namn och vilka dagar du har klarat, aldrig din dagbok. Du väljer själv vad du delar och kan radera ditt konto när som helst.", benCreate: "Skapa mitt konto", benSkip: "Fortsätt utan konto", benLater: "Du kan skapa ett konto när som helst senare." }); if (C.ui) ["en", "sv"].forEach(function (l) { var o = C.ui[l] || {}; for (var k in o) if (o[k]) T[l][k] = o[k]; }); document.documentElement.lang = S.lang; render(); })
+]).then(function (r) { C = r[0]; BIBLE_INDEX = r[1]; Object.assign(T.en, { errGeneric: "Something went wrong on our side. Please try again in a moment.", instHead: "Keep this on your Home Screen", instP: "Tap the Share button in Safari, then \u201cAdd to Home Screen\u201d. It will open like an app, with the SOS icon.", instBtn: "Got it", pTesti: "Testimonies", pTestiErr: "Could not load testimonies. Run supabase-testimony.sql once.", pTestiNone: "No testimonies yet.", pTestiAnon: "Anonymous", pTestiRead: "Mark as read", pTestiUnread: "Mark as unread", instIntro: "Do this once and the app opens full-screen like any other app, with its own icon.", instS1: "Open this page in Safari (the blue compass icon). It will not work from inside another app's browser.", instS2: "Look for the Share button: a square with an arrow pointing up. On iPad it is at the top right. On iPhone it is in the bottom bar. In newer versions of iOS, first tap the three dots or three bars (\u2022\u2022\u2022 or \u2630) next to the address bar and Share is in that menu.", instS3: "Scroll down the list that opens until you see \u201cAdd to Home Screen\u201d, and tap it.", instS4: "Tap \u201cAdd\u201d in the top right corner. You can rename it if you like.", instS5: "Go to your Home Screen and tap the SOS icon. That is where you open your 21 Days from now on.", instNote: "Tip: if you cannot find Add to Home Screen, scroll all the way down in the Share list and tap Edit Actions, then add it.", benHead: "Make an account (optional)", benIntro: "You can use the app without one. An account adds these things:", ben1: "Your progress is saved. Switch phones, clear your browser, or use an iPad and phone together and nothing is lost.", ben2: "Pray with a group. Join your Life Group with a code and see who is walking through the 21 days with you.", ben3: "The prayer wall. Share a request that a pastor prays over before it appears, and pray for others.", ben4: "Messages from your Life Group leader, shown inside the app.", ben5: "Your pastors can see that you are taking part, so they can encourage and pray for you.", benPrivacy: "Pastors see your name and which days you have finished, never your journal. You choose what to share and can delete your account at any time.", benCreate: "Create my account", benSkip: "Continue without an account", benLater: "You can make an account any time later." }); Object.assign(T.sv, { errGeneric: "Något gick fel hos oss. Försök igen om en stund.", instHead: "Ha den på din hemskärm", instP: "Tryck på Dela-knappen i Safari och välj \u201cLägg till på hemskärmen\u201d. Då öppnas den som en app, med SOS-ikonen.", instBtn: "Uppfattat", pTesti: "Vittnesbörd", pTestiErr: "Kunde inte ladda vittnesbörd. Kör supabase-testimony.sql en gång.", pTestiNone: "Inga vittnesbörd ännu.", pTestiAnon: "Anonym", pTestiRead: "Markera som läst", pTestiUnread: "Markera som oläst", instIntro: "Gör det en gång, så öppnas appen i helskärm som vilken app som helst, med sin egen ikon.", instS1: "Öppna den här sidan i Safari (den blå kompassikonen). Det fungerar inte från en annan apps inbyggda webbläsare.", instS2: "Leta efter Dela-knappen: en fyrkant med en pil uppåt. På iPad finns den uppe till höger. På iPhone finns den i nedre raden. I nyare versioner av iOS trycker du först på de tre prickarna eller tre strecken (\u2022\u2022\u2022 eller \u2630) bredvid adressfältet, och Dela finns i den menyn.", instS3: "Scrolla ner i listan som öppnas tills du ser \u201cLägg till på hemskärmen\u201d och tryck på den.", instS4: "Tryck på \u201cLägg till\u201d uppe till höger. Du kan döpa om den om du vill.", instS5: "Gå till hemskärmen och tryck på SOS-ikonen. Det är där du öppnar dina 21 dagar från och med nu.", instNote: "Tips: hittar du inte Lägg till på hemskärmen, scrolla längst ner i Dela-listan och tryck på Redigera åtgärder, och lägg till den.", benHead: "Skapa ett konto (valfritt)", benIntro: "Du kan använda appen utan konto. Ett konto ger dig det här:", ben1: "Dina framsteg sparas. Byt telefon, rensa webbläsaren eller använd iPad och telefon tillsammans, och inget går förlorat.", ben2: "Be tillsammans med en grupp. Gå med i din livsgrupp med en kod och se vilka som går de 21 dagarna med dig.", ben3: "Förbönsväggen. Dela ett böneämne som en pastor ber över innan det visas, och be för andra.", ben4: "Meddelanden från din livsgruppsledare, direkt i appen.", ben5: "Dina pastorer ser att du deltar, så att de kan uppmuntra och be för dig.", benPrivacy: "Pastorer ser ditt namn och vilka dagar du har klarat, aldrig din dagbok. Du väljer själv vad du delar och kan radera ditt konto när som helst.", benCreate: "Skapa mitt konto", benSkip: "Fortsätt utan konto", benLater: "Du kan skapa ett konto när som helst senare." }); if (C.ui) ["en", "sv"].forEach(function (l) { var o = C.ui[l] || {}; for (var k in o) if (o[k]) T[l][k] = o[k]; }); document.documentElement.lang = S.lang; render(); })
   .catch(function () { app.innerHTML = '<p>Could not load the app files. Please reload the page.</p>'; });
 </script>
 </body>

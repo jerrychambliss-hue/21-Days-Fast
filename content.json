@@ -1628,6 +1628,7 @@
  "fasts": [
   {
    "id": "daniel",
+   "group": "food",
    "name": {
     "en": "Daniel fast",
     "sv": "Danielsfasta"
@@ -1635,39 +1636,262 @@
    "desc": {
     "en": "Follow the pattern of Daniel (Daniel 1 and 10): vegetables, fruit, whole grains, beans, nuts and water. Leave out meat, dairy, sweets, white bread, coffee and alcohol.",
     "sv": "Följ Daniels mönster (Daniel 1 och 10): grönsaker, frukt, fullkorn, baljväxter, nötter och vatten. Avstå från kött, mejeriprodukter, sötsaker, vitt bröd, kaffe och alkohol."
+   },
+   "tips": {
+    "en": [
+     {
+      "h": "Just starting",
+      "p": "Try it for the three Tuesdays, or begin by leaving out only meat and sweets and add the rest week by week. Easy meals: oatmeal with fruit, bean and vegetable soup, rice with roasted vegetables."
+     },
+     {
+      "h": "Some experience",
+      "p": "Keep the full pattern on weekdays and ease up on Sunday if you need to. Cook large pots of lentil soup or bean chili so there is always something ready."
+     },
+     {
+      "h": "Experienced",
+      "p": "Keep it for all 21 days. You may add a liquids-only day before a Tuesday prayer night. Drink plenty of water and listen to your body."
+     }
+    ],
+    "sv": [
+     {
+      "h": "Du börjar just nu",
+      "p": "Prova de tre tisdagarna, eller börja med att bara avstå från kött och sötsaker och lägg till resten vecka för vecka. Enkla måltider: havregrynsgröt med frukt, böno- och grönsakssoppa, ris med ugnsrostade grönsaker."
+     },
+     {
+      "h": "Du har viss erfarenhet",
+      "p": "Håll hela mönstret på vardagar och ta det lugnare på söndagar om du behöver. Laga stora grytor linssoppa eller bönchili så att det alltid finns något färdigt."
+     },
+     {
+      "h": "Du är van",
+      "p": "Håll den alla 21 dagar. Du kan lägga till en dag med bara vätska före en tisdagsbönekväll. Drick gott om vatten och lyssna på kroppen."
+     }
+    ]
+   }
+  },
+  {
+   "id": "onemeal",
+   "group": "food",
+   "name": {
+    "en": "One meal per day",
+    "sv": "En måltid om dagen"
+   },
+   "desc": {
+    "en": "Eat one proper meal a day and drink water or tea the rest of the time. Use the meal times you would normally eat as time to pray.",
+    "sv": "Ät en ordentlig måltid om dagen och drick vatten eller te resten av tiden. Använd de vanliga måltiderna som tid för bön."
+   },
+   "tips": {
+    "en": [
+     {
+      "h": "Just starting",
+      "p": "Start with one day, such as a Tuesday, then add a second day. Pick the same meal time each time (many choose the evening) and make it balanced: protein, vegetables and whole grains."
+     },
+     {
+      "h": "Some experience",
+      "p": "Build up to three or four days a week. Keep your one meal substantial, and plan it ahead so you are not hungry and tempted at the wrong moment."
+     },
+     {
+      "h": "Experienced",
+      "p": "Do it on weekdays or for all 21 days, keeping Sundays and very physical work days normal if needed. Eat a full, nourishing meal, not snacks."
+     }
+    ],
+    "sv": [
+     {
+      "h": "Du börjar just nu",
+      "p": "Börja med en dag, till exempel en tisdag, och lägg sedan till en dag till. Välj samma tid för måltiden varje gång (många väljer kvällen) och gör den näringsrik: protein, grönsaker och fullkorn."
+     },
+     {
+      "h": "Du har viss erfarenhet",
+      "p": "Bygg upp till tre eller fyra dagar i veckan. Gör måltiden rejäl och planera den i förväg så att du inte blir hungrig och frestad vid fel tillfälle."
+     },
+     {
+      "h": "Du är van",
+      "p": "Gör det på vardagar eller alla 21 dagar, och behåll söndagar och fysiskt tunga arbetsdagar som vanligt om det behövs. Ät en hel, näringsrik måltid, inte mellanmål."
+     }
+    ]
    }
   },
   {
    "id": "liquid",
+   "group": "food",
    "name": {
     "en": "Liquids only",
     "sv": "Endast vätska"
    },
    "desc": {
-    "en": "Water, broth, tea and juice, with no solid food. Many people choose set days (for example before the Tuesday prayer night) rather than all 21.",
-    "sv": "Vatten, buljong, te och juice, men ingen fast föda. Många väljer bestämda dagar (till exempel före tisdagens bönekväll) i stället för alla 21."
-   }
-  },
-  {
-   "id": "full",
-   "name": {
-    "en": "Full fast",
-    "sv": "Hel fasta"
+    "en": "No solid food: water, broth, soup, tea, juice, smoothies and shakes. Most people choose set days (for example before the Tuesday prayer night) rather than all 21.",
+    "sv": "Ingen fast föda: vatten, buljong, soppa, te, juice, smoothies och shakes. De flesta väljer bestämda dagar (till exempel före tisdagens bönekväll) i stället för alla 21."
    },
-   "desc": {
-    "en": "Water only. This is the most demanding option and is best kept to one day or a few days, with a doctor's advice if you are unsure. It is not meant for all 21 days.",
-    "sv": "Endast vatten. Detta är det mest krävande alternativet och passar bäst för en eller några dagar, med läkares råd om du är osäker. Det är inte tänkt för alla 21 dagarna."
+   "tips": {
+    "en": [
+     {
+      "h": "Just starting",
+      "p": "Try one day, for example the Tuesday before prayer night. If that feels like too much, have one solid meal and two liquid ones. Soups and smoothies keep you fuller than juice."
+     },
+     {
+      "h": "Some experience",
+      "p": "Try two or three days in a row. Switch between warm and cold drinks so it does not get dull, and sip through the day instead of waiting until you are very hungry."
+     },
+     {
+      "h": "Experienced",
+      "p": "Keep it to set days, not all 21. Anything longer than a few days should be talked through with your doctor and a pastor first."
+     },
+     {
+      "h": "Soup ideas",
+      "p": "Vegetable or chicken broth, miso soup, blended tomato soup, blended carrot and ginger soup, smooth lentil soup."
+     },
+     {
+      "h": "Smoothie and shake ideas",
+      "p": "Banana, spinach and oat milk; berries with yogurt or kefir; oat milk with peanut butter and banana for more energy; a protein shake if you need it."
+     }
+    ],
+    "sv": [
+     {
+      "h": "Du börjar just nu",
+      "p": "Prova en dag, till exempel tisdagen före bönekvällen. Känns det för mycket, ät en fast måltid och ta två flytande. Soppor och smoothies mättar mer än juice."
+     },
+     {
+      "h": "Du har viss erfarenhet",
+      "p": "Prova två eller tre dagar i rad. Variera mellan varmt och kallt så att det inte blir enformigt, och drick under dagen i stället för att vänta tills du är mycket hungrig."
+     },
+     {
+      "h": "Du är van",
+      "p": "Håll det till bestämda dagar, inte alla 21. Allt längre än några dagar bör du prata igenom med din läkare och en pastor först."
+     },
+     {
+      "h": "Soppförslag",
+      "p": "Grönsaks- eller hönsbuljong, misosoppa, mixad tomatsoppa, mixad morots- och ingefärssoppa, len linssoppa."
+     },
+     {
+      "h": "Smoothie- och shakeförslag",
+      "p": "Banan, spenat och havredryck; bär med yoghurt eller kefir; havredryck med jordnötssmör och banan för mer energi; en proteinshake om du behöver."
+     }
+    ]
    }
   },
   {
    "id": "social",
+   "group": "addon",
    "name": {
-    "en": "Social media fast",
-    "sv": "Sociala medier-fasta"
+    "en": "Social media",
+    "sv": "Sociala medier"
    },
    "desc": {
-    "en": "Step away from social media, streaming and news. Use the time to read, pray and be present with people. Good alone or combined with a food fast.",
-    "sv": "Ta ett steg tillbaka från sociala medier, streaming och nyheter. Använd tiden till att läsa, be och vara närvarande med människor. Passar bra ensamt eller tillsammans med en matfasta."
+    "en": "Step away from social media and news feeds. Use the time to read, pray and be present with people.",
+    "sv": "Ta ett steg tillbaka från sociala medier och nyhetsflöden. Använd tiden till att läsa, be och vara närvarande med människor."
+   },
+   "tips": {
+    "en": [
+     {
+      "h": "Just starting",
+      "p": "Delete the apps from your home screen and turn off notifications. Choose one time a day, for example before bed, when you may check."
+     },
+     {
+      "h": "Some experience",
+      "p": "Log out of every account so you have to sign in again to use them. Replace your usual scrolling time with this app and your Bible."
+     },
+     {
+      "h": "Experienced",
+      "p": "Delete the apps for all 21 days and tell a friend so they can ask how it is going."
+     }
+    ],
+    "sv": [
+     {
+      "h": "Du börjar just nu",
+      "p": "Ta bort apparna från hemskärmen och stäng av notiserna. Välj en tid om dagen, till exempel före läggdags, då du får kolla."
+     },
+     {
+      "h": "Du har viss erfarenhet",
+      "p": "Logga ut från alla konton så att du måste logga in igen för att använda dem. Byt ut din vanliga scrolltid mot den här appen och din bibel."
+     },
+     {
+      "h": "Du är van",
+      "p": "Ta bort apparna alla 21 dagar och berätta för en vän så att hen kan fråga hur det går."
+     }
+    ]
+   }
+  },
+  {
+   "id": "spending",
+   "group": "addon",
+   "name": {
+    "en": "Discretionary spending",
+    "sv": "Onödiga utgifter"
+   },
+   "desc": {
+    "en": "Pause spending on things you do not need: eating out, coffee on the go, shopping and subscriptions you could do without. Give what you save.",
+    "sv": "Pausa utgifter på sådant du inte behöver: att äta ute, kaffe på språng, shopping och prenumerationer du kan klara dig utan. Ge det du sparar."
+   },
+   "tips": {
+    "en": [
+     {
+      "h": "Just starting",
+      "p": "Pick one or two things, such as eating out and coffee shops, and pause only those. Write down what you did not spend."
+     },
+     {
+      "h": "Some experience",
+      "p": "Pause shopping and eating out, and check your subscriptions. Decide in advance where the money you save will go."
+     },
+     {
+      "h": "Experienced",
+      "p": "Spend only on real needs for all 21 days and give the difference away, to the church, to someone in need, or to a mission."
+     }
+    ],
+    "sv": [
+     {
+      "h": "Du börjar just nu",
+      "p": "Välj en eller två saker, till exempel att äta ute och kaféer, och pausa bara dem. Skriv ner vad du inte spenderade."
+     },
+     {
+      "h": "Du har viss erfarenhet",
+      "p": "Pausa shopping och att äta ute och gå igenom dina prenumerationer. Bestäm i förväg vart pengarna du sparar ska gå."
+     },
+     {
+      "h": "Du är van",
+      "p": "Spendera bara på verkliga behov alla 21 dagar och ge bort mellanskillnaden, till kyrkan, till någon i nöd eller till mission."
+     }
+    ]
+   }
+  },
+  {
+   "id": "tv",
+   "group": "addon",
+   "name": {
+    "en": "TV and streaming",
+    "sv": "TV och streaming"
+   },
+   "desc": {
+    "en": "Turn off TV, streaming and video. Use the evenings to pray, read, rest and spend time with family and friends.",
+    "sv": "Stäng av TV, streaming och video. Använd kvällarna till att be, läsa, vila och vara med familj och vänner."
+   },
+   "tips": {
+    "en": [
+     {
+      "h": "Just starting",
+      "p": "Choose your usual show or the evening you watch most, and replace just that. Put the remote in a drawer."
+     },
+     {
+      "h": "Some experience",
+      "p": "No TV or streaming on weekdays. Plan something to do instead: a walk, a call, a game, reading Acts."
+     },
+     {
+      "h": "Experienced",
+      "p": "Turn it off for all 21 days, and cancel or pause your streaming subscription so it is not a temptation."
+     }
+    ],
+    "sv": [
+     {
+      "h": "Du börjar just nu",
+      "p": "Välj ditt vanliga program eller kvällen du tittar mest, och ersätt bara den. Lägg fjärrkontrollen i en låda."
+     },
+     {
+      "h": "Du har viss erfarenhet",
+      "p": "Ingen TV eller streaming på vardagar. Planera något annat: en promenad, ett samtal, ett spel, läsa Apostlagärningarna."
+     },
+     {
+      "h": "Du är van",
+      "p": "Stäng av den alla 21 dagar, och säg upp eller pausa din streamingprenumeration så att den inte är en frestelse."
+     }
+    ]
    }
   }
  ],
@@ -1679,13 +1903,13 @@
   "items": {
    "en": [
     "Talk to your doctor first if you are pregnant or nursing, have diabetes, low blood pressure or another medical condition, take regular medication, or are under 18.",
-    "If you have ever struggled with food or an eating disorder, choose the social media fast. Food fasting is not the right path for you.",
+    "If you have ever struggled with food or an eating disorder, do not choose a food fast. Choose social media, discretionary spending or TV and streaming instead.",
     "Drink plenty of water. Stop and eat if you feel dizzy, faint, or unwell.",
     "Fasting does not earn God's favor. It is a way of making room for Him."
    ],
    "sv": [
     "Prata med din läkare först om du är gravid eller ammar, har diabetes, lågt blodtryck eller annan sjukdom, tar regelbunden medicin eller är under 18 år.",
-    "Om du någon gång har haft problem med mat eller en ätstörning, välj sociala medier-fastan. Matfasta är inte rätt väg för dig.",
+    "Om du någon gång har haft problem med mat eller en ätstörning, välj ingen matfasta. Välj i stället sociala medier, onödiga utgifter eller TV och streaming.",
     "Drick mycket vatten. Avbryt och ät om du känner dig yr, svag eller sjuk.",
     "Fastan förtjänar inte Guds ynnest. Den är ett sätt att ge honom utrymme."
    ]
@@ -1771,7 +1995,26 @@
    "wallDesc": "Pray for one another, anonymously.",
    "consent": "I understand that my progress and the notes I write are stored on a server run by our hosting provider, Supabase. Only I can read my notes. Pastors and leaders at SOS Church can see my name and which day I am on. I can turn that off, or delete everything, here at any time.",
    "grpJoinP": "Enter the code from your group leader. Your group members and leader will see your name and which days you have completed.",
-   "nbP": "Your group and pastors see names, not email addresses. Add yours so they know who you are."
+   "nbP": "Your group and pastors see names, not email addresses. Add yours so they know who you are.",
+   "testimonyP": "What did God do in these 21 days? It stays private on your device until you choose to send it to the pastors.",
+   "tsName": "Include my name",
+   "tsSend": "Send to the pastors",
+   "tsSent": "Sent. Thank you for sharing what God did.",
+   "tsNote": "Only the pastors can read this. You can send it again if you add more.",
+   "tsNeedText": "Write your testimony first.",
+   "tsNeedAcct": "Make an account to send your testimony to the pastors.",
+   "buildTitle": "Build your fast",
+   "buildP": "Choose what fits you. You can change this at any time.",
+   "buildFood": "1. Choose your food fast",
+   "buildFoodP": "Pick one, or none if you only want to fast from other things.",
+   "buildAdd": "2. Add to your fast (optional)",
+   "buildAddP": "Add as many as you like, with or without a food fast.",
+   "recoTitle": "Recommendations",
+   "initTitle": "Prayer at SOS Church this week",
+   "initAll": "Prayer initiatives",
+   "initFocus": "Focus",
+   "chooseFast": "Build your fast",
+   "chooseFastP": "Choose what fits you. You can change it any time in the Fast tab."
   },
   "sv": {
    "landWelcome": "Välkommen till SOS Church Stockholms 21 dagar av bön och fasta",
@@ -1792,7 +2035,304 @@
    "wallDesc": "Be för varandra, anonymt.",
    "consent": "Jag förstår att min framgång och mina anteckningar lagras på en server hos vår leverantör Supabase. Bara jag kan läsa mina anteckningar. Pastorer och ledare i SOS Church kan se mitt namn och vilken dag jag är på. Jag kan stänga av det, eller radera allt, här när som helst.",
    "grpJoinP": "Skriv koden från din gruppledare. Dina gruppmedlemmar och din ledare ser ditt namn och vilka dagar du har klarat.",
-   "nbP": "Din grupp och pastorerna ser namn, inte e-postadresser. Lägg till ditt så att de vet vem du är."
+   "nbP": "Din grupp och pastorerna ser namn, inte e-postadresser. Lägg till ditt så att de vet vem du är.",
+   "testimonyP": "Vad gjorde Gud under de här 21 dagarna? Det är privat på din enhet tills du själv väljer att skicka det till pastorerna.",
+   "tsName": "Ta med mitt namn",
+   "tsSend": "Skicka till pastorerna",
+   "tsSent": "Skickat. Tack för att du delar vad Gud har gjort.",
+   "tsNote": "Bara pastorerna kan läsa detta. Du kan skicka igen om du skriver mer.",
+   "tsNeedText": "Skriv ditt vittnesbörd först.",
+   "tsNeedAcct": "Skapa ett konto för att skicka ditt vittnesbörd till pastorerna.",
+   "buildTitle": "Bygg din fasta",
+   "buildP": "Välj det som passar dig. Du kan ändra det när som helst.",
+   "buildFood": "1. Välj din matfasta",
+   "buildFoodP": "Välj en, eller ingen om du bara vill fasta från annat.",
+   "buildAdd": "2. Lägg till i din fasta (valfritt)",
+   "buildAddP": "Lägg till hur många du vill, med eller utan matfasta.",
+   "recoTitle": "Rekommendationer",
+   "initTitle": "Bön i SOS Church den här veckan",
+   "initAll": "Böneinitiativ",
+   "initFocus": "Fokus",
+   "chooseFast": "Bygg din fasta",
+   "chooseFastP": "Välj det som passar dig. Du kan ändra det när som helst i fliken Fasta."
   }
- }
+ },
+ "initiatives": [
+  {
+   "focus": {
+    "en": "",
+    "sv": ""
+   },
+   "items": [
+    {
+     "when": {
+      "en": "Tuesday evening",
+      "sv": "Tisdagskväll"
+     },
+     "title": {
+      "en": "Tuesday prayer night",
+      "sv": "Tisdagens bönekväll"
+     },
+     "text": {
+      "en": "Every Tuesday night, we gather to pray together at St. Peter's Church, Upplandsgatan 12. Come as you are, and bring what God is showing you in the fast.",
+      "sv": "Varje tisdagskväll samlas vi för att be tillsammans i St. Peter's Church, Upplandsgatan 12. Kom som du är och ta med det Gud visar dig under fastan."
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    }
+   ]
+  },
+  {
+   "focus": {
+    "en": "",
+    "sv": ""
+   },
+   "items": [
+    {
+     "when": {
+      "en": "Tuesday evening",
+      "sv": "Tisdagskväll"
+     },
+     "title": {
+      "en": "Tuesday prayer night",
+      "sv": "Tisdagens bönekväll"
+     },
+     "text": {
+      "en": "Every Tuesday night, we gather to pray together at St. Peter's Church, Upplandsgatan 12. Come as you are, and bring what God is showing you in the fast.",
+      "sv": "Varje tisdagskväll samlas vi för att be tillsammans i St. Peter's Church, Upplandsgatan 12. Kom som du är och ta med det Gud visar dig under fastan."
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    }
+   ]
+  },
+  {
+   "focus": {
+    "en": "",
+    "sv": ""
+   },
+   "items": [
+    {
+     "when": {
+      "en": "Tuesday evening",
+      "sv": "Tisdagskväll"
+     },
+     "title": {
+      "en": "Tuesday prayer night",
+      "sv": "Tisdagens bönekväll"
+     },
+     "text": {
+      "en": "Every Tuesday night, we gather to pray together at St. Peter's Church, Upplandsgatan 12. Come as you are, and bring what God is showing you in the fast.",
+      "sv": "Varje tisdagskväll samlas vi för att be tillsammans i St. Peter's Church, Upplandsgatan 12. Kom som du är och ta med det Gud visar dig under fastan."
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    },
+    {
+     "when": {
+      "en": "",
+      "sv": ""
+     },
+     "title": {
+      "en": "",
+      "sv": ""
+     },
+     "text": {
+      "en": "",
+      "sv": ""
+     }
+    }
+   ]
+  }
+ ]
 }
